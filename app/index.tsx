@@ -1,5 +1,6 @@
-import Button from '@/components/Button'
-import { Alert, Text, View } from 'react-native'
+import { Button } from '~/components/ui/button'
+import { Text } from '~/components/ui/text'
+import { Alert, View } from 'react-native'
 
 export default function Index() {
   return (
@@ -7,14 +8,15 @@ export default function Index() {
       <View className="items-center">
         <Text className="text-4xl">Welcome to NativeWind!</Text>
         <Text className="text-xl">Style your app with</Text>
-        <Text className="bg-yellow-100 text-3xl font-bold underline">Tailwind CSS!</Text>
+        <Text className="bg-blue-500 text-3xl font-bold underline">Tailwind CSS!</Text>
       </View>
       <Button
-        label="Sounds good!"
         onPress={() => {
           Alert.alert('NativeWind', "You're all set up!")
         }}
-      />
+      >
+        <Text>Sounds good!</Text>
+      </Button>
     </View>
   )
 }
