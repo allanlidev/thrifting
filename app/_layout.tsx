@@ -6,6 +6,8 @@ import { StatusBar } from 'expo-status-bar'
 import { useLayoutEffect, useRef, useState } from 'react'
 import { NAV_THEME } from '~/lib/constants'
 import { useColorScheme } from '~/lib/useColorScheme'
+import { AppState } from 'react-native'
+import { supabase } from '~/lib/supabase'
 
 const LIGHT_THEME: Theme = {
   ...DefaultTheme,
@@ -20,6 +22,18 @@ export {
   // Catch any errors thrown by the Layout component.
   ErrorBoundary,
 } from 'expo-router'
+
+// Tells Supabase Auth to continuously refresh the session automatically if
+// the app is in the foreground. When this is added, you will continue to receive
+// `onAuthStateChange` events with the `TOKEN_REFRESHED` or `SIGNED_OUT` event
+// if the user's session is terminated. This should only be registered once.
+AppState.addEventListener('change', (state) => {
+  if (state === 'active') {
+    supabase.auth.startAutoRefresh()
+  } else {
+    supabase.auth.stopAutoRefresh()
+  }
+})
 
 export default function RootLayout() {
   const hasMounted = useRef(false)
@@ -41,7 +55,20 @@ export default function RootLayout() {
   return (
     <ThemeProvider value={isDarkColorScheme ? DARK_THEME : LIGHT_THEME}>
       <StatusBar style={isDarkColorScheme ? 'light' : 'dark'} />
-      <Stack />
+      <Stack>
+        <Stack.Screen
+          name="index"
+          options={{
+            headerTitle: 'Home',
+          }}
+        />
+        <Stack.Screen
+          name="login"
+          options={{
+            headerTitle: 'Login',
+          }}
+        />
+      </Stack>
     </ThemeProvider>
   )
 }
