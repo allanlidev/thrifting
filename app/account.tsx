@@ -6,7 +6,7 @@ import { Label } from '~/components/ui/label'
 import { Input } from '~/components/ui/input'
 import { Text } from '~/components/ui/text'
 import { supabase } from '~/lib/supabase'
-import useSession from '~/lib/useSession'
+import { useSession } from '~/components/SessionProvider'
 
 export default function Account() {
   const { session } = useSession()
