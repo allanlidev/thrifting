@@ -43,16 +43,17 @@ export default function RootLayout() {
     <SessionProvider>
       <ThemeProvider value={isDarkColorScheme ? DARK_THEME : LIGHT_THEME}>
         <StatusBar style={isDarkColorScheme ? 'light' : 'dark'} />
-        <Stack>
+        <Stack screenOptions={{ animation: 'none' }}>
           <Stack.Screen
-            name="index"
+            name="(logged-in)"
             options={{
-              headerTitle: 'Home',
+              headerShown: false,
             }}
           />
           <Stack.Screen
             name="login"
             options={{
+              presentation: 'modal',
               headerTitle: 'Login',
             }}
           />

@@ -1,4 +1,3 @@
-import { Redirect } from 'expo-router'
 import { useState } from 'react'
 import { Alert, KeyboardAvoidingView, View } from 'react-native'
 import { useSession } from '~/components/SessionProvider'
@@ -9,26 +8,20 @@ import { Text } from '~/components/ui/text'
 import { supabase } from '~/lib/supabase'
 
 export default function Auth() {
-  const { session } = useSession()
+  const { logIn } = useSession()
 
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
-  const [loading, setLoading] = useState(false)
-
-  if (session?.user) return <Redirect href="/account" />
+  const [isLoading, setIsLoading] = useState(false)
 
   async function signInWithEmail() {
-    setLoading(true)
-    const { error } = await supabase.auth.signInWithPassword({
-      email: email,
-      password: password,
-    })
-    if (error) Alert.alert(error.message)
-    setLoading(false)
+    setIsLoading(true)
+    await logIn({ email, password })
+    setIsLoading(false)
   }
 
   async function signUpWithEmail() {
-    setLoading(true)
+    setIsLoading(true)
     const {
       data: { session },
       error,
@@ -38,7 +31,7 @@ export default function Auth() {
     })
     if (error) Alert.alert(error.message)
     if (!session) Alert.alert('Please check your inbox for email verification!')
-    setLoading(false)
+    setIsLoading(false)
   }
 
   return (
@@ -75,11 +68,11 @@ export default function Auth() {
         />
       </View>
       <View className="w-full gap-4">
-        <Button disabled={loading} onPress={() => signInWithEmail()} className="self-stretch">
+        <Button disabled={isLoading} onPress={() => signInWithEmail()} className="self-stretch">
           <Text>Sign in</Text>
         </Button>
         <Button
-          disabled={loading}
+          disabled={isLoading}
           onPress={() => signUpWithEmail()}
           variant="secondary"
           className="self-stretch"

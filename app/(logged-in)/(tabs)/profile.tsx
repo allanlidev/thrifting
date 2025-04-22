@@ -1,30 +1,29 @@
 import { useState, useEffect } from 'react'
 import { View, Alert, KeyboardAvoidingView } from 'react-native'
 import { Button } from '~/components/ui/button'
-import { H1 } from '~/components/ui/typography'
 import { Label } from '~/components/ui/label'
 import { Input } from '~/components/ui/input'
 import { Text } from '~/components/ui/text'
 import { supabase } from '~/lib/supabase'
 import { useSession } from '~/components/SessionProvider'
 
-export default function Account() {
-  const { session } = useSession()
+export default function Profile() {
+  const { session, logOut } = useSession()
 
-  const [loading, setLoading] = useState(true)
+  const [isLoading, setIsLoading] = useState(true)
   const [username, setUsername] = useState('')
   const [avatarUrl, setAvatarUrl] = useState('')
 
   useEffect(() => {
     async function getProfile() {
+      if (!session) return
       try {
-        setLoading(true)
-        if (!session?.user) throw new Error('No user on the session!')
+        setIsLoading(true)
 
         const { data, error, status } = await supabase
           .from('profiles')
           .select(`username, avatar_url`)
-          .eq('id', session?.user.id)
+          .eq('id', session.user.id)
           .single()
         if (error && status !== 406) {
           throw error
@@ -39,26 +38,17 @@ export default function Account() {
           Alert.alert(error.message)
         }
       } finally {
-        setLoading(false)
+        setIsLoading(false)
       }
     }
 
-    if (session) getProfile()
+    getProfile()
   }, [session])
 
-  if (!session?.user) {
-    return (
-      <View className="flex-1 p-6">
-        <H1 className="mt-10 text-center">Sign in to view your account details</H1>
-      </View>
-    )
-  }
-
   async function updateProfile({ username, avatar_url }: { username: string; avatar_url: string }) {
+    if (!session) return
     try {
-      setLoading(true)
-      if (!session?.user) throw new Error('No user on the session!')
-
+      setIsLoading(true)
       const updates = {
         id: session.user.id,
         username,
@@ -77,9 +67,11 @@ export default function Account() {
         Alert.alert(error.message)
       }
     } finally {
-      setLoading(false)
+      setIsLoading(false)
     }
   }
+
+  if (!session) return null
 
   return (
     <KeyboardAvoidingView
@@ -88,28 +80,26 @@ export default function Account() {
     >
       <View className="w-full gap-2">
         <Label nativeID="emailInput">Email</Label>
-        <Input value={session?.user?.email} aria-labelledby="emailInput" aria-disabled />
+        <Input value={session.user.email} aria-labelledby="emailInput" aria-disabled />
       </View>
       <View className="w-full gap-2">
         <Label nativeID="usernameInput">User name</Label>
         <Input
           value={username}
+          editable={!isLoading}
           onChangeText={(text) => setUsername(text)}
           aria-labelledby="usernameInput"
+          aria-disabled={isLoading}
         />
       </View>
       <Button
         onPress={() => updateProfile({ username, avatar_url: avatarUrl })}
-        disabled={loading}
+        disabled={isLoading}
         className="self-stretch"
       >
-        <Text>{loading ? 'Loading ...' : 'Update'}</Text>
+        <Text>{isLoading ? 'Loading ...' : 'Update'}</Text>
       </Button>
-      <Button
-        onPress={() => supabase.auth.signOut()}
-        variant="destructive"
-        className="self-stretch"
-      >
+      <Button onPress={logOut} variant="destructive" className="self-stretch">
         <Text>Sign out</Text>
       </Button>
     </KeyboardAvoidingView>
