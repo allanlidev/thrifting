@@ -7,6 +7,7 @@ import { useLayoutEffect, useRef, useState } from 'react'
 import { NAV_THEME } from '~/lib/constants'
 import { useColorScheme } from '~/lib/useColorScheme'
 import { SessionProvider } from '~/components/SessionProvider'
+import { GestureHandlerRootView } from 'react-native-gesture-handler'
 
 const LIGHT_THEME: Theme = {
   ...DefaultTheme,
@@ -41,24 +42,26 @@ export default function RootLayout() {
 
   return (
     <SessionProvider>
-      <ThemeProvider value={isDarkColorScheme ? DARK_THEME : LIGHT_THEME}>
-        <StatusBar style={isDarkColorScheme ? 'light' : 'dark'} />
-        <Stack screenOptions={{ animation: 'none' }}>
-          <Stack.Screen
-            name="(logged-in)"
-            options={{
-              headerShown: false,
-            }}
-          />
-          <Stack.Screen
-            name="login"
-            options={{
-              presentation: 'modal',
-              headerTitle: 'Login',
-            }}
-          />
-        </Stack>
-      </ThemeProvider>
+      <GestureHandlerRootView>
+        <ThemeProvider value={isDarkColorScheme ? DARK_THEME : LIGHT_THEME}>
+          <StatusBar style={isDarkColorScheme ? 'light' : 'dark'} />
+          <Stack screenOptions={{ animation: 'none' }}>
+            <Stack.Screen
+              name="(logged-in)"
+              options={{
+                headerShown: false,
+              }}
+            />
+            <Stack.Screen
+              name="login"
+              options={{
+                presentation: 'modal',
+                headerTitle: 'Login',
+              }}
+            />
+          </Stack>
+        </ThemeProvider>
+      </GestureHandlerRootView>
     </SessionProvider>
   )
 }
