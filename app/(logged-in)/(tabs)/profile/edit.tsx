@@ -5,7 +5,7 @@ import { Label } from '~/components/ui/label'
 import { Input } from '~/components/ui/input'
 import { Text } from '~/components/ui/text'
 import { supabase } from '~/lib/supabase'
-import { useSession } from '~/components/SessionProvider'
+import { useAuth } from '~/providers/AuthProvider'
 import { Avatar, AvatarFallback, AvatarImage } from '~/components/ui/avatar'
 import { Camera } from '~/lib/icons/Camera'
 import BottomSheet, { BottomSheetBackdrop, BottomSheetScrollView } from '@gorhom/bottom-sheet'
@@ -15,7 +15,7 @@ import { useColorScheme } from '~/lib/useColorScheme'
 import * as ImagePicker from 'expo-image-picker'
 
 export default function Profile() {
-  const { session, logOut } = useSession()
+  const { session, logOut } = useAuth()
   const { isDarkColorScheme } = useColorScheme()
 
   const [isLoading, setIsLoading] = useState(true)

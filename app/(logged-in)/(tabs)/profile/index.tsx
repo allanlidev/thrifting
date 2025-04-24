@@ -1,7 +1,7 @@
 import { Link } from 'expo-router'
 import { useState, useEffect } from 'react'
 import { Alert, ScrollView, View } from 'react-native'
-import { useSession } from '~/components/SessionProvider'
+import { useAuth } from '~/providers/AuthProvider'
 import { Avatar, AvatarFallback, AvatarImage } from '~/components/ui/avatar'
 import { Button } from '~/components/ui/button'
 import { Text } from '~/components/ui/text'
@@ -9,7 +9,7 @@ import { H1, Large } from '~/components/ui/typography'
 import { supabase } from '~/lib/supabase'
 
 export default function ProfileIndex() {
-  const { session } = useSession()
+  const { session } = useAuth()
 
   const [fullName, setFullName] = useState('')
   const [username, setUsername] = useState('')

@@ -20,7 +20,7 @@ type AuthSessionState = {
 }
 
 // Create Session context
-const SessionContext = createContext<AuthSessionState>({
+const AuthContext = createContext<AuthSessionState>({
   session: null,
   isReady: false,
   isLoggedIn: false,
@@ -29,7 +29,7 @@ const SessionContext = createContext<AuthSessionState>({
 })
 
 // Provider component
-export function SessionProvider({ children }: { children: ReactNode }) {
+export function AuthProvider({ children }: { children: ReactNode }) {
   const router = useRouter()
 
   // Tells Supabase Auth to continuously refresh the session automatically if
@@ -107,13 +107,13 @@ export function SessionProvider({ children }: { children: ReactNode }) {
   }, [isReady])
 
   return (
-    <SessionContext.Provider value={{ session, isReady, isLoggedIn, logIn, logOut }}>
+    <AuthContext.Provider value={{ session, isReady, isLoggedIn, logIn, logOut }}>
       {children}
-    </SessionContext.Provider>
+    </AuthContext.Provider>
   )
 }
 
 // Custom hook for consuming the context
-export function useSession() {
-  return useContext(SessionContext)
+export function useAuth() {
+  return useContext(AuthContext)
 }
