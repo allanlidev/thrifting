@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from 'react'
+import { useState, useRef } from 'react'
 import { View, Alert, KeyboardAvoidingView, Pressable, ScrollView } from 'react-native'
 import { Button } from '~/components/ui/button'
 import { Label } from '~/components/ui/label'
@@ -15,49 +15,15 @@ import { useColorScheme } from '~/lib/useColorScheme'
 import * as ImagePicker from 'expo-image-picker'
 
 export default function Profile() {
-  const { session, logOut } = useAuth()
+  const { session, profile, logOut } = useAuth()
   const { isDarkColorScheme } = useColorScheme()
 
-  const [isLoading, setIsLoading] = useState(true)
-  const [fullName, setFullName] = useState<string>()
-  const [username, setUsername] = useState<string>()
-  const [avatarUrl, setAvatarUrl] = useState<string>()
+  const [isUpdating, setIsUpdating] = useState(false)
+  const [fullName, setFullName] = useState<string>(profile?.full_name)
+  const [username, setUsername] = useState<string>(profile?.username)
+  const [avatarUrl, setAvatarUrl] = useState<string>(profile?.avatar_url)
 
   const bottomSheetRef = useRef<BottomSheet>(null)
-
-  useEffect(() => {
-    async function getProfile() {
-      if (!session) return
-      try {
-        setIsLoading(true)
-
-        const { data, error, status } = await supabase
-          .from('profiles')
-          .select(`full_name, username, avatar_url`)
-          .eq('id', session.user.id)
-          .single()
-        if (error && status !== 406) {
-          throw error
-        }
-
-        if (data) {
-          setFullName(data.full_name)
-          setUsername(data.username)
-          setAvatarUrl(data.avatar_url)
-        }
-        await ImagePicker.requestCameraPermissionsAsync()
-        await ImagePicker.requestMediaLibraryPermissionsAsync()
-      } catch (error) {
-        if (error instanceof Error) {
-          Alert.alert(error.message)
-        }
-      } finally {
-        setIsLoading(false)
-      }
-    }
-
-    getProfile()
-  }, [session])
 
   async function updateProfile({
     full_name,
@@ -70,7 +36,7 @@ export default function Profile() {
   }) {
     if (!session || (!full_name && !username && !avatar_url)) return
     try {
-      setIsLoading(true)
+      setIsUpdating(true)
       const updates = {
         id: session.user.id,
         full_name,
@@ -90,7 +56,7 @@ export default function Profile() {
         Alert.alert(error.message)
       }
     } finally {
-      setIsLoading(false)
+      setIsUpdating(false)
     }
   }
 
@@ -184,18 +150,18 @@ export default function Profile() {
           <Label nativeID="usernameInput">User name</Label>
           <Input
             value={username}
-            editable={!isLoading}
+            editable={!isUpdating}
             onChangeText={(text) => setUsername(text)}
             aria-labelledby="usernameInput"
-            aria-disabled={isLoading}
+            aria-disabled={isUpdating}
           />
         </View>
         <Button
           onPress={() => updateProfile({ full_name: fullName, username, avatar_url: avatarUrl })}
-          disabled={isLoading}
+          disabled={isUpdating}
           className="self-stretch"
         >
-          <Text>{isLoading ? 'Loading ...' : 'Update'}</Text>
+          <Text>{isUpdating ? 'Loading ...' : 'Update'}</Text>
         </Button>
         <Button onPress={logOut} variant="destructive" className="self-stretch">
           <Text>Sign out</Text>

@@ -13,6 +13,7 @@ type AuthCredentials = {
 
 type AuthSessionState = {
   session: Session | null
+  profile: any
   isReady: boolean
   isLoggedIn: boolean
   logIn: (credentials: AuthCredentials) => Promise<void>
@@ -22,6 +23,7 @@ type AuthSessionState = {
 // Create Session context
 const AuthContext = createContext<AuthSessionState>({
   session: null,
+  profile: null,
   isReady: false,
   isLoggedIn: false,
   logIn: async () => {},
@@ -74,20 +76,42 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   }
 
   const [session, setSession] = useState<Session | null>(null)
+  const [profile, setProfile] = useState(null)
   const [isReady, setIsReady] = useState(false)
 
   const isLoggedIn = !!session?.user
 
   useEffect(() => {
-    // Get initial session
-    supabase.auth
-      .getSession()
-      .then(({ data: { session } }) => {
+    const fetchSession = async () => {
+      try {
+        const {
+          data: { session },
+        } = await supabase.auth.getSession()
+
         setSession(session)
-      })
-      .finally(() => {
+
+        if (session) {
+          const { data: profileData } = await supabase
+            .from('profiles')
+            .select('*')
+            .eq('id', session.user.id)
+            .single()
+
+          setProfile(profileData || null)
+        }
+
         setIsReady(true)
-      })
+      } catch (error) {
+        if (error instanceof AuthError) {
+          Alert.alert(error.message)
+        } else {
+          Alert.alert('An unexpected error occurred. Please try again later.')
+        }
+      }
+    }
+
+    // Get initial session
+    fetchSession()
 
     // Listen for auth changes
     const {
@@ -107,7 +131,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   }, [isReady])
 
   return (
-    <AuthContext.Provider value={{ session, isReady, isLoggedIn, logIn, logOut }}>
+    <AuthContext.Provider value={{ session, profile, isReady, isLoggedIn, logIn, logOut }}>
       {children}
     </AuthContext.Provider>
   )
