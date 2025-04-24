@@ -2,6 +2,7 @@ import * as AvatarPrimitive from '@rn-primitives/avatar'
 import * as React from 'react'
 import { Image, type ImageProps } from 'expo-image'
 import { cn } from '~/lib/utils'
+import { cssInterop } from 'nativewind'
 
 const Avatar = React.forwardRef<AvatarPrimitive.RootRef, AvatarPrimitive.RootProps>(
   ({ className, ...props }, ref) => (
@@ -14,9 +15,13 @@ const Avatar = React.forwardRef<AvatarPrimitive.RootRef, AvatarPrimitive.RootPro
 )
 Avatar.displayName = AvatarPrimitive.Root.displayName
 
+const StyledImage = cssInterop(Image, {
+  className: 'style',
+})
+
 const AvatarImage = React.forwardRef<Image, Omit<ImageProps, 'alt'>>(
   ({ className, ...props }, ref) => (
-    <Image ref={ref} className={cn('aspect-square h-full w-full', className)} {...props} />
+    <StyledImage ref={ref} className={cn('aspect-square h-full w-full', className)} {...props} />
   )
 )
 AvatarImage.displayName = AvatarPrimitive.Image.displayName
