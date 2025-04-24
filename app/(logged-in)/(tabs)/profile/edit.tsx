@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef, useCallback, JSX } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import { View, Alert, KeyboardAvoidingView, Pressable, ScrollView } from 'react-native'
 import { Button } from '~/components/ui/button'
 import { Label } from '~/components/ui/label'
@@ -8,20 +8,20 @@ import { supabase } from '~/lib/supabase'
 import { useSession } from '~/components/SessionProvider'
 import { Avatar, AvatarFallback, AvatarImage } from '~/components/ui/avatar'
 import { Camera } from '~/lib/icons/Camera'
-import BottomSheet, { BottomSheetBackdrop, BottomSheetView } from '@gorhom/bottom-sheet'
+import BottomSheet, { BottomSheetBackdrop, BottomSheetScrollView } from '@gorhom/bottom-sheet'
 import { Images } from '~/lib/icons/Images'
 import { Trash } from '~/lib/icons/Trash'
 import { useColorScheme } from '~/lib/useColorScheme'
-import { BottomSheetDefaultBackdropProps } from '@gorhom/bottom-sheet/lib/typescript/components/bottomSheetBackdrop/types'
+import * as ImagePicker from 'expo-image-picker'
 
 export default function Profile() {
   const { session, logOut } = useSession()
   const { isDarkColorScheme } = useColorScheme()
 
   const [isLoading, setIsLoading] = useState(true)
-  const [fullName, setFullName] = useState('')
-  const [username, setUsername] = useState('')
-  const [avatarUrl, setAvatarUrl] = useState('')
+  const [fullName, setFullName] = useState<string>()
+  const [username, setUsername] = useState<string>()
+  const [avatarUrl, setAvatarUrl] = useState<string>()
 
   const bottomSheetRef = useRef<BottomSheet>(null)
 
@@ -45,6 +45,8 @@ export default function Profile() {
           setUsername(data.username)
           setAvatarUrl(data.avatar_url)
         }
+        await ImagePicker.requestCameraPermissionsAsync()
+        await ImagePicker.requestMediaLibraryPermissionsAsync()
       } catch (error) {
         if (error instanceof Error) {
           Alert.alert(error.message)
@@ -57,16 +59,38 @@ export default function Profile() {
     getProfile()
   }, [session])
 
+  useEffect(() => {
+    if (avatarUrl) downloadImage(avatarUrl)
+  }, [avatarUrl])
+
+  async function downloadImage(path: string) {
+    try {
+      const { data, error } = await supabase.storage.from('avatars').download(path)
+      if (error) {
+        throw error
+      }
+      const fr = new FileReader()
+      fr.readAsDataURL(data)
+      fr.onload = () => {
+        setAvatarUrl(fr.result as string)
+      }
+    } catch (error) {
+      if (error instanceof Error) {
+        console.log('Error downloading image: ', error.message)
+      }
+    }
+  }
+
   async function updateProfile({
     full_name,
     username,
     avatar_url,
   }: {
-    full_name: string
-    username: string
-    avatar_url: string
+    full_name?: string
+    username?: string
+    avatar_url?: string
   }) {
-    if (!session) return
+    if (!session || (!full_name && !username && !avatar_url)) return
     try {
       setIsLoading(true)
       const updates = {
@@ -92,17 +116,55 @@ export default function Profile() {
     }
   }
 
-  const renderBackdrop = useCallback(
-    (props: JSX.IntrinsicAttributes & BottomSheetDefaultBackdropProps) => (
-      <BottomSheetBackdrop {...props} appearsOnIndex={0} disappearsOnIndex={-1} />
-    ),
-    []
-  )
+  function handleAvatarPress() {
+    bottomSheetRef.current?.expand()
+  }
+
+  function closeBottomSheet() {
+    bottomSheetRef.current?.close()
+  }
 
   if (!session) return null
 
-  function handleAvatarPress() {
-    bottomSheetRef.current?.expand()
+  async function pickImage({ mode }: { mode: 'camera' | 'library' }) {
+    const imagePickerOptions: ImagePicker.ImagePickerOptions = {
+      allowsEditing: true,
+      aspect: [1, 1],
+      quality: 1,
+      exif: false,
+    }
+
+    try {
+      const result =
+        mode === 'camera'
+          ? await ImagePicker.launchCameraAsync(imagePickerOptions)
+          : await ImagePicker.launchImageLibraryAsync(imagePickerOptions)
+
+      if (result.canceled) return
+
+      const asset = result.assets[0]
+
+      const arraybuffer = await fetch(asset.uri).then((res) => res.arrayBuffer())
+
+      const fileExt = asset.uri.split('.').pop()?.toLowerCase() ?? 'jpeg'
+      const path = `${Date.now()}.${fileExt}`
+      const { data, error: uploadError } = await supabase.storage
+        .from('avatars')
+        .upload(path, arraybuffer, {
+          contentType: asset.mimeType ?? 'image/jpeg',
+        })
+
+      if (uploadError) {
+        throw uploadError
+      }
+
+      setAvatarUrl(data.path)
+      closeBottomSheet()
+    } catch (error) {
+      if (error instanceof Error) {
+        Alert.alert(error.message)
+      }
+    }
   }
 
   return (
@@ -113,8 +175,11 @@ export default function Profile() {
             alt={avatarUrl ? 'Your profile image' : 'Add your profile image'}
             className="size-24 rounded-full"
           >
-            <AvatarImage source={{ uri: avatarUrl }} accessibilityLabel="Your profile image" />
-            <AvatarFallback />
+            {avatarUrl ? (
+              <AvatarImage source={{ uri: avatarUrl }} accessibilityLabel="Your profile image" />
+            ) : (
+              <AvatarFallback />
+            )}
           </Avatar>
           <View className="absolute bottom-0 right-0 flex size-10 items-center justify-center rounded-full border-2 border-background bg-muted">
             <Camera className="size-5 color-foreground" />
@@ -161,27 +226,39 @@ export default function Profile() {
           handleIndicatorStyle={{
             backgroundColor: isDarkColorScheme ? 'white' : 'black',
           }}
-          backdropComponent={renderBackdrop}
+          backdropComponent={(props) => (
+            <BottomSheetBackdrop {...props} appearsOnIndex={0} disappearsOnIndex={-1} />
+          )}
         >
-          <BottomSheetView className="pb-safe flex-1 gap-4 p-4">
-            <Button variant="secondary" className="flex-1 flex-row justify-between">
-              <Text>Upload from Camera</Text>
-              <Camera className="color-primary" />
-            </Button>
-            <Button variant="secondary" className="flex-1 flex-row justify-between">
-              <Text>Upload from Library</Text>
-              <Images className="color-primary" />
-            </Button>
-            {avatarUrl && (
-              <Button variant="destructive" className="flex-1 flex-row justify-between">
-                <Text>Remove avatar</Text>
-                <Trash />
+          <BottomSheetScrollView scrollEnabled={false} className="flex-1">
+            <View className="pb-safe flex-1 gap-4 p-4">
+              <Button
+                variant="secondary"
+                className="flex-1 flex-row justify-between"
+                onPress={() => pickImage({ mode: 'camera' })}
+              >
+                <Text>Upload from Camera</Text>
+                <Camera className="color-primary" />
               </Button>
-            )}
-            <Button variant="ghost" onPress={() => bottomSheetRef.current?.close()}>
-              <Text>Cancel</Text>
-            </Button>
-          </BottomSheetView>
+              <Button
+                variant="secondary"
+                className="flex-1 flex-row justify-between"
+                onPress={() => pickImage({ mode: 'library' })}
+              >
+                <Text>Upload from Library</Text>
+                <Images className="color-primary" />
+              </Button>
+              {avatarUrl && (
+                <Button variant="destructive" className="flex-1 flex-row justify-between">
+                  <Text>Remove avatar</Text>
+                  <Trash className="color-primary" />
+                </Button>
+              )}
+              <Button variant="ghost" onPress={closeBottomSheet}>
+                <Text>Cancel</Text>
+              </Button>
+            </View>
+          </BottomSheetScrollView>
         </BottomSheet>
       </ScrollView>
     </KeyboardAvoidingView>
