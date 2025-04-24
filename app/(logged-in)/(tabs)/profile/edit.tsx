@@ -59,28 +59,6 @@ export default function Profile() {
     getProfile()
   }, [session])
 
-  useEffect(() => {
-    if (avatarUrl) downloadImage(avatarUrl)
-  }, [avatarUrl])
-
-  async function downloadImage(path: string) {
-    try {
-      const { data, error } = await supabase.storage.from('avatars').download(path)
-      if (error) {
-        throw error
-      }
-      const fr = new FileReader()
-      fr.readAsDataURL(data)
-      fr.onload = () => {
-        setAvatarUrl(fr.result as string)
-      }
-    } catch (error) {
-      if (error instanceof Error) {
-        console.log('Error downloading image: ', error.message)
-      }
-    }
-  }
-
   async function updateProfile({
     full_name,
     username,
@@ -176,7 +154,11 @@ export default function Profile() {
             className="size-24 rounded-full"
           >
             {avatarUrl ? (
-              <AvatarImage source={{ uri: avatarUrl }} accessibilityLabel="Your profile image" />
+              <AvatarImage
+                bucketId="avatars"
+                path={avatarUrl}
+                accessibilityLabel="Your profile image"
+              />
             ) : (
               <AvatarFallback />
             )}

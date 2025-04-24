@@ -43,28 +43,6 @@ export default function ProfileIndex() {
     getProfile()
   }, [session])
 
-  useEffect(() => {
-    if (avatarUrl) downloadImage(avatarUrl)
-  }, [avatarUrl])
-
-  async function downloadImage(path: string) {
-    try {
-      const { data, error } = await supabase.storage.from('avatars').download(path)
-      if (error) {
-        throw error
-      }
-      const fr = new FileReader()
-      fr.readAsDataURL(data)
-      fr.onload = () => {
-        setAvatarUrl(fr.result as string)
-      }
-    } catch (error) {
-      if (error instanceof Error) {
-        console.log('Error downloading image: ', error.message)
-      }
-    }
-  }
-
   return (
     <ScrollView className="pt-safe-offset-6 flex-1 p-6" contentContainerClassName="gap-6">
       <View className="flex-1 flex-row items-end justify-between">
@@ -73,7 +51,11 @@ export default function ProfileIndex() {
           className="size-32 rounded-full"
         >
           {avatarUrl ? (
-            <AvatarImage source={{ uri: avatarUrl }} accessibilityLabel="Your profile image" />
+            <AvatarImage
+              bucketId="avatars"
+              path={avatarUrl}
+              accessibilityLabel="Your profile image"
+            />
           ) : (
             <AvatarFallback />
           )}
