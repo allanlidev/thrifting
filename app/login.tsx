@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { Alert, KeyboardAvoidingView, View } from 'react-native'
-import { useSession } from '~/components/SessionProvider'
+import { useAuth } from '~/providers/AuthProvider'
 import { Button } from '~/components/ui/button'
 import { Input } from '~/components/ui/input'
 import { Label } from '~/components/ui/label'
@@ -8,7 +8,7 @@ import { Text } from '~/components/ui/text'
 import { supabase } from '~/lib/supabase'
 
 export default function Auth() {
-  const { logIn } = useSession()
+  const { logIn } = useAuth()
 
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')

@@ -6,7 +6,7 @@ import { StatusBar } from 'expo-status-bar'
 import { useLayoutEffect, useRef, useState } from 'react'
 import { NAV_THEME } from '~/lib/constants'
 import { useColorScheme } from '~/lib/useColorScheme'
-import { SessionProvider } from '~/components/SessionProvider'
+import { AuthProvider } from '~/providers/AuthProvider'
 import { GestureHandlerRootView } from 'react-native-gesture-handler'
 
 const LIGHT_THEME: Theme = {
@@ -41,7 +41,7 @@ export default function RootLayout() {
   }
 
   return (
-    <SessionProvider>
+    <AuthProvider>
       <GestureHandlerRootView>
         <ThemeProvider value={isDarkColorScheme ? DARK_THEME : LIGHT_THEME}>
           <StatusBar style={isDarkColorScheme ? 'light' : 'dark'} />
@@ -62,6 +62,6 @@ export default function RootLayout() {
           </Stack>
         </ThemeProvider>
       </GestureHandlerRootView>
-    </SessionProvider>
+    </AuthProvider>
   )
 }
