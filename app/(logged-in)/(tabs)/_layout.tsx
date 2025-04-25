@@ -22,7 +22,7 @@ export default function TabLayout() {
       <Tabs.Screen
         name="profile"
         options={{
-          headerTitle: 'Profile',
+          headerShown: false,
           tabBarIcon: ({ color }) => <Profile color={color} />,
         }}
       />

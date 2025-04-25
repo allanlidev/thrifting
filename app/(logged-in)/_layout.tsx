@@ -1,8 +1,8 @@
 import { Redirect, Stack } from 'expo-router'
-import { useSession } from '~/components/SessionProvider'
+import { useAuth } from '~/providers/AuthProvider'
 
 export default function ProtectedLayout() {
-  const { isReady, isLoggedIn } = useSession()
+  const { isReady, isLoggedIn } = useAuth()
 
   if (!isReady) return null
 
