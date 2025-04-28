@@ -13,6 +13,7 @@ import { Images } from '~/lib/icons/Images'
 import { Trash } from '~/lib/icons/Trash'
 import { useColorScheme } from '~/lib/useColorScheme'
 import * as ImagePicker from 'expo-image-picker'
+import { type TablesUpdate } from '~/database.types'
 
 export default function Profile() {
   const { session, profile, logOut } = useAuth()
@@ -25,24 +26,16 @@ export default function Profile() {
 
   const bottomSheetRef = useRef<BottomSheet>(null)
 
-  async function updateProfile({
-    full_name,
-    username,
-    avatar_url,
-  }: {
-    full_name?: string
-    username?: string
-    avatar_url?: string
-  }) {
+  async function updateProfile({ full_name, username, avatar_url }: TablesUpdate<'profiles'>) {
     if (!session || (!full_name && !username && !avatar_url)) return
     try {
       setIsUpdating(true)
-      const updates = {
+      const updates: TablesUpdate<'profiles'> = {
         id: session.user.id,
         full_name,
         username,
         avatar_url,
-        updated_at: new Date(),
+        updated_at: new Date().toISOString(),
       }
 
       const { error } = await supabase.from('profiles').upsert(updates)
