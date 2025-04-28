@@ -20,9 +20,9 @@ export default function Profile() {
   const { isDarkColorScheme } = useColorScheme()
 
   const [isUpdating, setIsUpdating] = useState(false)
-  const [fullName, setFullName] = useState<string>(profile?.full_name)
-  const [username, setUsername] = useState<string>(profile?.username)
-  const [avatarUrl, setAvatarUrl] = useState<string>(profile?.avatar_url)
+  const [fullName, setFullName] = useState(profile?.full_name ?? undefined)
+  const [username, setUsername] = useState(profile?.username ?? undefined)
+  const [avatarUrl, setAvatarUrl] = useState(profile?.avatar_url ?? undefined)
 
   const bottomSheetRef = useRef<BottomSheet>(null)
 
@@ -31,14 +31,12 @@ export default function Profile() {
     try {
       setIsUpdating(true)
       const updates: TablesUpdate<'profiles'> = {
-        id: session.user.id,
         full_name,
         username,
         avatar_url,
-        updated_at: new Date().toISOString(),
       }
 
-      const { error } = await supabase.from('profiles').upsert(updates)
+      const { error } = await supabase.from('profiles').update(updates).eq('id', session.user.id)
 
       if (error) {
         throw error
