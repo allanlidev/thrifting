@@ -13,43 +13,19 @@ import { Images } from '~/lib/icons/Images'
 import { Trash } from '~/lib/icons/Trash'
 import { useColorScheme } from '~/lib/useColorScheme'
 import * as ImagePicker from 'expo-image-picker'
-import { type TablesUpdate } from '~/database.types'
+import { useUpdateProfile } from '~/lib/hooks/queries/profiles'
 
 export default function Profile() {
   const { session, profile, logOut } = useAuth()
   const { isDarkColorScheme } = useColorScheme()
 
-  const [isUpdating, setIsUpdating] = useState(false)
+  const { error, isPending, isSuccess, mutate: updateProfile } = useUpdateProfile()
+
   const [fullName, setFullName] = useState(profile?.full_name ?? undefined)
   const [username, setUsername] = useState(profile?.username ?? undefined)
   const [avatarUrl, setAvatarUrl] = useState(profile?.avatar_url ?? undefined)
 
   const bottomSheetRef = useRef<BottomSheet>(null)
-
-  async function updateProfile({ full_name, username, avatar_url }: TablesUpdate<'profiles'>) {
-    if (!session || (!full_name && !username && !avatar_url)) return
-    try {
-      setIsUpdating(true)
-      const updates: TablesUpdate<'profiles'> = {
-        full_name,
-        username,
-        avatar_url,
-      }
-
-      const { error } = await supabase.from('profiles').update(updates).eq('id', session.user.id)
-
-      if (error) {
-        throw error
-      }
-      Alert.alert('Profile updated!')
-    } catch (error) {
-      if (error instanceof Error) {
-        Alert.alert(error.message)
-      }
-    } finally {
-      setIsUpdating(false)
-    }
-  }
 
   function handleAvatarPress() {
     bottomSheetRef.current?.expand()
@@ -59,7 +35,7 @@ export default function Profile() {
     bottomSheetRef.current?.close()
   }
 
-  if (!session) return null
+  if (!session || !profile) return null
 
   async function pickImage({ mode }: { mode: 'camera' | 'library' }) {
     const imagePickerOptions: ImagePicker.ImagePickerOptions = {
@@ -102,6 +78,12 @@ export default function Profile() {
     }
   }
 
+  if (error) {
+    Alert.alert(error.message)
+  } else if (isSuccess) {
+    Alert.alert('Profile updated!')
+  }
+
   return (
     <KeyboardAvoidingView behavior="padding" className="flex-1">
       <ScrollView contentContainerClassName="pt-safe-offset-4 flex-1 items-center gap-6 p-6">
@@ -141,18 +123,23 @@ export default function Profile() {
           <Label nativeID="usernameInput">User name</Label>
           <Input
             value={username}
-            editable={!isUpdating}
+            editable={!isPending}
             onChangeText={(text) => setUsername(text)}
             aria-labelledby="usernameInput"
-            aria-disabled={isUpdating}
+            aria-disabled={isPending}
           />
         </View>
         <Button
-          onPress={() => updateProfile({ full_name: fullName, username, avatar_url: avatarUrl })}
-          disabled={isUpdating}
+          onPress={() =>
+            updateProfile({
+              id: profile.id,
+              updates: { full_name: fullName, username, avatar_url: avatarUrl },
+            })
+          }
+          disabled={isPending}
           className="self-stretch"
         >
-          <Text>{isUpdating ? 'Loading ...' : 'Update'}</Text>
+          <Text>{isPending ? 'Loading ...' : 'Update'}</Text>
         </Button>
         <Button onPress={logOut} variant="destructive" className="self-stretch">
           <Text>Sign out</Text>

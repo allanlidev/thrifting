@@ -4,6 +4,7 @@ import { useState, useEffect, createContext, useContext, type ReactNode } from '
 import { Alert, AppState } from 'react-native'
 import { supabase } from '~/lib/supabase'
 import { type Tables } from '~/database.types'
+import { useNonStaleProfile } from '~/lib/hooks/queries/profiles'
 
 SplashScreen.preventAutoHideAsync()
 
@@ -77,10 +78,12 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   }
 
   const [session, setSession] = useState<Session | null>(null)
-  const [profile, setProfile] = useState<Tables<'profiles'> | null>(null)
   const [isReady, setIsReady] = useState(false)
 
+  const { data: profileData, refetch: refetchProfile } = useNonStaleProfile(session?.user?.id)
+
   const isLoggedIn = !!session?.user
+  const profile = profileData ?? null
 
   useEffect(() => {
     const fetchSession = async () => {
@@ -90,16 +93,6 @@ export function AuthProvider({ children }: { children: ReactNode }) {
         } = await supabase.auth.getSession()
 
         setSession(session)
-
-        if (session) {
-          const { data: profileData } = await supabase
-            .from('profiles')
-            .select('*')
-            .eq('id', session.user.id)
-            .single()
-
-          setProfile(profileData)
-        }
 
         setIsReady(true)
       } catch (error) {
@@ -124,6 +117,12 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     // Cleanup subscription on unmount
     return () => subscription.unsubscribe()
   }, [])
+
+  // Refetch profile when session changes
+  useEffect(() => {
+    if (!session?.user?.id) return
+    refetchProfile()
+  }, [session, refetchProfile])
 
   useEffect(() => {
     if (isReady) {

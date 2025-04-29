@@ -18,12 +18,14 @@
     "@rn-primitives/slot": "^1.1.0",
     "@rn-primitives/types": "^1.1.0",
     "@supabase/supabase-js": "^2.49.4",
+    "@tanstack/react-query": "^5.74.7",
     "aes-js": "^3.1.2",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "expo": "~52.0.46",
     "expo-constants": "~17.0.3",
     "expo-image": "~2.0.7",
+    "expo-image-picker": "~16.0.6",
     "expo-linking": "~7.0.3",
     "expo-router": "~4.0.20",
     "expo-secure-store": "~14.0.1",
@@ -42,11 +44,11 @@
     "react-native-svg": "15.8.0",
     "react-native-web": "~0.19.6",
     "tailwind-merge": "^3.2.0",
-    "tailwindcss": "^3.0.0",
-    "expo-image-picker": "~16.0.6"
+    "tailwindcss": "^3.0.0"
   },
   "devDependencies": {
     "@babel/core": "^7.20.0",
+    "@tanstack/eslint-plugin-query": "^5.74.7",
     "@types/aes-js": "^3.1.4",
     "@types/react": "~18.3.12",
     "eslint": "^8.57.0",
