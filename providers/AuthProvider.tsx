@@ -3,6 +3,7 @@ import { SplashScreen, useRouter } from 'expo-router'
 import { useState, useEffect, createContext, useContext, type ReactNode } from 'react'
 import { Alert, AppState } from 'react-native'
 import { supabase } from '~/lib/supabase'
+import { type Tables } from '~/database.types'
 
 SplashScreen.preventAutoHideAsync()
 
@@ -13,7 +14,7 @@ type AuthCredentials = {
 
 type AuthSessionState = {
   session: Session | null
-  profile: any
+  profile: Tables<'profiles'> | null
   isReady: boolean
   isLoggedIn: boolean
   logIn: (credentials: AuthCredentials) => Promise<void>
@@ -76,7 +77,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   }
 
   const [session, setSession] = useState<Session | null>(null)
-  const [profile, setProfile] = useState(null)
+  const [profile, setProfile] = useState<Tables<'profiles'> | null>(null)
   const [isReady, setIsReady] = useState(false)
 
   const isLoggedIn = !!session?.user
@@ -97,7 +98,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
             .eq('id', session.user.id)
             .single()
 
-          setProfile(profileData || null)
+          setProfile(profileData)
         }
 
         setIsReady(true)

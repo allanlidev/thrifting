@@ -8,19 +8,22 @@ import { H1, Large } from '~/components/ui/typography'
 
 export default function ProfileIndex() {
   const { profile } = useAuth()
-  const { username, full_name, avatar_url } = profile
+
+  const avatarUrl = profile?.avatar_url
+  const username = profile?.username
+  const fullName = profile?.full_name
 
   return (
     <ScrollView className="pt-safe-offset-6 flex-1 p-6" contentContainerClassName="gap-6">
       <View className="flex-1 flex-row items-end justify-between">
         <Avatar
-          alt={avatar_url ? 'Your profile image' : 'Add your profile image'}
+          alt={avatarUrl ? 'Your profile image' : 'Add your profile image'}
           className="size-32 rounded-full"
         >
-          {avatar_url ? (
+          {avatarUrl ? (
             <AvatarImage
               bucketId="avatars"
-              path={avatar_url}
+              path={avatarUrl}
               accessibilityLabel="Your profile image"
             />
           ) : (
@@ -37,7 +40,7 @@ export default function ProfileIndex() {
       </View>
       <View className="flex-1 justify-center gap-2">
         <H1>{username}</H1>
-        <Large>{full_name}</Large>
+        <Large>{fullName}</Large>
       </View>
     </ScrollView>
   )

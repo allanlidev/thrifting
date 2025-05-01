@@ -13,39 +13,30 @@ import { Images } from '~/lib/icons/Images'
 import { Trash } from '~/lib/icons/Trash'
 import { useColorScheme } from '~/lib/useColorScheme'
 import * as ImagePicker from 'expo-image-picker'
+import { type TablesUpdate } from '~/database.types'
 
 export default function Profile() {
   const { session, profile, logOut } = useAuth()
   const { isDarkColorScheme } = useColorScheme()
 
   const [isUpdating, setIsUpdating] = useState(false)
-  const [fullName, setFullName] = useState<string>(profile?.full_name)
-  const [username, setUsername] = useState<string>(profile?.username)
-  const [avatarUrl, setAvatarUrl] = useState<string>(profile?.avatar_url)
+  const [fullName, setFullName] = useState(profile?.full_name ?? undefined)
+  const [username, setUsername] = useState(profile?.username ?? undefined)
+  const [avatarUrl, setAvatarUrl] = useState(profile?.avatar_url ?? undefined)
 
   const bottomSheetRef = useRef<BottomSheet>(null)
 
-  async function updateProfile({
-    full_name,
-    username,
-    avatar_url,
-  }: {
-    full_name?: string
-    username?: string
-    avatar_url?: string
-  }) {
+  async function updateProfile({ full_name, username, avatar_url }: TablesUpdate<'profiles'>) {
     if (!session || (!full_name && !username && !avatar_url)) return
     try {
       setIsUpdating(true)
-      const updates = {
-        id: session.user.id,
+      const updates: TablesUpdate<'profiles'> = {
         full_name,
         username,
         avatar_url,
-        updated_at: new Date(),
       }
 
-      const { error } = await supabase.from('profiles').upsert(updates)
+      const { error } = await supabase.from('profiles').update(updates).eq('id', session.user.id)
 
       if (error) {
         throw error
