@@ -8,6 +8,7 @@ import { NAV_THEME } from '~/lib/constants'
 import { useColorScheme } from '~/lib/useColorScheme'
 import { AuthProvider } from '~/providers/AuthProvider'
 import { GestureHandlerRootView } from 'react-native-gesture-handler'
+import { QueryProvider } from '~/providers/QueryProvider'
 
 const LIGHT_THEME: Theme = {
   ...DefaultTheme,
@@ -41,27 +42,29 @@ export default function RootLayout() {
   }
 
   return (
-    <AuthProvider>
-      <GestureHandlerRootView>
-        <ThemeProvider value={isDarkColorScheme ? DARK_THEME : LIGHT_THEME}>
-          <StatusBar style={isDarkColorScheme ? 'light' : 'dark'} />
-          <Stack screenOptions={{ animation: 'none' }}>
-            <Stack.Screen
-              name="(logged-in)"
-              options={{
-                headerShown: false,
-              }}
-            />
-            <Stack.Screen
-              name="login"
-              options={{
-                presentation: 'modal',
-                headerTitle: 'Login',
-              }}
-            />
-          </Stack>
-        </ThemeProvider>
-      </GestureHandlerRootView>
-    </AuthProvider>
+    <QueryProvider>
+      <AuthProvider>
+        <GestureHandlerRootView>
+          <ThemeProvider value={isDarkColorScheme ? DARK_THEME : LIGHT_THEME}>
+            <StatusBar style={isDarkColorScheme ? 'light' : 'dark'} />
+            <Stack screenOptions={{ animation: 'none' }}>
+              <Stack.Screen
+                name="(logged-in)"
+                options={{
+                  headerShown: false,
+                }}
+              />
+              <Stack.Screen
+                name="login"
+                options={{
+                  presentation: 'modal',
+                  headerTitle: 'Login',
+                }}
+              />
+            </Stack>
+          </ThemeProvider>
+        </GestureHandlerRootView>
+      </AuthProvider>
+    </QueryProvider>
   )
 }
