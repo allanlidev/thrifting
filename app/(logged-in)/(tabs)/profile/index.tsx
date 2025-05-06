@@ -5,6 +5,7 @@ import { Avatar, AvatarFallback, AvatarImage } from '~/components/ui/avatar'
 import { Button } from '~/components/ui/button'
 import { Text } from '~/components/ui/text'
 import { H1, Large } from '~/components/ui/typography'
+import { Trans } from '@lingui/react/macro'
 
 export default function ProfileIndex() {
   const { profile } = useAuth()
@@ -33,7 +34,9 @@ export default function ProfileIndex() {
         <View>
           <Link href="/profile/edit" asChild>
             <Button variant="secondary" className="rounded-full">
-              <Text>Edit profile</Text>
+              <Text>
+                <Trans>Edit profile</Trans>
+              </Text>
             </Button>
           </Link>
         </View>

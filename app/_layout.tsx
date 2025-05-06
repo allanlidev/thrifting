@@ -9,6 +9,7 @@ import { useColorScheme } from '~/lib/useColorScheme'
 import { AuthProvider } from '~/providers/AuthProvider'
 import { GestureHandlerRootView } from 'react-native-gesture-handler'
 import { QueryProvider } from '~/providers/QueryProvider'
+import { I18nProvider } from '~/providers/i18nProvider'
 
 const LIGHT_THEME: Theme = {
   ...DefaultTheme,
@@ -44,26 +45,28 @@ export default function RootLayout() {
   return (
     <QueryProvider>
       <AuthProvider>
-        <GestureHandlerRootView>
-          <ThemeProvider value={isDarkColorScheme ? DARK_THEME : LIGHT_THEME}>
-            <StatusBar style={isDarkColorScheme ? 'light' : 'dark'} translucent={false} />
-            <Stack screenOptions={{ animation: 'none' }}>
-              <Stack.Screen
-                name="(logged-in)"
-                options={{
-                  headerShown: false,
-                }}
-              />
-              <Stack.Screen
-                name="login"
-                options={{
-                  presentation: 'modal',
-                  headerTitle: 'Login',
-                }}
-              />
-            </Stack>
-          </ThemeProvider>
-        </GestureHandlerRootView>
+        <I18nProvider>
+          <GestureHandlerRootView>
+            <ThemeProvider value={isDarkColorScheme ? DARK_THEME : LIGHT_THEME}>
+              <StatusBar style={isDarkColorScheme ? 'light' : 'dark'} translucent={false} />
+              <Stack screenOptions={{ animation: 'none' }}>
+                <Stack.Screen
+                  name="(logged-in)"
+                  options={{
+                    headerShown: false,
+                  }}
+                />
+                <Stack.Screen
+                  name="login"
+                  options={{
+                    presentation: 'modal',
+                    headerTitle: 'Login',
+                  }}
+                />
+              </Stack>
+            </ThemeProvider>
+          </GestureHandlerRootView>
+        </I18nProvider>
       </AuthProvider>
     </QueryProvider>
   )
