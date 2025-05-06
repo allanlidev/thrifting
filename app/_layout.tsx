@@ -46,7 +46,7 @@ export default function RootLayout() {
       <AuthProvider>
         <GestureHandlerRootView>
           <ThemeProvider value={isDarkColorScheme ? DARK_THEME : LIGHT_THEME}>
-            <StatusBar style={isDarkColorScheme ? 'light' : 'dark'} />
+            <StatusBar style={isDarkColorScheme ? 'light' : 'dark'} translucent={false} />
             <Stack screenOptions={{ animation: 'none' }}>
               <Stack.Screen
                 name="(logged-in)"
