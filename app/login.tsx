@@ -6,6 +6,8 @@ import { Input } from '~/components/ui/input'
 import { Label } from '~/components/ui/label'
 import { Text } from '~/components/ui/text'
 import { supabase } from '~/lib/supabase'
+import { Trans } from '@lingui/react/macro'
+import { t } from '@lingui/core/macro'
 
 export default function Auth() {
   const { logIn } = useAuth()
@@ -40,11 +42,13 @@ export default function Auth() {
       className="flex-1 items-center justify-center gap-6 p-6"
     >
       <View className="w-full gap-2">
-        <Label nativeID="emailInput">Email</Label>
+        <Label nativeID="emailInput">
+          <Trans>Email</Trans>
+        </Label>
         <Input
           onChangeText={(text) => setEmail(text)}
           value={email}
-          placeholder="email@address.com"
+          placeholder={t`email@address.com`}
           autoCapitalize="none"
           keyboardType="email-address"
           autoComplete="email"
@@ -54,11 +58,13 @@ export default function Auth() {
         />
       </View>
       <View className="w-full gap-2">
-        <Label nativeID="passwordInput">Password</Label>
+        <Label nativeID="passwordInput">
+          <Trans>Password</Trans>
+        </Label>
         <Input
           value={password}
           onChangeText={(text) => setPassword(text)}
-          placeholder="Password"
+          placeholder={t`Password`}
           autoCapitalize="none"
           autoComplete="password"
           autoCorrect={false}
@@ -69,7 +75,9 @@ export default function Auth() {
       </View>
       <View className="w-full gap-4">
         <Button disabled={isLoading} onPress={() => signInWithEmail()} className="self-stretch">
-          <Text>Sign in</Text>
+          <Text>
+            <Trans>Sign in</Trans>
+          </Text>
         </Button>
         <Button
           disabled={isLoading}
@@ -77,7 +85,9 @@ export default function Auth() {
           variant="secondary"
           className="self-stretch"
         >
-          <Text>Sign up</Text>
+          <Text>
+            <Trans>Create account</Trans>
+          </Text>
         </Button>
       </View>
     </KeyboardAvoidingView>

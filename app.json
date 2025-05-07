@@ -18,7 +18,8 @@
           "photosPermission": "The app accesses your photos for uploading product images and profile pictures.",
           "cameraPermission": "The app accesses your camera for taking product images and profile pictures."
         }
-      ]
+      ],
+      "expo-localization"
     ],
     "experiments": {
       "typedRoutes": true

@@ -14,6 +14,8 @@ import { Trash } from '~/lib/icons/Trash'
 import { useColorScheme } from '~/lib/useColorScheme'
 import * as ImagePicker from 'expo-image-picker'
 import { useUpdateProfile } from '~/lib/hooks/queries/profiles'
+import { t } from '@lingui/core/macro'
+import { Trans } from '@lingui/react/macro'
 
 export default function Profile() {
   const { session, profile, logOut } = useAuth()
@@ -73,15 +75,15 @@ export default function Profile() {
       closeBottomSheet()
     } catch (error) {
       if (error instanceof Error) {
-        Alert.alert(error.message)
+        Alert.alert(t`Oops! Something went wrong.`)
       }
     }
   }
 
   if (error) {
-    Alert.alert(error.message)
+    Alert.alert(t`Oops! Something went wrong.`)
   } else if (isSuccess) {
-    Alert.alert('Profile updated!')
+    Alert.alert(t`Profile updated!`)
   }
 
   return (
@@ -107,7 +109,9 @@ export default function Profile() {
           </View>
         </Pressable>
         <View className="w-full gap-2">
-          <Label nativeID="fullNameInput">Full name</Label>
+          <Label nativeID="fullNameInput">
+            <Trans>Full name</Trans>
+          </Label>
           <Input
             value={fullName}
             onChangeText={(name) => setFullName(name)}
@@ -116,11 +120,15 @@ export default function Profile() {
           />
         </View>
         <View className="w-full gap-2">
-          <Label nativeID="emailInput">Email</Label>
+          <Label nativeID="emailInput">
+            <Trans>Email</Trans>
+          </Label>
           <Input value={session.user.email} aria-labelledby="emailInput" aria-disabled />
         </View>
         <View className="w-full gap-2">
-          <Label nativeID="usernameInput">User name</Label>
+          <Label nativeID="usernameInput">
+            <Trans>User name</Trans>
+          </Label>
           <Input
             value={username}
             editable={!isPending}
@@ -139,10 +147,12 @@ export default function Profile() {
           disabled={isPending}
           className="self-stretch"
         >
-          <Text>{isPending ? 'Loading ...' : 'Update'}</Text>
+          <Text>{isPending ? t`Loading...` : t`Update`}</Text>
         </Button>
         <Button onPress={logOut} variant="destructive" className="self-stretch">
-          <Text>Sign out</Text>
+          <Text>
+            <Trans>Sign out</Trans>
+          </Text>
         </Button>
         <BottomSheet
           ref={bottomSheetRef}
@@ -163,7 +173,9 @@ export default function Profile() {
                 className="flex-1 flex-row justify-between"
                 onPress={() => pickImage({ mode: 'camera' })}
               >
-                <Text>Upload from Camera</Text>
+                <Text>
+                  <Trans>Upload from Camera</Trans>
+                </Text>
                 <Camera className="color-primary" />
               </Button>
               <Button
@@ -171,17 +183,23 @@ export default function Profile() {
                 className="flex-1 flex-row justify-between"
                 onPress={() => pickImage({ mode: 'library' })}
               >
-                <Text>Upload from Library</Text>
+                <Text>
+                  <Trans>Upload from Library</Trans>
+                </Text>
                 <Images className="color-primary" />
               </Button>
               {avatarUrl && (
                 <Button variant="destructive" className="flex-1 flex-row justify-between">
-                  <Text>Remove avatar</Text>
+                  <Text>
+                    <Trans>Remove avatar</Trans>
+                  </Text>
                   <Trash className="color-primary" />
                 </Button>
               )}
               <Button variant="ghost" onPress={closeBottomSheet}>
-                <Text>Cancel</Text>
+                <Text>
+                  <Trans>Cancel</Trans>
+                </Text>
               </Button>
             </View>
           </BottomSheetScrollView>
