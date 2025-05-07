@@ -1,7 +1,7 @@
 import '~/global.css'
 
 import { Theme, ThemeProvider, DefaultTheme, DarkTheme } from '@react-navigation/native'
-import { Stack } from 'expo-router'
+import { Slot } from 'expo-router'
 import { StatusBar } from 'expo-status-bar'
 import { useLayoutEffect, useRef, useState } from 'react'
 import { NAV_THEME } from '~/lib/constants'
@@ -49,21 +49,7 @@ export default function RootLayout() {
           <GestureHandlerRootView>
             <ThemeProvider value={isDarkColorScheme ? DARK_THEME : LIGHT_THEME}>
               <StatusBar style={isDarkColorScheme ? 'light' : 'dark'} translucent={false} />
-              <Stack screenOptions={{ animation: 'none' }}>
-                <Stack.Screen
-                  name="(logged-in)"
-                  options={{
-                    headerShown: false,
-                  }}
-                />
-                <Stack.Screen
-                  name="login"
-                  options={{
-                    presentation: 'modal',
-                    headerTitle: 'Login',
-                  }}
-                />
-              </Stack>
+              <Slot />
             </ThemeProvider>
           </GestureHandlerRootView>
         </I18nProvider>

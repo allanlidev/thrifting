@@ -1,12 +1,9 @@
 import { AuthError, type Session } from '@supabase/supabase-js'
-import { SplashScreen, useRouter } from 'expo-router'
 import { useState, useEffect, createContext, useContext, type ReactNode } from 'react'
 import { Alert, AppState } from 'react-native'
 import { supabase } from '~/lib/supabase'
 import { type Tables } from '~/database.types'
 import { useNonStaleProfile } from '~/lib/hooks/queries/profiles'
-
-SplashScreen.preventAutoHideAsync()
 
 // Tells Supabase Auth to continuously refresh the session automatically if
 // the app is in the foreground. When this is added, you will continue to receive
@@ -46,8 +43,6 @@ const AuthContext = createContext<AuthSessionState>({
 
 // Provider component
 export function AuthProvider({ children }: { children: ReactNode }) {
-  const router = useRouter()
-
   const [session, setSession] = useState<Session | null>(null)
   const [isReady, setIsReady] = useState(false)
 
@@ -57,7 +52,6 @@ export function AuthProvider({ children }: { children: ReactNode }) {
         email,
         password,
       })
-      router.replace('/')
     } catch (error: AuthError | unknown) {
       if (error instanceof AuthError) {
         Alert.alert(error.message)
@@ -70,7 +64,6 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   async function logOut() {
     try {
       await supabase.auth.signOut()
-      location.reload()
     } catch (error: AuthError | unknown) {
       if (error instanceof AuthError) {
         Alert.alert(error.message)
@@ -123,12 +116,6 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     if (!session?.user?.id) return
     refetchProfile()
   }, [session, refetchProfile])
-
-  useEffect(() => {
-    if (isReady) {
-      SplashScreen.hideAsync()
-    }
-  }, [isReady])
 
   return (
     <AuthContext.Provider value={{ session, profile, isReady, isLoggedIn, logIn, logOut }}>
