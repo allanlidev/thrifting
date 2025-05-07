@@ -70,7 +70,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   async function logOut() {
     try {
       await supabase.auth.signOut()
-      router.replace('/login')
+      location.reload()
     } catch (error: AuthError | unknown) {
       if (error instanceof AuthError) {
         Alert.alert(error.message)
