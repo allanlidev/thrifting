@@ -1,25 +1,38 @@
-# NativeWind Example
+# thrifting - the place to buy & sell second hand
 
-Style your universal React app with Tailwind CSS classes. [NativeWind](https://www.nativewind.dev/) enables Tailwind CSS use in React Native apps.
+![Expo](https://img.shields.io/badge/expo-111113?style=for-the-badge&logo=expo)![React Native](https://img.shields.io/badge/react%20native-20232A?style=for-the-badge&logo=react) ![iOS](https://img.shields.io/badge/ios-000000?style=for-the-badge&logo=apple)![Android](https://img.shields.io/badge/android-fff?style=for-the-badge&logo=android) ![TailwindCSS/NativeWind](https://img.shields.io/badge/tailwindcss/nativewind-111113?style=for-the-badge&logo=tailwindcss)
 
-<p>
-  <!-- iOS -->
-  <img alt="Supports Expo iOS" longdesc="Supports Expo iOS" src="https://img.shields.io/badge/iOS-4630EB.svg?style=flat-square&logo=APPLE&labelColor=999999&logoColor=fff" />
-  <!-- Android -->
-  <img alt="Supports Expo Android" longdesc="Supports Expo Android" src="https://img.shields.io/badge/Android-4630EB.svg?style=flat-square&logo=ANDROID&labelColor=A4C639&logoColor=fff" />
-  <!-- Web -->
-  <img alt="Supports Expo Web" longdesc="Supports Expo Web" src="https://img.shields.io/badge/web-4630EB.svg?style=flat-square&logo=GOOGLE-CHROME&labelColor=4285F4&logoColor=fff" />
-</p>
+![Made with 💙 by Allan & Emil](https://img.shields.io/badge/made%20with%20💙%20by%20Allan%20&%20Emil-000000?style=for-the-badge)
 
-## 🚀 How to use
+**thrifting** is a mobile app built with [Expo](https://expo.dev) & [React Native](https://reactnative.dev), supporting both iOS and Android. The backend is implemented with [Supabase](https://supabase.com) for database handling, authentication, and other edge functions.
 
-<!-- Setup instructions -->
+## Installation & Setup
 
-- Install with `yarn` or `npm install`.
-- Run `yarn start` or `npm run start` to try it out.
+Make sure you have [Node.js](https://nodejs.org/en/) & npm installed. Any newer version should work fine, but we used the latest LTS as of writing (v22.15.0).
 
-## 📝 Notes
+1. Clone this repository:
 
-<!-- Link to related Expo or library docs -->
+```zsh
+git clone https://github.com/allanlidev/thrifting.git
+```
 
-- This example replicates the [NativeWind Expo Router setup instructions](https://www.nativewind.dev/getting-started/expo-router) for NativeWind v4.
+2. Navigate to repository and install dependencies:
+
+```zsh
+cd thrifting
+npm install
+```
+
+3. Create a .env file by copying the .env.template
+
+```zsh
+cp .env.template .env
+```
+
+4. Add missing values inside the .env file
+
+5. Run the app & test that the app works in [Expo Go](https://expo.dev/go)
+
+```zsh
+npm run start
+```
