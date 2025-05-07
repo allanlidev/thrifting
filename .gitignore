@@ -39,4 +39,4 @@ yarn-error.*
 app-example
 
 # i18n
-lib/locales/**/*.js
+src/locales/**/*.js

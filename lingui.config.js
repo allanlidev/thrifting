@@ -5,8 +5,8 @@ export default defineConfig({
   locales: ['en', 'fi'],
   catalogs: [
     {
-      path: '<rootDir>/lib/locales/{locale}/messages',
-      include: ['app', 'components', 'lib'],
+      path: '<rootDir>/src/locales/{locale}/messages',
+      include: ['src'],
     },
   ],
   fallbackLocales: { default: 'en' },
