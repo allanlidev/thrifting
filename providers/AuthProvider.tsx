@@ -8,6 +8,18 @@ import { useNonStaleProfile } from '~/lib/hooks/queries/profiles'
 
 SplashScreen.preventAutoHideAsync()
 
+// Tells Supabase Auth to continuously refresh the session automatically if
+// the app is in the foreground. When this is added, you will continue to receive
+// `onAuthStateChange` events with the `TOKEN_REFRESHED` or `SIGNED_OUT` event
+// if the user's session is terminated. This should only be registered once.
+AppState.addEventListener('change', (state) => {
+  if (state === 'active') {
+    supabase.auth.startAutoRefresh()
+  } else {
+    supabase.auth.stopAutoRefresh()
+  }
+})
+
 type AuthCredentials = {
   email: string
   password: string
@@ -36,17 +48,8 @@ const AuthContext = createContext<AuthSessionState>({
 export function AuthProvider({ children }: { children: ReactNode }) {
   const router = useRouter()
 
-  // Tells Supabase Auth to continuously refresh the session automatically if
-  // the app is in the foreground. When this is added, you will continue to receive
-  // `onAuthStateChange` events with the `TOKEN_REFRESHED` or `SIGNED_OUT` event
-  // if the user's session is terminated. This should only be registered once.
-  AppState.addEventListener('change', (state) => {
-    if (state === 'active') {
-      supabase.auth.startAutoRefresh()
-    } else {
-      supabase.auth.stopAutoRefresh()
-    }
-  })
+  const [session, setSession] = useState<Session | null>(null)
+  const [isReady, setIsReady] = useState(false)
 
   async function logIn({ email, password }: AuthCredentials) {
     try {
@@ -77,9 +80,6 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     }
   }
 
-  const [session, setSession] = useState<Session | null>(null)
-  const [isReady, setIsReady] = useState(false)
-
   const { data: profileData, refetch: refetchProfile } = useNonStaleProfile(session?.user?.id)
 
   const isLoggedIn = !!session?.user
@@ -93,14 +93,14 @@ export function AuthProvider({ children }: { children: ReactNode }) {
         } = await supabase.auth.getSession()
 
         setSession(session)
-
-        setIsReady(true)
       } catch (error) {
         if (error instanceof AuthError) {
           Alert.alert(error.message)
         } else {
           Alert.alert('An unexpected error occurred. Please try again later.')
         }
+      } finally {
+        setIsReady(true)
       }
     }
 
