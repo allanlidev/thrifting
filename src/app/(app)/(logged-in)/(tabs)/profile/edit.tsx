@@ -1,5 +1,12 @@
 import { useState, useRef } from 'react'
-import { View, Alert, KeyboardAvoidingView, Pressable, ScrollView } from 'react-native'
+import {
+  View,
+  Alert,
+  KeyboardAvoidingView,
+  Pressable,
+  ScrollView,
+  ActivityIndicator,
+} from 'react-native'
 import { Button } from '~/src/components/ui/button'
 import { Label } from '~/src/components/ui/label'
 import { Input } from '~/src/components/ui/input'
@@ -26,6 +33,9 @@ export default function Profile() {
   const [fullName, setFullName] = useState(profile?.full_name ?? undefined)
   const [username, setUsername] = useState(profile?.username ?? undefined)
   const [avatarUrl, setAvatarUrl] = useState(profile?.avatar_url ?? undefined)
+  const [isDeleting, setIsDeleting] = useState(false)
+
+  const isLoading = isPending || isDeleting
 
   const bottomSheetRef = useRef<BottomSheet>(null)
 
@@ -86,6 +96,40 @@ export default function Profile() {
     Alert.alert(t`Profile updated!`)
   }
 
+  function handleDeleteAccount() {
+    Alert.alert(
+      'Delete account',
+      'Are you sure you want to delete your account? This action cannot be undone.',
+      [
+        {
+          text: 'Cancel',
+          style: 'cancel',
+        },
+        {
+          text: 'Delete',
+          style: 'destructive',
+          onPress: deleteAccount,
+        },
+      ]
+    )
+  }
+
+  async function deleteAccount() {
+    try {
+      setIsDeleting(true)
+      if (!session?.user) throw new Error('No user')
+      await supabase.functions.invoke('user-self-deletion')
+      alert('Account deleted successfully!')
+    } catch (error) {
+      alert('Error deleting the account!')
+      console.log(error)
+    } finally {
+      setIsDeleting(false)
+      // Note that you also will force a logout after completing it
+      logOut()
+    }
+  }
+
   return (
     <KeyboardAvoidingView behavior="padding" className="flex-1">
       <ScrollView contentContainerClassName="pt-safe-offset-4 flex-1 items-center gap-6 p-6">
@@ -131,10 +175,10 @@ export default function Profile() {
           </Label>
           <Input
             value={username}
-            editable={!isPending}
+            editable={!isLoading}
             onChangeText={(text) => setUsername(text)}
             aria-labelledby="usernameInput"
-            aria-disabled={isPending}
+            aria-disabled={isLoading}
           />
         </View>
         <Button
@@ -144,12 +188,27 @@ export default function Profile() {
               updates: { full_name: fullName, username, avatar_url: avatarUrl },
             })
           }
-          disabled={isPending}
-          className="self-stretch"
+          disabled={isLoading}
+          className="flex-row items-center gap-2 self-stretch"
         >
+          {isPending && <ActivityIndicator />}
           <Text>{isPending ? t`Loading...` : t`Update`}</Text>
         </Button>
-        <Button onPress={logOut} variant="destructive" className="self-stretch">
+        <Button
+          variant="destructive"
+          onPress={handleDeleteAccount}
+          disabled={isLoading}
+          className="flex-row items-center gap-2 self-stretch"
+        >
+          {isDeleting && <ActivityIndicator className="color-foreground" />}
+          <Text>{isDeleting ? <Trans>Deleting...</Trans> : <Trans>Delete account</Trans>}</Text>
+        </Button>
+        <Button
+          onPress={logOut}
+          variant="destructive"
+          disabled={isLoading}
+          className="self-stretch"
+        >
           <Text>
             <Trans>Sign out</Trans>
           </Text>
