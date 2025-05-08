@@ -14,21 +14,20 @@ export default function AppLayout() {
   }, [isAuthReady])
 
   return (
-    <Stack screenOptions={{ animation: 'none' }}>
+    <Stack screenOptions={{ headerShown: false }}>
+      <Stack.Protected guard={isLoggedIn}>
+        <Stack.Screen name="(logged-in)" />
+      </Stack.Protected>
+
       <Stack.Protected guard={!isLoggedIn}>
+        <Stack.Screen name="index" />
         <Stack.Screen
           name="login"
-          options={{
-            headerTitle: 'Login',
-          }}
+          options={{ headerShown: true, title: '', headerBackButtonDisplayMode: 'generic' }}
         />
-      </Stack.Protected>
-      <Stack.Protected guard={isLoggedIn}>
         <Stack.Screen
-          name="(logged-in)"
-          options={{
-            headerShown: false,
-          }}
+          name="signup"
+          options={{ headerShown: true, title: '', headerBackButtonDisplayMode: 'generic' }}
         />
       </Stack.Protected>
     </Stack>

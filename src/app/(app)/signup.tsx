@@ -1,25 +1,33 @@
 import { useState } from 'react'
-import { ActivityIndicator, KeyboardAvoidingView, ScrollView, View } from 'react-native'
-import { useAuth } from '~/src/providers/AuthProvider'
+import { ActivityIndicator, Alert, KeyboardAvoidingView, ScrollView, View } from 'react-native'
 import { Button } from '~/src/components/ui/button'
 import { Input } from '~/src/components/ui/input'
 import { Label } from '~/src/components/ui/label'
 import { Text } from '~/src/components/ui/text'
+import { supabase } from '~/src/lib/supabase'
 import { Trans } from '@lingui/react/macro'
 import { t } from '@lingui/core/macro'
 import { H1 } from '~/src/components/ui/typography'
 
-export default function Login() {
-  const { logIn } = useAuth()
-
+export default function Signup() {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [isLoading, setIsLoading] = useState(false)
 
-  async function signInWithEmail() {
+  async function signUpWithEmail() {
     setIsLoading(true)
-    await logIn({ email, password })
+    const {
+      data: { session },
+      error,
+    } = await supabase.auth.signUp({
+      email: email,
+      password: password,
+    })
+    if (error) Alert.alert(error.message)
     setIsLoading(false)
+    if (session) {
+      Alert.alert("You've successfully registered! Happy thrifting!")
+    }
   }
 
   return (
@@ -30,7 +38,7 @@ export default function Login() {
         automaticallyAdjustKeyboardInsets
       >
         <H1 className="text-center">
-          <Trans>Sign in</Trans>
+          <Trans>Register account</Trans>
         </H1>
         <View className="gap-6">
           <View className="w-full gap-2">
@@ -67,11 +75,11 @@ export default function Login() {
           </View>
           <Button
             disabled={isLoading}
-            onPress={() => signInWithEmail()}
+            onPress={() => signUpWithEmail()}
             className="flex-row gap-2 self-stretch"
           >
             {isLoading && <ActivityIndicator />}
-            <Text>{isLoading ? <Trans>Signing in...</Trans> : <Trans>Sign in</Trans>}</Text>
+            <Text>{isLoading ? <Trans>Registering...</Trans> : <Trans>Register</Trans>}</Text>
           </Button>
         </View>
       </ScrollView>
