@@ -13,7 +13,20 @@ msgstr ""
 "Language-Team: \n"
 "Plural-Forms: \n"
 
-#: src/app/(app)/(logged-in)/(tabs)/profile/edit.tsx:260
+#: src/app/(app)/(logged-in)/(tabs)/profile/settings/index.tsx:27
+#: src/app/(app)/(logged-in)/(tabs)/profile/settings/_layout.tsx:8
+msgid "Account"
+msgstr "Account"
+
+#: src/app/(app)/(logged-in)/(tabs)/profile/settings/account.tsx:63
+msgid "Account Information"
+msgstr "Account Information"
+
+#: src/app/(app)/(logged-in)/(tabs)/profile/settings/account.tsx:103
+msgid "Account Management"
+msgstr "Account Management"
+
+#: src/app/(app)/(logged-in)/(tabs)/profile/edit.tsx:189
 msgid "Cancel"
 msgstr "Cancel"
 
@@ -21,20 +34,20 @@ msgstr "Cancel"
 msgid "Create account"
 msgstr "Create account"
 
-#: src/app/(app)/(logged-in)/(tabs)/profile/edit.tsx:204
+#: src/app/(app)/(logged-in)/(tabs)/profile/settings/account.tsx:112
 msgid "Delete account"
 msgstr "Delete account"
 
-#: src/app/(app)/(logged-in)/(tabs)/profile/edit.tsx:204
+#: src/app/(app)/(logged-in)/(tabs)/profile/settings/account.tsx:112
 msgid "Deleting..."
 msgstr "Deleting..."
 
-#: src/app/(app)/(logged-in)/(tabs)/profile/index.tsx:38
+#: src/app/(app)/(logged-in)/(tabs)/profile/index.tsx:39
 msgid "Edit profile"
 msgstr "Edit profile"
 
 #: src/app/(app)/login.tsx:46
-#: src/app/(app)/(logged-in)/(tabs)/profile/edit.tsx:168
+#: src/app/(app)/(logged-in)/(tabs)/profile/settings/account.tsx:84
 msgid "Email"
 msgstr "Email"
 
@@ -42,21 +55,35 @@ msgstr "Email"
 msgid "email@address.com"
 msgstr "email@address.com"
 
-#: src/app/(app)/(logged-in)/(tabs)/profile/edit.tsx:157
+#: src/app/(app)/(logged-in)/(tabs)/profile/settings/name.tsx:34
+#: src/app/(app)/(logged-in)/(tabs)/profile/settings/account.tsx:69
 msgid "Full name"
 msgstr "Full name"
 
-#: src/app/(app)/(logged-in)/(tabs)/profile/edit.tsx:195
+#: src/app/(app)/(logged-in)/(tabs)/profile/settings/_layout.tsx:9
+msgid "Full Name"
+msgstr "Full Name"
+
+#: src/app/(app)/(logged-in)/(tabs)/profile/edit.tsx:143
+#: src/app/(app)/(logged-in)/(tabs)/profile/settings/name.tsx:56
 msgid "Loading..."
 msgstr "Loading..."
 
-#: src/app/(app)/(logged-in)/(tabs)/profile/edit.tsx:88
-#: src/app/(app)/(logged-in)/(tabs)/profile/edit.tsx:94
+#: src/app/(app)/(logged-in)/(tabs)/profile/settings/account.tsx:72
+#: src/app/(app)/(logged-in)/(tabs)/profile/settings/account.tsx:87
+msgid "Not set"
+msgstr "Not set"
+
+#: src/app/(app)/(logged-in)/(tabs)/profile/edit.tsx:84
+#: src/app/(app)/(logged-in)/(tabs)/profile/edit.tsx:90
+#: src/app/(app)/(logged-in)/(tabs)/profile/settings/name.tsx:21
 msgid "Oops! Something went wrong."
 msgstr "Oops! Something went wrong."
 
 #: src/app/(app)/login.tsx:62
 #: src/app/(app)/login.tsx:67
+#: src/app/(app)/(logged-in)/(tabs)/profile/settings/account.tsx:94
+#: src/app/(app)/(logged-in)/(tabs)/profile/settings/_layout.tsx:10
 msgid "Password"
 msgstr "Password"
 
@@ -64,35 +91,42 @@ msgstr "Password"
 msgid "Profile"
 msgstr "Profile"
 
-#: src/app/(app)/(logged-in)/(tabs)/profile/edit.tsx:96
+#: src/app/(app)/(logged-in)/(tabs)/profile/edit.tsx:92
+#: src/app/(app)/(logged-in)/(tabs)/profile/settings/name.tsx:23
 msgid "Profile updated!"
 msgstr "Profile updated!"
 
-#: src/app/(app)/(logged-in)/(tabs)/profile/edit.tsx:253
+#: src/app/(app)/(logged-in)/(tabs)/profile/edit.tsx:182
 msgid "Remove avatar"
 msgstr "Remove avatar"
+
+#: src/app/(app)/(logged-in)/(tabs)/profile/settings/index.tsx:18
+#: src/app/(app)/(logged-in)/(tabs)/profile/settings/_layout.tsx:7
+msgid "Settings"
+msgstr "Settings"
 
 #: src/app/(app)/login.tsx:79
 msgid "Sign in"
 msgstr "Sign in"
 
-#: src/app/(app)/(logged-in)/(tabs)/profile/edit.tsx:213
+#: src/app/(app)/(logged-in)/(tabs)/profile/settings/index.tsx:36
 msgid "Sign out"
 msgstr "Sign out"
 
-#: src/app/(app)/(logged-in)/(tabs)/profile/edit.tsx:195
+#: src/app/(app)/(logged-in)/(tabs)/profile/edit.tsx:143
+#: src/app/(app)/(logged-in)/(tabs)/profile/settings/name.tsx:56
 msgid "Update"
 msgstr "Update"
 
-#: src/app/(app)/(logged-in)/(tabs)/profile/edit.tsx:236
+#: src/app/(app)/(logged-in)/(tabs)/profile/edit.tsx:165
 msgid "Upload from Camera"
 msgstr "Upload from Camera"
 
-#: src/app/(app)/(logged-in)/(tabs)/profile/edit.tsx:246
+#: src/app/(app)/(logged-in)/(tabs)/profile/edit.tsx:175
 msgid "Upload from Library"
 msgstr "Upload from Library"
 
-#: src/app/(app)/(logged-in)/(tabs)/profile/edit.tsx:174
+#: src/app/(app)/(logged-in)/(tabs)/profile/edit.tsx:122
 msgid "User name"
 msgstr "User name"
 
