@@ -13,7 +13,7 @@ msgstr ""
 "Language-Team: \n"
 "Plural-Forms: \n"
 
-#: src/app/(app)/(logged-in)/(tabs)/profile/edit.tsx:201
+#: src/app/(app)/(logged-in)/(tabs)/profile/edit.tsx:260
 msgid "Cancel"
 msgstr "Peruuta"
 
@@ -21,12 +21,20 @@ msgstr "Peruuta"
 msgid "Create account"
 msgstr "Luo käyttäjä"
 
+#: src/app/(app)/(logged-in)/(tabs)/profile/edit.tsx:204
+msgid "Delete account"
+msgstr "Poista tili"
+
+#: src/app/(app)/(logged-in)/(tabs)/profile/edit.tsx:204
+msgid "Deleting..."
+msgstr "Poistamassa..."
+
 #: src/app/(app)/(logged-in)/(tabs)/profile/index.tsx:38
 msgid "Edit profile"
 msgstr "Muokkaa profiilia"
 
 #: src/app/(app)/login.tsx:46
-#: src/app/(app)/(logged-in)/(tabs)/profile/edit.tsx:124
+#: src/app/(app)/(logged-in)/(tabs)/profile/edit.tsx:168
 msgid "Email"
 msgstr "Sähköposti"
 
@@ -34,16 +42,16 @@ msgstr "Sähköposti"
 msgid "email@address.com"
 msgstr "sähköposti@osoite.fi"
 
-#: src/app/(app)/(logged-in)/(tabs)/profile/edit.tsx:113
+#: src/app/(app)/(logged-in)/(tabs)/profile/edit.tsx:157
 msgid "Full name"
 msgstr "Koko nimi"
 
-#: src/app/(app)/(logged-in)/(tabs)/profile/edit.tsx:150
+#: src/app/(app)/(logged-in)/(tabs)/profile/edit.tsx:195
 msgid "Loading..."
 msgstr "Hetki..."
 
-#: src/app/(app)/(logged-in)/(tabs)/profile/edit.tsx:78
-#: src/app/(app)/(logged-in)/(tabs)/profile/edit.tsx:84
+#: src/app/(app)/(logged-in)/(tabs)/profile/edit.tsx:88
+#: src/app/(app)/(logged-in)/(tabs)/profile/edit.tsx:94
 msgid "Oops! Something went wrong."
 msgstr "Pahus! Jotain meni pieleen."
 
@@ -56,11 +64,11 @@ msgstr "Salasana"
 msgid "Profile"
 msgstr "Profiili"
 
-#: src/app/(app)/(logged-in)/(tabs)/profile/edit.tsx:86
+#: src/app/(app)/(logged-in)/(tabs)/profile/edit.tsx:96
 msgid "Profile updated!"
 msgstr "Profiili päivitetty!"
 
-#: src/app/(app)/(logged-in)/(tabs)/profile/edit.tsx:194
+#: src/app/(app)/(logged-in)/(tabs)/profile/edit.tsx:253
 msgid "Remove avatar"
 msgstr "Poista profiilikuva"
 
@@ -68,23 +76,23 @@ msgstr "Poista profiilikuva"
 msgid "Sign in"
 msgstr "Kirjaudu sisään"
 
-#: src/app/(app)/(logged-in)/(tabs)/profile/edit.tsx:154
+#: src/app/(app)/(logged-in)/(tabs)/profile/edit.tsx:213
 msgid "Sign out"
 msgstr "Kirjaudu ulos"
 
-#: src/app/(app)/(logged-in)/(tabs)/profile/edit.tsx:150
+#: src/app/(app)/(logged-in)/(tabs)/profile/edit.tsx:195
 msgid "Update"
 msgstr "Päivitä"
 
-#: src/app/(app)/(logged-in)/(tabs)/profile/edit.tsx:177
+#: src/app/(app)/(logged-in)/(tabs)/profile/edit.tsx:236
 msgid "Upload from Camera"
 msgstr "Lataa kamerasta"
 
-#: src/app/(app)/(logged-in)/(tabs)/profile/edit.tsx:187
+#: src/app/(app)/(logged-in)/(tabs)/profile/edit.tsx:246
 msgid "Upload from Library"
 msgstr "Lataa kirjastosta"
 
-#: src/app/(app)/(logged-in)/(tabs)/profile/edit.tsx:130
+#: src/app/(app)/(logged-in)/(tabs)/profile/edit.tsx:174
 msgid "User name"
 msgstr "Käyttäjänimi"
 
