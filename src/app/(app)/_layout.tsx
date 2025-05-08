@@ -8,6 +8,8 @@ export default function AppLayout() {
   const { isReady: isAuthReady, isLoggedIn } = useAuth()
 
   useEffect(() => {
+    // Hide the splash screen after the auth state is ready
+    if (!isAuthReady) return
     SplashScreen.hideAsync()
   }, [isAuthReady])
 
