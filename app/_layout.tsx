@@ -1,6 +1,7 @@
 import '~/global.css'
 
 import { Theme, ThemeProvider, DefaultTheme, DarkTheme } from '@react-navigation/native'
+import Toast from 'react-native-toast-message'
 import { Stack } from 'expo-router'
 import { StatusBar } from 'expo-status-bar'
 import { useLayoutEffect, useRef, useState } from 'react'
@@ -60,6 +61,7 @@ export default function RootLayout() {
               }}
             />
           </Stack>
+          <Toast />
         </ThemeProvider>
       </GestureHandlerRootView>
     </AuthProvider>
