@@ -53,7 +53,7 @@ export function ListingForm({ listing }: { listing: Tables<'products'> }) {
       .refine((val) => parseInt(val) > 0, { message: t`Minimum price 1` })
       .refine((val) => parseInt(val) <= 999_999, { message: t`Maximum price 999 999` }),
     category: z.custom<NonNullable<Option>>(isOption, {
-      message: 'Category is required',
+      message: t`Category is required`,
     }),
   })
 

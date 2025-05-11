@@ -17,13 +17,57 @@ msgstr ""
 msgid "Cancel"
 msgstr "Peruuta"
 
+#: src/components/ListingForm.tsx:120
+msgid "Category"
+msgstr "Osasto"
+
+#: src/components/ListingForm.tsx:56
+msgid "Category is required"
+msgstr "Osasto vaaditaan"
+
+#: src/components/ListingForm.tsx:270
+msgid "Could not find categories"
+msgstr "Osastojen haku epäonnistui"
+
+#: src/app/(app)/(logged-in)/(tabs)/sell/edit/[id].tsx:40
+msgid "Could not find listing"
+msgstr "Luonnosta ei löydy"
+
+#: src/app/(app)/(logged-in)/(tabs)/sell/index.tsx:82
+msgid "Could not get drafts"
+msgstr "Luonnosten haku epäonnistui"
+
 #: src/app/(app)/login.tsx:89
 msgid "Create account"
 msgstr "Luo käyttäjä"
 
+#: src/app/(app)/(logged-in)/(tabs)/sell/index.tsx:95
+msgid "Create new listing"
+msgstr "Luo uusi ilmoitus"
+
+#: src/components/ListingForm.tsx:189
+msgid "Description"
+msgstr "Kuvaus"
+
+#: src/components/ListingForm.tsx:49
+msgid "Description is required"
+msgstr "Kuvaus vaaditaan"
+
+#: src/components/MyListing.tsx:26
+msgid "Draft"
+msgstr "Luonnos"
+
+#: src/app/(app)/(logged-in)/(tabs)/sell/_layout.tsx:11
+msgid "Edit listing"
+msgstr "Muokkaa ilmoitusta"
+
 #: src/app/(app)/(logged-in)/(tabs)/profile/index.tsx:38
 msgid "Edit profile"
 msgstr "Muokkaa profiilia"
+
+#: src/components/MyListing.tsx:36
+msgid "Edited"
+msgstr "Muokattu"
 
 #: src/app/(app)/login.tsx:46
 #: src/app/(app)/(logged-in)/(tabs)/profile/edit.tsx:124
@@ -34,6 +78,14 @@ msgstr "Sähköposti"
 msgid "email@address.com"
 msgstr "sähköposti@osoite.fi"
 
+#: src/app/(app)/(logged-in)/(tabs)/sell/index.tsx:44
+msgid "Error creating a new listing"
+msgstr "Virhe ilmoituksen luomisessa"
+
+#: src/components/ListingForm.tsx:93
+msgid "Error updating listing"
+msgstr "Virhe ilmoituksen muokkaamisessa"
+
 #: src/app/(app)/(logged-in)/(tabs)/profile/edit.tsx:113
 msgid "Full name"
 msgstr "Koko nimi"
@@ -41,6 +93,26 @@ msgstr "Koko nimi"
 #: src/app/(app)/(logged-in)/(tabs)/profile/edit.tsx:150
 msgid "Loading..."
 msgstr "Hetki..."
+
+#: src/components/ListingForm.tsx:54
+msgid "Maximum price 999 999"
+msgstr "Suurin hinta 999 999"
+
+#: src/components/ListingForm.tsx:53
+msgid "Minimum price 1"
+msgstr "Pienin hinta 1"
+
+#: src/components/ListingForm.tsx:52
+msgid "Must be a valid number"
+msgstr "Syötä numero"
+
+#: src/app/(app)/(logged-in)/(tabs)/sell/_layout.tsx:8
+msgid "New listing"
+msgstr "Uusi ilmoitus"
+
+#: src/components/MyListing.tsx:33
+msgid "No title"
+msgstr "Ei otsikkoa"
 
 #: src/app/(app)/(logged-in)/(tabs)/profile/edit.tsx:78
 #: src/app/(app)/(logged-in)/(tabs)/profile/edit.tsx:84
@@ -52,6 +124,14 @@ msgstr "Pahus! Jotain meni pieleen."
 msgid "Password"
 msgstr "Salasana"
 
+#: src/app/(app)/(logged-in)/(tabs)/sell/index.tsx:83
+msgid "Press \"Create new listing\" to start selling!"
+msgstr "Paina \"Luo uusi ilmoitus\" ja aloita myynti!"
+
+#: src/components/ListingForm.tsx:211
+msgid "Price"
+msgstr "Hinta"
+
 #: src/app/(app)/(logged-in)/(tabs)/profile/_layout.tsx:8
 msgid "Profile"
 msgstr "Profiili"
@@ -60,9 +140,21 @@ msgstr "Profiili"
 msgid "Profile updated!"
 msgstr "Profiili päivitetty!"
 
+#: src/components/MyListing.tsx:26
+msgid "Published"
+msgstr "Julkaistu"
+
 #: src/app/(app)/(logged-in)/(tabs)/profile/edit.tsx:194
 msgid "Remove avatar"
 msgstr "Poista profiilikuva"
+
+#: src/components/ListingForm.tsx:244
+msgid "Save and publish"
+msgstr "Tallenna ja julkaise"
+
+#: src/components/ListingForm.tsx:257
+msgid "Save as draft"
+msgstr "Tallenna luonnos"
 
 #: src/app/(app)/login.tsx:79
 msgid "Sign in"
@@ -71,6 +163,22 @@ msgstr "Kirjaudu sisään"
 #: src/app/(app)/(logged-in)/(tabs)/profile/edit.tsx:154
 msgid "Sign out"
 msgstr "Kirjaudu ulos"
+
+#: src/components/ListingForm.tsx:101
+msgid "Successfully published listing"
+msgstr "Ilmoitus julkaistu"
+
+#: src/components/ListingForm.tsx:101
+msgid "Successfully saved listing"
+msgstr "Ilmoitus tallennettu"
+
+#: src/components/ListingForm.tsx:166
+msgid "Title"
+msgstr "Otsikko"
+
+#: src/components/ListingForm.tsx:48
+msgid "Title is required"
+msgstr "Otsikko vaaditaan"
 
 #: src/app/(app)/(logged-in)/(tabs)/profile/edit.tsx:150
 msgid "Update"

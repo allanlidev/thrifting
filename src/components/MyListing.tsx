@@ -1,5 +1,7 @@
 import { LayoutChangeEvent, TouchableOpacity, View } from 'react-native'
 import { useState } from 'react'
+import { Trans } from '@lingui/react/macro'
+import { t } from '@lingui/core/macro'
 import { Large, Muted } from '~/src/components/ui/typography'
 import { Avatar, AvatarFallback } from '~/src/components/ui/avatar'
 import { Skeleton } from '~/src/components/ui/skeleton'
@@ -21,17 +23,18 @@ export function MyListing({ item, onPress }: { item: any; onPress?: () => void }
         </Avatar>
         <View className="flex-1 justify-center gap-2" onLayout={onLayout}>
           <Badge variant={item.published ? 'default' : 'secondary'} className="w-24">
-            <Text>{item.published ? 'Published' : 'Draft'}</Text>
+            <Text>{item.published ? t`Published` : t`Draft`}</Text>
           </Badge>
           <Large
             numberOfLines={1}
             ellipsizeMode="tail"
             style={titleWidth ? { maxWidth: titleWidth } : undefined}
           >
-            {item.title ?? 'No title'}
+            {item.title ?? t`No title`}
           </Large>
           <Muted>
-            Edited: {new Date(item.updated_at).toLocaleString(undefined, { dateStyle: 'short' })}
+            <Trans>Edited</Trans>:{' '}
+            {new Date(item.updated_at).toLocaleString(undefined, { dateStyle: 'short' })}
           </Muted>
         </View>
       </View>
