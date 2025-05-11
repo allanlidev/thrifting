@@ -1,33 +1,48 @@
-import { useState } from 'react'
-import { KeyboardAvoidingView, ScrollView, View } from 'react-native'
-import { Input } from '~/src/components/ui/input'
-import { Label } from '~/src/components/ui/label'
-import { Textarea } from '~/src/components/ui/textarea'
+import { Trans } from '@lingui/react/macro'
+import { useLocalSearchParams } from 'expo-router'
+import { useMemo } from 'react'
+import { ActivityIndicator, KeyboardAvoidingView, ScrollView, View } from 'react-native'
+import { Frown } from '~/src/components/icons/Frown'
+import { ListingForm } from '~/src/components/ListingForm'
+import { Muted } from '~/src/components/ui/typography'
+import { useDraftListings } from '~/src/hooks/queries/listings'
 
 export default function EditListing() {
-  const [value, setValue] = useState('')
+  const { id } = useLocalSearchParams()
+  const { data: drafts, isFetching: isDraftsFetching } = useDraftListings()
 
-  const onChangeText = (text: string) => {
-    setValue(text)
-  }
+  const listingId = useMemo(() => {
+    const parsedId = typeof id === 'string' ? parseInt(id) : null
+    return Number.isInteger(parsedId) ? parsedId : null
+  }, [id])
+
+  const listing = useMemo(() => {
+    if (listingId == null) return null
+    return drafts?.find((draft) => draft.id === listingId)
+  }, [listingId])
 
   return (
-    <KeyboardAvoidingView behavior="padding" className="flex-1">
-      <ScrollView contentContainerClassName=" flex-1 gap-6 p-6">
-        <View className="gap-2">
-          <Label nativeID="titleLabel">Title</Label>
-          <Input
-            value={value}
-            onChangeText={onChangeText}
-            aria-labelledby="titleLabel"
-            aria-errormessage="titleError"
-          />
+    <>
+      {listing && !isDraftsFetching ? (
+        <KeyboardAvoidingView behavior="padding" className="flex-1">
+          <ScrollView>
+            <ListingForm listing={listing} />
+          </ScrollView>
+        </KeyboardAvoidingView>
+      ) : (
+        <View className="flex-1 justify-center gap-4">
+          {isDraftsFetching ? (
+            <ActivityIndicator />
+          ) : (
+            <>
+              <Frown className="mx-auto size-12 color-muted-foreground" />
+              <Muted className="mx-auto">
+                <Trans>Could not find listing</Trans>
+              </Muted>
+            </>
+          )}
         </View>
-        <View className="gap-2">
-          <Label nativeID="descriptionLabel">Description</Label>
-          <Textarea value={value} onChangeText={setValue} aria-labelledby="descriptionLabel" />
-        </View>
-      </ScrollView>
-    </KeyboardAvoidingView>
+      )}
+    </>
   )
 }

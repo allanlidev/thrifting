@@ -6,6 +6,7 @@ import { StatusBar } from 'expo-status-bar'
 import { useLayoutEffect, useRef, useState } from 'react'
 import { GestureHandlerRootView } from 'react-native-gesture-handler'
 import Toast from 'react-native-toast-message'
+import { PortalHost } from '@rn-primitives/portal'
 import { NAV_THEME } from '~/src/lib/constants'
 import { useColorScheme } from '~/src/hooks/useColorScheme'
 import { AuthProvider } from '~/src/providers/AuthProvider'
@@ -52,6 +53,7 @@ export default function RootLayout() {
               <StatusBar style={isDarkColorScheme ? 'light' : 'dark'} translucent={false} />
               <Slot />
               <Toast />
+              <PortalHost />
             </ThemeProvider>
           </GestureHandlerRootView>
         </I18nProvider>
