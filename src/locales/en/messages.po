@@ -13,7 +13,7 @@ msgstr ""
 "Language-Team: \n"
 "Plural-Forms: \n"
 
-#: src/app/(app)/(logged-in)/(tabs)/profile/edit.tsx:201
+#: src/app/(app)/(logged-in)/(tabs)/profile/edit.tsx:260
 msgid "Cancel"
 msgstr "Cancel"
 
@@ -45,6 +45,14 @@ msgstr "Create account"
 msgid "Create new listing"
 msgstr "Create new listing"
 
+#: src/app/(app)/(logged-in)/(tabs)/profile/edit.tsx:204
+msgid "Delete account"
+msgstr "Delete account"
+
+#: src/app/(app)/(logged-in)/(tabs)/profile/edit.tsx:204
+msgid "Deleting..."
+msgstr "Deleting..."
+
 #: src/components/ListingForm.tsx:189
 msgid "Description"
 msgstr "Description"
@@ -70,7 +78,7 @@ msgid "Edited"
 msgstr "Edited"
 
 #: src/app/(app)/login.tsx:46
-#: src/app/(app)/(logged-in)/(tabs)/profile/edit.tsx:124
+#: src/app/(app)/(logged-in)/(tabs)/profile/edit.tsx:168
 msgid "Email"
 msgstr "Email"
 
@@ -86,11 +94,11 @@ msgstr "Error creating a new listing"
 msgid "Error updating listing"
 msgstr "Error updating listing"
 
-#: src/app/(app)/(logged-in)/(tabs)/profile/edit.tsx:113
+#: src/app/(app)/(logged-in)/(tabs)/profile/edit.tsx:157
 msgid "Full name"
 msgstr "Full name"
 
-#: src/app/(app)/(logged-in)/(tabs)/profile/edit.tsx:150
+#: src/app/(app)/(logged-in)/(tabs)/profile/edit.tsx:195
 msgid "Loading..."
 msgstr "Loading..."
 
@@ -114,8 +122,8 @@ msgstr "New listing"
 msgid "No title"
 msgstr "No title"
 
-#: src/app/(app)/(logged-in)/(tabs)/profile/edit.tsx:78
-#: src/app/(app)/(logged-in)/(tabs)/profile/edit.tsx:84
+#: src/app/(app)/(logged-in)/(tabs)/profile/edit.tsx:88
+#: src/app/(app)/(logged-in)/(tabs)/profile/edit.tsx:94
 msgid "Oops! Something went wrong."
 msgstr "Oops! Something went wrong."
 
@@ -136,7 +144,7 @@ msgstr "Price"
 msgid "Profile"
 msgstr "Profile"
 
-#: src/app/(app)/(logged-in)/(tabs)/profile/edit.tsx:86
+#: src/app/(app)/(logged-in)/(tabs)/profile/edit.tsx:96
 msgid "Profile updated!"
 msgstr "Profile updated!"
 
@@ -144,7 +152,7 @@ msgstr "Profile updated!"
 msgid "Published"
 msgstr "Published"
 
-#: src/app/(app)/(logged-in)/(tabs)/profile/edit.tsx:194
+#: src/app/(app)/(logged-in)/(tabs)/profile/edit.tsx:253
 msgid "Remove avatar"
 msgstr "Remove avatar"
 
@@ -160,7 +168,7 @@ msgstr "Save as draft"
 msgid "Sign in"
 msgstr "Sign in"
 
-#: src/app/(app)/(logged-in)/(tabs)/profile/edit.tsx:154
+#: src/app/(app)/(logged-in)/(tabs)/profile/edit.tsx:213
 msgid "Sign out"
 msgstr "Sign out"
 
@@ -180,19 +188,19 @@ msgstr "Title"
 msgid "Title is required"
 msgstr "Title is required"
 
-#: src/app/(app)/(logged-in)/(tabs)/profile/edit.tsx:150
+#: src/app/(app)/(logged-in)/(tabs)/profile/edit.tsx:195
 msgid "Update"
 msgstr "Update"
 
-#: src/app/(app)/(logged-in)/(tabs)/profile/edit.tsx:177
+#: src/app/(app)/(logged-in)/(tabs)/profile/edit.tsx:236
 msgid "Upload from Camera"
 msgstr "Upload from Camera"
 
-#: src/app/(app)/(logged-in)/(tabs)/profile/edit.tsx:187
+#: src/app/(app)/(logged-in)/(tabs)/profile/edit.tsx:246
 msgid "Upload from Library"
 msgstr "Upload from Library"
 
-#: src/app/(app)/(logged-in)/(tabs)/profile/edit.tsx:130
+#: src/app/(app)/(logged-in)/(tabs)/profile/edit.tsx:174
 msgid "User name"
 msgstr "User name"
 
