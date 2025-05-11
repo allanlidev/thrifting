@@ -235,7 +235,7 @@ export function ListingForm({ listing }: { listing: Tables<'products'> }) {
             />
           </View>
           <Button
-            disabled={form.state.isSubmitting || !form.state.canSubmit}
+            disabled={form.state.isSubmitting || !form.state.canSubmit || !form.state.isDirty}
             onPress={() => form.handleSubmit({ publish: true })}
           >
             {form.state.isSubmitting ? (
@@ -248,7 +248,7 @@ export function ListingForm({ listing }: { listing: Tables<'products'> }) {
           </Button>
           <Button
             variant="secondary"
-            disabled={form.state.isSubmitting || !form.state.canSubmit}
+            disabled={form.state.isSubmitting || !form.state.canSubmit || !form.state.isDirty}
             onPress={() => form.handleSubmit({ publish: false })}
           >
             {form.state.isSubmitting ? (
