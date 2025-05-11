@@ -19,7 +19,7 @@ export default function EditListing() {
   const listing = useMemo(() => {
     if (listingId == null) return null
     return drafts?.find((draft) => draft.id === listingId)
-  }, [listingId])
+  }, [listingId, drafts])
 
   return (
     <>
