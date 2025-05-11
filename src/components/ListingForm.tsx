@@ -1,4 +1,3 @@
-import { useState } from 'react'
 import { ActivityIndicator, View } from 'react-native'
 import { useSafeAreaInsets } from 'react-native-safe-area-context'
 import Toast from 'react-native-toast-message'
@@ -126,7 +125,7 @@ export function ListingForm({ listing }: { listing: Tables<'products'> }) {
                 <>
                   <Select
                     aria-labelledby="categoryLabel"
-                    defaultValue={field.state.value ?? undefined}
+                    value={field.state.value ?? undefined}
                     onValueChange={(option) => {
                       field.handleChange(option ?? null)
                     }}
