@@ -1,4 +1,4 @@
-import { LayoutChangeEvent, TouchableOpacity, View } from 'react-native'
+import { LayoutChangeEvent, Pressable, View } from 'react-native'
 import { useState } from 'react'
 import { Trans } from '@lingui/react/macro'
 import { t } from '@lingui/core/macro'
@@ -16,13 +16,16 @@ export function MyListing({ item, onPress }: { item: any; onPress?: () => void }
   }
 
   return (
-    <TouchableOpacity onPress={onPress}>
+    <Pressable onPress={onPress} className="active:opacity-50">
       <View className="mt-4 flex-1 flex-row gap-4">
         <Avatar alt="Product thumbnail" className="size-24 rounded-md">
           <AvatarFallback className="size-24 rounded-md" />
         </Avatar>
         <View className="flex-1 justify-center gap-2" onLayout={onLayout}>
-          <Badge variant={item.published ? 'default' : 'secondary'} className="w-24">
+          <Badge
+            variant={item.published ? 'default' : 'secondary'}
+            className="pointer-events-none w-24"
+          >
             <Text>{item.published ? t`Published` : t`Draft`}</Text>
           </Badge>
           <Large
@@ -38,7 +41,7 @@ export function MyListing({ item, onPress }: { item: any; onPress?: () => void }
           </Muted>
         </View>
       </View>
-    </TouchableOpacity>
+    </Pressable>
   )
 }
 
