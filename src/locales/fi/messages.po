@@ -13,7 +13,20 @@ msgstr ""
 "Language-Team: \n"
 "Plural-Forms: \n"
 
-#: src/app/(app)/(logged-in)/(tabs)/profile/edit.tsx:260
+#: src/app/(app)/(logged-in)/(tabs)/profile/settings/_layout.tsx:8
+#: src/app/(app)/(logged-in)/(tabs)/profile/settings/index.tsx:27
+msgid "Account"
+msgstr "Tili"
+
+#: src/app/(app)/(logged-in)/(tabs)/profile/settings/account.tsx:63
+msgid "Account Information"
+msgstr "Tilitiedot"
+
+#: src/app/(app)/(logged-in)/(tabs)/profile/settings/account.tsx:103
+msgid "Account Management"
+msgstr "Tilinhallinta"
+
+#: src/app/(app)/(logged-in)/(tabs)/profile/edit.tsx:189
 msgid "Cancel"
 msgstr "Peruuta"
 
@@ -33,11 +46,11 @@ msgstr "Luo käyttäjä"
 msgid "Create new listing"
 msgstr "Luo uusi ilmoitus"
 
-#: src/app/(app)/(logged-in)/(tabs)/profile/edit.tsx:204
+#: src/app/(app)/(logged-in)/(tabs)/profile/settings/account.tsx:112
 msgid "Delete account"
 msgstr "Poista tili"
 
-#: src/app/(app)/(logged-in)/(tabs)/profile/edit.tsx:204
+#: src/app/(app)/(logged-in)/(tabs)/profile/settings/account.tsx:112
 msgid "Deleting..."
 msgstr "Poistamassa..."
 
@@ -57,7 +70,7 @@ msgstr "Luonnos"
 msgid "Edit listing"
 msgstr "Muokkaa ilmoitusta"
 
-#: src/app/(app)/(logged-in)/(tabs)/profile/index.tsx:38
+#: src/app/(app)/(logged-in)/(tabs)/profile/index.tsx:39
 msgid "Edit profile"
 msgstr "Muokkaa profiilia"
 
@@ -66,7 +79,7 @@ msgid "Edited"
 msgstr "Muokattu"
 
 #: src/app/(app)/login.tsx:46
-#: src/app/(app)/(logged-in)/(tabs)/profile/edit.tsx:168
+#: src/app/(app)/(logged-in)/(tabs)/profile/settings/account.tsx:84
 msgid "Email"
 msgstr "Sähköposti"
 
@@ -74,11 +87,17 @@ msgstr "Sähköposti"
 msgid "email@address.com"
 msgstr "sähköposti@osoite.fi"
 
-#: src/app/(app)/(logged-in)/(tabs)/profile/edit.tsx:157
+#: src/app/(app)/(logged-in)/(tabs)/profile/settings/name.tsx:34
+#: src/app/(app)/(logged-in)/(tabs)/profile/settings/account.tsx:69
 msgid "Full name"
 msgstr "Koko nimi"
 
-#: src/app/(app)/(logged-in)/(tabs)/profile/edit.tsx:195
+#: src/app/(app)/(logged-in)/(tabs)/profile/settings/_layout.tsx:9
+msgid "Full Name"
+msgstr "Koko nimi"
+
+#: src/app/(app)/(logged-in)/(tabs)/profile/edit.tsx:143
+#: src/app/(app)/(logged-in)/(tabs)/profile/settings/name.tsx:56
 msgid "Loading..."
 msgstr "Hetki..."
 
@@ -102,18 +121,26 @@ msgstr "Uusi ilmoitus"
 msgid "No title"
 msgstr "Ei otsikkoa"
 
+#: src/app/(app)/(logged-in)/(tabs)/profile/settings/account.tsx:72
+#: src/app/(app)/(logged-in)/(tabs)/profile/settings/account.tsx:87
+msgid "Not set"
+msgstr "Ei asetettu"
+
 #: src/components/ListingForm.tsx:93
 #: src/components/ListingForm.tsx:269
 #: src/app/(app)/(logged-in)/(tabs)/sell/index.tsx:44
 #: src/app/(app)/(logged-in)/(tabs)/sell/index.tsx:81
 #: src/app/(app)/(logged-in)/(tabs)/sell/edit/[id].tsx:40
-#: src/app/(app)/(logged-in)/(tabs)/profile/edit.tsx:88
-#: src/app/(app)/(logged-in)/(tabs)/profile/edit.tsx:94
+#: src/app/(app)/(logged-in)/(tabs)/profile/edit.tsx:84
+#: src/app/(app)/(logged-in)/(tabs)/profile/edit.tsx:90
+#: src/app/(app)/(logged-in)/(tabs)/profile/settings/name.tsx:21
 msgid "Oops! Something went wrong."
 msgstr "Pahus! Jotain meni pieleen."
 
 #: src/app/(app)/login.tsx:62
 #: src/app/(app)/login.tsx:67
+#: src/app/(app)/(logged-in)/(tabs)/profile/settings/_layout.tsx:10
+#: src/app/(app)/(logged-in)/(tabs)/profile/settings/account.tsx:94
 msgid "Password"
 msgstr "Salasana"
 
@@ -129,7 +156,8 @@ msgstr "Hinta"
 msgid "Profile"
 msgstr "Profiili"
 
-#: src/app/(app)/(logged-in)/(tabs)/profile/edit.tsx:96
+#: src/app/(app)/(logged-in)/(tabs)/profile/edit.tsx:92
+#: src/app/(app)/(logged-in)/(tabs)/profile/settings/name.tsx:23
 msgid "Profile updated!"
 msgstr "Profiili päivitetty!"
 
@@ -137,7 +165,7 @@ msgstr "Profiili päivitetty!"
 msgid "Published"
 msgstr "Julkaistu"
 
-#: src/app/(app)/(logged-in)/(tabs)/profile/edit.tsx:253
+#: src/app/(app)/(logged-in)/(tabs)/profile/edit.tsx:182
 msgid "Remove avatar"
 msgstr "Poista profiilikuva"
 
@@ -149,11 +177,16 @@ msgstr "Tallenna ja julkaise"
 msgid "Save as draft"
 msgstr "Tallenna luonnos"
 
+#: src/app/(app)/(logged-in)/(tabs)/profile/settings/_layout.tsx:7
+#: src/app/(app)/(logged-in)/(tabs)/profile/settings/index.tsx:18
+msgid "Settings"
+msgstr "Asetukset"
+
 #: src/app/(app)/login.tsx:79
 msgid "Sign in"
 msgstr "Kirjaudu sisään"
 
-#: src/app/(app)/(logged-in)/(tabs)/profile/edit.tsx:213
+#: src/app/(app)/(logged-in)/(tabs)/profile/settings/index.tsx:36
 msgid "Sign out"
 msgstr "Kirjaudu ulos"
 
@@ -173,19 +206,20 @@ msgstr "Otsikko"
 msgid "Title is required"
 msgstr "Otsikko vaaditaan"
 
-#: src/app/(app)/(logged-in)/(tabs)/profile/edit.tsx:195
+#: src/app/(app)/(logged-in)/(tabs)/profile/edit.tsx:143
+#: src/app/(app)/(logged-in)/(tabs)/profile/settings/name.tsx:56
 msgid "Update"
 msgstr "Päivitä"
 
-#: src/app/(app)/(logged-in)/(tabs)/profile/edit.tsx:236
+#: src/app/(app)/(logged-in)/(tabs)/profile/edit.tsx:165
 msgid "Upload from Camera"
 msgstr "Lataa kamerasta"
 
-#: src/app/(app)/(logged-in)/(tabs)/profile/edit.tsx:246
+#: src/app/(app)/(logged-in)/(tabs)/profile/edit.tsx:175
 msgid "Upload from Library"
 msgstr "Lataa kirjastosta"
 
-#: src/app/(app)/(logged-in)/(tabs)/profile/edit.tsx:174
+#: src/app/(app)/(logged-in)/(tabs)/profile/edit.tsx:122
 msgid "User name"
 msgstr "Käyttäjänimi"
 

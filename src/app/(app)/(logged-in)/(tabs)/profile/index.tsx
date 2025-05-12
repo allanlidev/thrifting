@@ -6,6 +6,7 @@ import { Button } from '~/src/components/ui/button'
 import { Text } from '~/src/components/ui/text'
 import { H1, Large } from '~/src/components/ui/typography'
 import { Trans } from '@lingui/react/macro'
+import { Settings } from '~/src/components/icons/Settings'
 
 export default function ProfileIndex() {
   const { profile } = useAuth()
@@ -16,7 +17,7 @@ export default function ProfileIndex() {
 
   return (
     <ScrollView className="pt-safe-offset-6 flex-1 p-6" contentContainerClassName="gap-6">
-      <View className="flex-1 flex-row items-end justify-between">
+      <View className="relative h-52 flex-1 flex-row items-end justify-between">
         <Avatar
           alt={avatarUrl ? 'Your profile image' : 'Add your profile image'}
           className="size-32 rounded-full"
@@ -31,15 +32,24 @@ export default function ProfileIndex() {
             <AvatarFallback />
           )}
         </Avatar>
-        <View>
-          <Link href="/profile/edit" asChild>
-            <Button variant="secondary" className="rounded-full">
-              <Text>
-                <Trans>Edit profile</Trans>
-              </Text>
-            </Button>
-          </Link>
-        </View>
+
+        <Link href="/profile/edit" asChild>
+          <Button variant="secondary" className="rounded-full">
+            <Text>
+              <Trans>Edit profile</Trans>
+            </Text>
+          </Button>
+        </Link>
+
+        <Link href="/profile/settings" asChild>
+          <Button
+            variant="secondary"
+            size="icon"
+            className="absolute right-0 top-0 h-11 w-11 rounded-full"
+          >
+            <Settings className="color-foreground" />
+          </Button>
+        </Link>
       </View>
       <View className="flex-1 justify-center gap-2">
         <H1>{username}</H1>

@@ -25,17 +25,13 @@ import { t } from '@lingui/core/macro'
 import { Trans } from '@lingui/react/macro'
 
 export default function Profile() {
-  const { session, profile, logOut } = useAuth()
+  const { session, profile } = useAuth()
   const { isDarkColorScheme } = useColorScheme()
 
   const { error, isPending, isSuccess, mutate: updateProfile } = useUpdateProfile()
 
-  const [fullName, setFullName] = useState(profile?.full_name ?? undefined)
   const [username, setUsername] = useState(profile?.username ?? undefined)
   const [avatarUrl, setAvatarUrl] = useState(profile?.avatar_url ?? undefined)
-  const [isDeleting, setIsDeleting] = useState(false)
-
-  const isLoading = isPending || isDeleting
 
   const bottomSheetRef = useRef<BottomSheet>(null)
 
@@ -96,43 +92,12 @@ export default function Profile() {
     Alert.alert(t`Profile updated!`)
   }
 
-  function handleDeleteAccount() {
-    Alert.alert(
-      'Delete account',
-      'Are you sure you want to delete your account? This action cannot be undone.',
-      [
-        {
-          text: 'Cancel',
-          style: 'cancel',
-        },
-        {
-          text: 'Delete',
-          style: 'destructive',
-          onPress: deleteAccount,
-        },
-      ]
-    )
-  }
-
-  async function deleteAccount() {
-    try {
-      setIsDeleting(true)
-      if (!session?.user) throw new Error('No user')
-      await supabase.functions.invoke('user-self-deletion')
-      alert('Account deleted successfully!')
-    } catch (error) {
-      alert('Error deleting the account!')
-      console.log(error)
-    } finally {
-      setIsDeleting(false)
-      // Note that you also will force a logout after completing it
-      logOut()
-    }
-  }
-
   return (
     <KeyboardAvoidingView behavior="padding" className="flex-1">
-      <ScrollView contentContainerClassName="pt-safe-offset-4 flex-1 items-center gap-6 p-6">
+      <ScrollView
+        contentContainerClassName="pt-safe-offset-4 flex-1 items-center gap-6 p-6"
+        automaticallyAdjustKeyboardInsets
+      >
         <Pressable className="relative p-2 active:opacity-80" onPress={handleAvatarPress}>
           <Avatar
             alt={avatarUrl ? 'Your profile image' : 'Add your profile image'}
@@ -153,65 +118,29 @@ export default function Profile() {
           </View>
         </Pressable>
         <View className="w-full gap-2">
-          <Label nativeID="fullNameInput">
-            <Trans>Full name</Trans>
-          </Label>
-          <Input
-            value={fullName}
-            onChangeText={(name) => setFullName(name)}
-            aria-labelledby="fullNameInput"
-            aria-disabled
-          />
-        </View>
-        <View className="w-full gap-2">
-          <Label nativeID="emailInput">
-            <Trans>Email</Trans>
-          </Label>
-          <Input value={session.user.email} aria-labelledby="emailInput" aria-disabled />
-        </View>
-        <View className="w-full gap-2">
           <Label nativeID="usernameInput">
             <Trans>User name</Trans>
           </Label>
           <Input
             value={username}
-            editable={!isLoading}
+            editable={!isPending}
             onChangeText={(text) => setUsername(text)}
             aria-labelledby="usernameInput"
-            aria-disabled={isLoading}
+            aria-disabled={isPending}
           />
         </View>
         <Button
           onPress={() =>
             updateProfile({
               id: profile.id,
-              updates: { full_name: fullName, username, avatar_url: avatarUrl },
+              updates: { username, avatar_url: avatarUrl },
             })
           }
-          disabled={isLoading}
+          disabled={isPending}
           className="flex-row items-center gap-2 self-stretch"
         >
           {isPending && <ActivityIndicator />}
           <Text>{isPending ? t`Loading...` : t`Update`}</Text>
-        </Button>
-        <Button
-          variant="destructive"
-          onPress={handleDeleteAccount}
-          disabled={isLoading}
-          className="flex-row items-center gap-2 self-stretch"
-        >
-          {isDeleting && <ActivityIndicator className="color-foreground" />}
-          <Text>{isDeleting ? <Trans>Deleting...</Trans> : <Trans>Delete account</Trans>}</Text>
-        </Button>
-        <Button
-          onPress={logOut}
-          variant="destructive"
-          disabled={isLoading}
-          className="self-stretch"
-        >
-          <Text>
-            <Trans>Sign out</Trans>
-          </Text>
         </Button>
         <BottomSheet
           ref={bottomSheetRef}
