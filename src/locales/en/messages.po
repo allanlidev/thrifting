@@ -17,7 +17,7 @@ msgstr ""
 msgid "Cancel"
 msgstr "Cancel"
 
-#: src/components/ListingForm.tsx:120
+#: src/components/ListingForm.tsx:119
 msgid "Category"
 msgstr "Category"
 
@@ -25,23 +25,11 @@ msgstr "Category"
 msgid "Category is required"
 msgstr "Category is required"
 
-#: src/components/ListingForm.tsx:270
-msgid "Could not find categories"
-msgstr "Could not find categories"
-
-#: src/app/(app)/(logged-in)/(tabs)/sell/edit/[id].tsx:40
-msgid "Could not find listing"
-msgstr "Could not find listing"
-
-#: src/app/(app)/(logged-in)/(tabs)/sell/index.tsx:82
-msgid "Could not get drafts"
-msgstr "Could not get drafts"
-
 #: src/app/(app)/login.tsx:89
 msgid "Create account"
 msgstr "Create account"
 
-#: src/app/(app)/(logged-in)/(tabs)/sell/index.tsx:95
+#: src/app/(app)/(logged-in)/(tabs)/sell/index.tsx:94
 msgid "Create new listing"
 msgstr "Create new listing"
 
@@ -53,7 +41,7 @@ msgstr "Delete account"
 msgid "Deleting..."
 msgstr "Deleting..."
 
-#: src/components/ListingForm.tsx:189
+#: src/components/ListingForm.tsx:188
 msgid "Description"
 msgstr "Description"
 
@@ -86,14 +74,6 @@ msgstr "Email"
 msgid "email@address.com"
 msgstr "email@address.com"
 
-#: src/app/(app)/(logged-in)/(tabs)/sell/index.tsx:44
-msgid "Error creating a new listing"
-msgstr "Error creating a new listing"
-
-#: src/components/ListingForm.tsx:93
-msgid "Error updating listing"
-msgstr "Error updating listing"
-
 #: src/app/(app)/(logged-in)/(tabs)/profile/edit.tsx:157
 msgid "Full name"
 msgstr "Full name"
@@ -122,6 +102,11 @@ msgstr "New listing"
 msgid "No title"
 msgstr "No title"
 
+#: src/components/ListingForm.tsx:93
+#: src/components/ListingForm.tsx:269
+#: src/app/(app)/(logged-in)/(tabs)/sell/index.tsx:44
+#: src/app/(app)/(logged-in)/(tabs)/sell/index.tsx:81
+#: src/app/(app)/(logged-in)/(tabs)/sell/edit/[id].tsx:40
 #: src/app/(app)/(logged-in)/(tabs)/profile/edit.tsx:88
 #: src/app/(app)/(logged-in)/(tabs)/profile/edit.tsx:94
 msgid "Oops! Something went wrong."
@@ -132,11 +117,11 @@ msgstr "Oops! Something went wrong."
 msgid "Password"
 msgstr "Password"
 
-#: src/app/(app)/(logged-in)/(tabs)/sell/index.tsx:83
+#: src/app/(app)/(logged-in)/(tabs)/sell/index.tsx:82
 msgid "Press \"Create new listing\" to start selling!"
 msgstr "Press \"Create new listing\" to start selling!"
 
-#: src/components/ListingForm.tsx:211
+#: src/components/ListingForm.tsx:210
 msgid "Price"
 msgstr "Price"
 
@@ -156,11 +141,11 @@ msgstr "Published"
 msgid "Remove avatar"
 msgstr "Remove avatar"
 
-#: src/components/ListingForm.tsx:244
+#: src/components/ListingForm.tsx:243
 msgid "Save and publish"
 msgstr "Save and publish"
 
-#: src/components/ListingForm.tsx:257
+#: src/components/ListingForm.tsx:256
 msgid "Save as draft"
 msgstr "Save as draft"
 
@@ -172,15 +157,15 @@ msgstr "Sign in"
 msgid "Sign out"
 msgstr "Sign out"
 
-#: src/components/ListingForm.tsx:101
+#: src/components/ListingForm.tsx:100
 msgid "Successfully published listing"
 msgstr "Successfully published listing"
 
-#: src/components/ListingForm.tsx:101
+#: src/components/ListingForm.tsx:100
 msgid "Successfully saved listing"
 msgstr "Successfully saved listing"
 
-#: src/components/ListingForm.tsx:166
+#: src/components/ListingForm.tsx:165
 msgid "Title"
 msgstr "Title"
 

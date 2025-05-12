@@ -37,7 +37,7 @@ export default function EditListing() {
             <>
               <Frown className="mx-auto size-12 color-muted-foreground" />
               <Muted className="mx-auto">
-                <Trans>Could not find listing</Trans>
+                <Trans>Oops! Something went wrong.</Trans>
               </Muted>
             </>
           )}

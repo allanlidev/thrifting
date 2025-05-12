@@ -90,8 +90,7 @@ export function ListingForm({ listing }: { listing: Tables<'products'> }) {
       if (error) {
         Toast.show({
           type: 'error',
-          text1: t`Error updating listing`,
-          text2: error.message,
+          text1: t`Oops! Something went wrong.`,
         })
         return
       }
@@ -267,7 +266,7 @@ export function ListingForm({ listing }: { listing: Tables<'products'> }) {
             <>
               <Frown className="mx-auto size-12 color-muted-foreground" />
               <Muted className="mx-auto">
-                <Trans>Could not find categories</Trans>
+                <Trans>Oops! Something went wrong.</Trans>
               </Muted>
             </>
           )}

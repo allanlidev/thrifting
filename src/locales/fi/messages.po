@@ -17,7 +17,7 @@ msgstr ""
 msgid "Cancel"
 msgstr "Peruuta"
 
-#: src/components/ListingForm.tsx:120
+#: src/components/ListingForm.tsx:119
 msgid "Category"
 msgstr "Osasto"
 
@@ -25,23 +25,11 @@ msgstr "Osasto"
 msgid "Category is required"
 msgstr "Osasto vaaditaan"
 
-#: src/components/ListingForm.tsx:270
-msgid "Could not find categories"
-msgstr "Osastojen haku epäonnistui"
-
-#: src/app/(app)/(logged-in)/(tabs)/sell/edit/[id].tsx:40
-msgid "Could not find listing"
-msgstr "Luonnosta ei löydy"
-
-#: src/app/(app)/(logged-in)/(tabs)/sell/index.tsx:82
-msgid "Could not get drafts"
-msgstr "Luonnosten haku epäonnistui"
-
 #: src/app/(app)/login.tsx:89
 msgid "Create account"
 msgstr "Luo käyttäjä"
 
-#: src/app/(app)/(logged-in)/(tabs)/sell/index.tsx:95
+#: src/app/(app)/(logged-in)/(tabs)/sell/index.tsx:94
 msgid "Create new listing"
 msgstr "Luo uusi ilmoitus"
 
@@ -53,7 +41,7 @@ msgstr "Poista tili"
 msgid "Deleting..."
 msgstr "Poistamassa..."
 
-#: src/components/ListingForm.tsx:189
+#: src/components/ListingForm.tsx:188
 msgid "Description"
 msgstr "Kuvaus"
 
@@ -86,14 +74,6 @@ msgstr "Sähköposti"
 msgid "email@address.com"
 msgstr "sähköposti@osoite.fi"
 
-#: src/app/(app)/(logged-in)/(tabs)/sell/index.tsx:44
-msgid "Error creating a new listing"
-msgstr "Virhe ilmoituksen luomisessa"
-
-#: src/components/ListingForm.tsx:93
-msgid "Error updating listing"
-msgstr "Virhe ilmoituksen muokkaamisessa"
-
 #: src/app/(app)/(logged-in)/(tabs)/profile/edit.tsx:157
 msgid "Full name"
 msgstr "Koko nimi"
@@ -122,6 +102,11 @@ msgstr "Uusi ilmoitus"
 msgid "No title"
 msgstr "Ei otsikkoa"
 
+#: src/components/ListingForm.tsx:93
+#: src/components/ListingForm.tsx:269
+#: src/app/(app)/(logged-in)/(tabs)/sell/index.tsx:44
+#: src/app/(app)/(logged-in)/(tabs)/sell/index.tsx:81
+#: src/app/(app)/(logged-in)/(tabs)/sell/edit/[id].tsx:40
 #: src/app/(app)/(logged-in)/(tabs)/profile/edit.tsx:88
 #: src/app/(app)/(logged-in)/(tabs)/profile/edit.tsx:94
 msgid "Oops! Something went wrong."
@@ -132,11 +117,11 @@ msgstr "Pahus! Jotain meni pieleen."
 msgid "Password"
 msgstr "Salasana"
 
-#: src/app/(app)/(logged-in)/(tabs)/sell/index.tsx:83
+#: src/app/(app)/(logged-in)/(tabs)/sell/index.tsx:82
 msgid "Press \"Create new listing\" to start selling!"
 msgstr "Paina \"Luo uusi ilmoitus\" ja aloita myynti!"
 
-#: src/components/ListingForm.tsx:211
+#: src/components/ListingForm.tsx:210
 msgid "Price"
 msgstr "Hinta"
 
@@ -156,11 +141,11 @@ msgstr "Julkaistu"
 msgid "Remove avatar"
 msgstr "Poista profiilikuva"
 
-#: src/components/ListingForm.tsx:244
+#: src/components/ListingForm.tsx:243
 msgid "Save and publish"
 msgstr "Tallenna ja julkaise"
 
-#: src/components/ListingForm.tsx:257
+#: src/components/ListingForm.tsx:256
 msgid "Save as draft"
 msgstr "Tallenna luonnos"
 
@@ -172,15 +157,15 @@ msgstr "Kirjaudu sisään"
 msgid "Sign out"
 msgstr "Kirjaudu ulos"
 
-#: src/components/ListingForm.tsx:101
+#: src/components/ListingForm.tsx:100
 msgid "Successfully published listing"
 msgstr "Ilmoitus julkaistu"
 
-#: src/components/ListingForm.tsx:101
+#: src/components/ListingForm.tsx:100
 msgid "Successfully saved listing"
 msgstr "Ilmoitus tallennettu"
 
-#: src/components/ListingForm.tsx:166
+#: src/components/ListingForm.tsx:165
 msgid "Title"
 msgstr "Otsikko"
 

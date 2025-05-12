@@ -41,8 +41,7 @@ export default function Sell() {
     if (error) {
       Toast.show({
         type: 'error',
-        text1: t`Error creating a new listing`,
-        text2: error.message,
+        text1: t`Oops! Something went wrong.`,
       })
       return
     }
@@ -79,7 +78,7 @@ export default function Sell() {
                 {draftsError && <Frown className="mx-auto size-12 color-muted-foreground" />}
                 <Muted className="m-auto">
                   {draftsError
-                    ? t`Could not get drafts`
+                    ? t`Oops! Something went wrong.`
                     : t`Press "Create new listing" to start selling!`}
                 </Muted>
               </>
