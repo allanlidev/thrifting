@@ -27,6 +27,7 @@ import { Button } from '~/src/components/ui/button'
 import { Text } from '~/src/components/ui/text'
 import { supabase } from '~/src/lib/supabase'
 import { ErrorMessage } from '~/src/components/ErrorMessage'
+import { useState } from 'react'
 
 const isOption = (val: unknown): val is NonNullable<Option> => {
   return (
@@ -40,6 +41,8 @@ const isOption = (val: unknown): val is NonNullable<Option> => {
 }
 
 export function ListingForm({ listing }: { listing: Tables<'products'> }) {
+  const [isSubmittingDraft, setIsSubmittingDraft] = useState(false)
+
   const { data: categories, isFetching: isCategoriesFetching } = useCategories()
   const router = useRouter()
   const queryClient = useQueryClient()
@@ -56,6 +59,9 @@ export function ListingForm({ listing }: { listing: Tables<'products'> }) {
       message: t`Category is required`,
     }),
   })
+  type UpdateProduct = Omit<z.infer<typeof updateSchema>, 'category'> & {
+    category: Option | null
+  }
 
   const form = useForm({
     defaultValues: {
@@ -73,34 +79,8 @@ export function ListingForm({ listing }: { listing: Tables<'products'> }) {
     },
     validators: { onChange: updateSchema },
     onSubmitMeta: { publish: false },
-    onSubmit: async ({ value, meta }) => {
-      const { category, price, ...rest } = value
-
-      const { error } = await supabase
-        .from('products')
-        .update({
-          ...rest,
-          category_id: value.category?.value ? parseInt(value.category.value) : null,
-          price: parseInt(value.price),
-          published: meta.publish,
-        })
-        .eq('id', listing.id)
-        .select()
-
-      if (error) {
-        Toast.show({
-          type: 'error',
-          text1: t`Oops! Something went wrong.`,
-        })
-        return
-      }
-
-      Toast.show({
-        type: 'success',
-        text1: meta.publish ? t`Successfully published listing` : t`Successfully saved listing`,
-      })
-      queryClient.invalidateQueries({ queryKey: ['listings', 'drafts'] })
-      router.dismiss()
+    onSubmit: async ({ value }) => {
+      await updateProduct(value, true)
     },
   })
 
@@ -108,6 +88,40 @@ export function ListingForm({ listing }: { listing: Tables<'products'> }) {
   const contentInsets = {
     top: insets.top,
     bottom: insets.bottom,
+  }
+
+  const updateProduct = async (value: UpdateProduct, publish = false) => {
+    if (!publish) setIsSubmittingDraft(true)
+
+    const { category, price, ...rest } = value
+
+    const { error } = await supabase
+      .from('products')
+      .update({
+        ...rest,
+        category_id: value.category?.value ? parseInt(value.category.value) : null,
+        price: parseInt(value.price),
+        published: publish,
+      })
+      .eq('id', listing.id)
+      .select()
+
+    if (!publish) setIsSubmittingDraft(false)
+
+    if (error) {
+      Toast.show({
+        type: 'error',
+        text1: t`Oops! Something went wrong.`,
+      })
+      return
+    }
+
+    Toast.show({
+      type: 'success',
+      text1: publish ? t`Successfully published listing` : t`Successfully saved listing`,
+    })
+    queryClient.invalidateQueries({ queryKey: ['listings', 'drafts'] })
+    router.dismiss()
   }
 
   return (
@@ -234,10 +248,7 @@ export function ListingForm({ listing }: { listing: Tables<'products'> }) {
           </View>
           <form.Subscribe
             children={({ isDirty, isSubmitting }) => (
-              <Button
-                disabled={isSubmitting || !isDirty}
-                onPress={() => form.handleSubmit({ publish: true })}
-              >
+              <Button disabled={isSubmitting || !isDirty}>
                 {isSubmitting ? (
                   <ActivityIndicator />
                 ) : (
@@ -249,13 +260,13 @@ export function ListingForm({ listing }: { listing: Tables<'products'> }) {
             )}
           />
           <form.Subscribe
-            children={({ isDirty, isSubmitting }) => (
+            children={({ isDirty, values }) => (
               <Button
                 variant="secondary"
-                disabled={isSubmitting || !isDirty}
-                onPress={() => form.handleSubmit({ publish: false })}
+                disabled={isSubmittingDraft || !isDirty}
+                onPress={() => updateProduct(values)}
               >
-                {isSubmitting ? (
+                {isSubmittingDraft ? (
                   <ActivityIndicator />
                 ) : (
                   <Text>
