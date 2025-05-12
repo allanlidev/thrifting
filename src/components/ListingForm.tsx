@@ -232,31 +232,39 @@ export function ListingForm({ listing }: { listing: Tables<'products'> }) {
               )}
             />
           </View>
-          <Button
-            disabled={form.state.isSubmitting || !form.state.canSubmit || !form.state.isDirty}
-            onPress={() => form.handleSubmit({ publish: true })}
-          >
-            {form.state.isSubmitting ? (
-              <ActivityIndicator />
-            ) : (
-              <Text>
-                <Trans>Save and publish</Trans>
-              </Text>
+          <form.Subscribe
+            children={({ isDirty, isSubmitting }) => (
+              <Button
+                disabled={isSubmitting || !isDirty}
+                onPress={() => form.handleSubmit({ publish: true })}
+              >
+                {isSubmitting ? (
+                  <ActivityIndicator />
+                ) : (
+                  <Text>
+                    <Trans>Save and publish</Trans>
+                  </Text>
+                )}
+              </Button>
             )}
-          </Button>
-          <Button
-            variant="secondary"
-            disabled={form.state.isSubmitting || !form.state.canSubmit || !form.state.isDirty}
-            onPress={() => form.handleSubmit({ publish: false })}
-          >
-            {form.state.isSubmitting ? (
-              <ActivityIndicator />
-            ) : (
-              <Text>
-                <Trans>Save as draft</Trans>
-              </Text>
+          />
+          <form.Subscribe
+            children={({ isDirty, isSubmitting }) => (
+              <Button
+                variant="secondary"
+                disabled={isSubmitting || !isDirty}
+                onPress={() => form.handleSubmit({ publish: false })}
+              >
+                {isSubmitting ? (
+                  <ActivityIndicator />
+                ) : (
+                  <Text>
+                    <Trans>Save as draft</Trans>
+                  </Text>
+                )}
+              </Button>
             )}
-          </Button>
+          />
         </View>
       ) : (
         <View className="flex-1 justify-center gap-4">
