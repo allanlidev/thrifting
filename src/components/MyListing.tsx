@@ -3,10 +3,10 @@ import { useState } from 'react'
 import { Trans } from '@lingui/react/macro'
 import { t } from '@lingui/core/macro'
 import { Large, Muted } from '~/src/components/ui/typography'
-import { Avatar, AvatarFallback } from '~/src/components/ui/avatar'
 import { Skeleton } from '~/src/components/ui/skeleton'
 import { Badge } from '~/src/components/ui/badge'
 import { Text } from '~/src/components/ui/text'
+import { RemoteImage } from '~/src/components/RemoteImage'
 
 export function MyListing({ item, onPress }: { item: any; onPress?: () => void }) {
   const [titleWidth, setTitleWidth] = useState<number | undefined>()
@@ -18,9 +18,17 @@ export function MyListing({ item, onPress }: { item: any; onPress?: () => void }
   return (
     <Pressable onPress={onPress} className="active:opacity-50">
       <View className="mt-4 flex-1 flex-row gap-4">
-        <Avatar alt="Product thumbnail" className="size-24 rounded-md">
-          <AvatarFallback className="size-24 rounded-md" />
-        </Avatar>
+        <View className="h-24 w-24 rounded-md bg-muted">
+          {item.images.length > 0 && (
+            <RemoteImage
+              bucketId="product-images"
+              path={item.images[0]}
+              accessibilityLabel={`Thumbnail for listing`}
+              className="h-full w-full"
+              resizeMode="cover"
+            />
+          )}
+        </View>
         <View className="flex-1 justify-center gap-2" onLayout={onLayout}>
           <Badge
             variant={item.published ? 'default' : 'secondary'}
