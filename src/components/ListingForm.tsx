@@ -139,6 +139,7 @@ export function ListingForm({ listing }: { listing: Tables<'products'> }) {
         category_id: value.category?.value ? parseInt(value.category.value) : null,
         price: parseInt(value.price),
         published: publish,
+        updated_at: new Date().toISOString(),
       })
       .eq('id', listing.id)
       .select()
