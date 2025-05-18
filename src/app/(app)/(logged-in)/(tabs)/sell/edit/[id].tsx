@@ -1,7 +1,7 @@
 import { Trans } from '@lingui/react/macro'
 import { useLocalSearchParams } from 'expo-router'
 import { useMemo } from 'react'
-import { ActivityIndicator, KeyboardAvoidingView, ScrollView, View } from 'react-native'
+import { ActivityIndicator, View } from 'react-native'
 import { Frown } from '~/src/components/icons/Frown'
 import { ListingForm } from '~/src/components/ListingForm'
 import { Muted } from '~/src/components/ui/typography'
@@ -24,11 +24,7 @@ export default function EditListing() {
   return (
     <>
       {listing && !isDraftsFetching ? (
-        <KeyboardAvoidingView behavior="padding" className="flex-1">
-          <ScrollView>
-            <ListingForm listing={listing} />
-          </ScrollView>
-        </KeyboardAvoidingView>
+        <ListingForm listing={listing} />
       ) : (
         <View className="flex-1 justify-center gap-4">
           {isDraftsFetching ? (
