@@ -52,9 +52,9 @@ export default function Sell() {
 
   return (
     <View className="flex-1 gap-6 p-6">
-      <View className="flex-1 overflow-hidden rounded-md border border-solid border-border px-4">
+      <View className="flex-1">
         {drafts && drafts.length > 0 && !isLoadingDrafts ? (
-          <ScrollView contentContainerClassName="pb-4">
+          <ScrollView>
             {drafts.map((listing) => (
               <MyListing
                 key={listing.id}
@@ -68,11 +68,11 @@ export default function Sell() {
         ) : (
           <>
             {isLoadingDrafts ? (
-              <View>
+              <ScrollView>
                 {Array.from({ length: 6 }, (_, index) => (
                   <MyListingSkeleton key={index} />
                 ))}
-              </View>
+              </ScrollView>
             ) : (
               <>
                 {draftsError && <Frown className="mx-auto size-12 color-muted-foreground" />}
