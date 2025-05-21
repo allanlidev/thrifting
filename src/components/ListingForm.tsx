@@ -3,7 +3,6 @@ import {
   ActivityIndicator,
   Alert,
   KeyboardAvoidingView,
-  Pressable,
   ScrollView,
   useWindowDimensions,
   View,
@@ -247,15 +246,16 @@ export function ListingForm({ listing }: { listing: Tables<'products'> }) {
                         renderItem={({ index, item }) => (
                           <View className="flex-1 overflow-hidden rounded-md border border-background">
                             {item === 'addImage' ? (
-                              <Pressable
+                              <Button
+                                variant="secondary"
                                 onPress={handleImagePress}
-                                className="flex-1 justify-center gap-2 bg-muted active:opacity-50"
+                                className="flex-1 justify-center gap-2"
                               >
                                 <ImagePlus className="self-center color-foreground" />
                                 <Text className="text-center">
                                   <Trans>Press here to add an image</Trans>
                                 </Text>
-                              </Pressable>
+                              </Button>
                             ) : (
                               <>
                                 <RemoteImage
@@ -265,12 +265,13 @@ export function ListingForm({ listing }: { listing: Tables<'products'> }) {
                                   className="h-full w-full"
                                   resizeMode="contain"
                                 />
-                                <Pressable
+                                <Button
+                                  size="icon"
                                   onPress={() => handleDeleteImagePress(item)}
-                                  className="absolute right-3 top-3 rounded-full bg-red-800 p-2 active:opacity-50"
+                                  className="absolute right-3 top-3 rounded-full bg-muted"
                                 >
                                   <Trash className="size-6 color-foreground" />
-                                </Pressable>
+                                </Button>
                               </>
                             )}
                           </View>
