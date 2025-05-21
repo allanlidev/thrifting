@@ -14,7 +14,7 @@ import { useRouter } from 'expo-router'
 import * as ImagePicker from 'expo-image-picker'
 import { useForm } from '@tanstack/react-form'
 import { useQueryClient } from '@tanstack/react-query'
-import Carousel, { ICarouselInstance, Pagination } from 'react-native-reanimated-carousel'
+import Carousel, { type ICarouselInstance } from 'react-native-reanimated-carousel'
 import { useSharedValue } from 'react-native-reanimated'
 import { z } from 'zod'
 import { Trans } from '@lingui/react/macro'
@@ -46,6 +46,7 @@ import { Camera } from '~/src/components/icons/Camera'
 import { Trash } from '~/src/components/icons/Trash'
 import { useColorScheme } from '~/src/hooks/useColorScheme'
 import { RemoteImage } from '~/src/components/RemoteImage'
+import { PaginationBasic } from '~/src/components/Pagination'
 
 const isOption = (val: unknown): val is NonNullable<Option> => {
   return (
@@ -197,6 +198,7 @@ export function ListingForm({ listing }: { listing: Tables<'products'> }) {
       form.setFieldMeta('images', (prev) => ({ ...prev, isTouched: true }))
       closeBottomSheet()
     } catch (error) {
+      console.error('Error uploading image:', error)
       Alert.alert(t`Oops! Something went wrong.`)
     }
   }
@@ -259,7 +261,7 @@ export function ListingForm({ listing }: { listing: Tables<'products'> }) {
                                 <RemoteImage
                                   bucketId="product-images"
                                   path={item}
-                                  accessibilityLabel={`Image ${index + 1} for listing`}
+                                  accessibilityLabel={t`Image ${index + 1} for listing`}
                                   className="h-full w-full"
                                   resizeMode="contain"
                                 />
@@ -275,16 +277,16 @@ export function ListingForm({ listing }: { listing: Tables<'products'> }) {
                         )}
                       />
                       {field.state.value.length > 0 && (
-                        <Pagination.Basic
+                        <PaginationBasic
                           progress={progress}
                           data={
                             field.state.value.length > 4
                               ? field.state.value
                               : [...field.state.value, 'addImage']
                           }
-                          dotStyle={{ backgroundColor: 'rgba(255,255,255,0.3)', borderRadius: 50 }}
-                          activeDotStyle={{ backgroundColor: 'white' }}
-                          containerStyle={{ gap: 5, marginTop: 10 }}
+                          containerClassName="gap-2 mt-3"
+                          activeDotClassName="bg-primary rounded-full overflow-hidden"
+                          dotClassName="bg-muted-foreground rounded-full"
                           onPress={onPressPagination}
                         />
                       )}
