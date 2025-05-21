@@ -316,20 +316,23 @@ export function ListingForm({ listing }: { listing: Tables<'products'> }) {
                             className="native:text-lg text-sm text-foreground"
                           />
                         </SelectTrigger>
-                        <SelectContent insets={contentInsets}>
-                          <SelectGroup>
-                            {categories
-                              .filter((category) => category.title != null)
-                              .map((category) => (
-                                <SelectItem
-                                  key={category.id}
-                                  label={category.title!}
-                                  value={String(category.id)}
-                                >
-                                  {category.title}
-                                </SelectItem>
-                              ))}
-                          </SelectGroup>
+                        <SelectContent insets={contentInsets} align="end">
+                          <ScrollView className="max-h-40">
+                            <SelectGroup>
+                              {categories.map(
+                                (category) =>
+                                  category.title && (
+                                    <SelectItem
+                                      key={category.id}
+                                      label={category.title}
+                                      value={String(category.id)}
+                                    >
+                                      {category.title}
+                                    </SelectItem>
+                                  )
+                              )}
+                            </SelectGroup>
+                          </ScrollView>
                         </SelectContent>
                       </Select>
                       {field.state.meta.errors.length > 0 && (
