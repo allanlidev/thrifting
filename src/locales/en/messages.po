@@ -13,8 +13,8 @@ msgstr ""
 "Language-Team: \n"
 "Plural-Forms: \n"
 
-#: src/app/(app)/(logged-in)/(tabs)/profile/settings/_layout.tsx:8
 #: src/app/(app)/(logged-in)/(tabs)/profile/settings/index.tsx:27
+#: src/app/(app)/(logged-in)/(tabs)/profile/settings/_layout.tsx:8
 msgid "Account"
 msgstr "Account"
 
@@ -26,16 +26,16 @@ msgstr "Account Information"
 msgid "Account Management"
 msgstr "Account Management"
 
-#: src/components/ListingForm.tsx:481
+#: src/components/ListingForm.tsx:485
 #: src/app/(app)/(logged-in)/(tabs)/profile/edit.tsx:189
 msgid "Cancel"
 msgstr "Cancel"
 
-#: src/components/ListingForm.tsx:297
+#: src/components/ListingForm.tsx:301
 msgid "Category"
 msgstr "Category"
 
-#: src/components/ListingForm.tsx:94
+#: src/components/ListingForm.tsx:95
 msgid "Category is required"
 msgstr "Category is required"
 
@@ -55,11 +55,11 @@ msgstr "Delete account"
 msgid "Deleting..."
 msgstr "Deleting..."
 
-#: src/components/ListingForm.tsx:366
+#: src/components/ListingForm.tsx:370
 msgid "Description"
 msgstr "Description"
 
-#: src/components/ListingForm.tsx:87
+#: src/components/ListingForm.tsx:88
 msgid "Description is required"
 msgstr "Description is required"
 
@@ -97,11 +97,16 @@ msgstr "Full name"
 msgid "Full Name"
 msgstr "Full Name"
 
-#: src/components/ListingForm.tsx:96
+#. placeholder {0}: index + 1
+#: src/components/ListingForm.tsx:265
+msgid "Image {0} for listing"
+msgstr "Image {0} for listing"
+
+#: src/components/ListingForm.tsx:97
 msgid "Image is required"
 msgstr "Image is required"
 
-#: src/components/ListingForm.tsx:228
+#: src/components/ListingForm.tsx:230
 msgid "Images"
 msgstr "Images"
 
@@ -110,15 +115,15 @@ msgstr "Images"
 msgid "Loading..."
 msgstr "Loading..."
 
-#: src/components/ListingForm.tsx:92
+#: src/components/ListingForm.tsx:93
 msgid "Maximum price 999 999"
 msgstr "Maximum price 999 999"
 
-#: src/components/ListingForm.tsx:91
+#: src/components/ListingForm.tsx:92
 msgid "Minimum price 1"
 msgstr "Minimum price 1"
 
-#: src/components/ListingForm.tsx:90
+#: src/components/ListingForm.tsx:91
 msgid "Must be a valid number"
 msgstr "Must be a valid number"
 
@@ -135,9 +140,9 @@ msgstr "No title"
 msgid "Not set"
 msgstr "Not set"
 
-#: src/components/ListingForm.tsx:152
-#: src/components/ListingForm.tsx:200
-#: src/components/ListingForm.tsx:496
+#: src/components/ListingForm.tsx:153
+#: src/components/ListingForm.tsx:202
+#: src/components/ListingForm.tsx:500
 #: src/app/(app)/(logged-in)/(tabs)/sell/index.tsx:44
 #: src/app/(app)/(logged-in)/(tabs)/sell/index.tsx:81
 #: src/app/(app)/(logged-in)/(tabs)/sell/edit/[id].tsx:36
@@ -149,8 +154,8 @@ msgstr "Oops! Something went wrong."
 
 #: src/app/(app)/login.tsx:62
 #: src/app/(app)/login.tsx:67
-#: src/app/(app)/(logged-in)/(tabs)/profile/settings/_layout.tsx:10
 #: src/app/(app)/(logged-in)/(tabs)/profile/settings/account.tsx:94
+#: src/app/(app)/(logged-in)/(tabs)/profile/settings/_layout.tsx:10
 msgid "Password"
 msgstr "Password"
 
@@ -158,11 +163,11 @@ msgstr "Password"
 msgid "Press \"Create new listing\" to start selling!"
 msgstr "Press \"Create new listing\" to start selling!"
 
-#: src/components/ListingForm.tsx:254
+#: src/components/ListingForm.tsx:257
 msgid "Press here to add an image"
 msgstr "Press here to add an image"
 
-#: src/components/ListingForm.tsx:388
+#: src/components/ListingForm.tsx:392
 msgid "Price"
 msgstr "Price"
 
@@ -183,16 +188,16 @@ msgstr "Published"
 msgid "Remove avatar"
 msgstr "Remove avatar"
 
-#: src/components/ListingForm.tsx:420
+#: src/components/ListingForm.tsx:424
 msgid "Save and publish"
 msgstr "Save and publish"
 
-#: src/components/ListingForm.tsx:437
+#: src/components/ListingForm.tsx:441
 msgid "Save as draft"
 msgstr "Save as draft"
 
-#: src/app/(app)/(logged-in)/(tabs)/profile/settings/_layout.tsx:7
 #: src/app/(app)/(logged-in)/(tabs)/profile/settings/index.tsx:18
+#: src/app/(app)/(logged-in)/(tabs)/profile/settings/_layout.tsx:7
 msgid "Settings"
 msgstr "Settings"
 
@@ -204,19 +209,19 @@ msgstr "Sign in"
 msgid "Sign out"
 msgstr "Sign out"
 
-#: src/components/ListingForm.tsx:159
+#: src/components/ListingForm.tsx:160
 msgid "Successfully published listing"
 msgstr "Successfully published listing"
 
-#: src/components/ListingForm.tsx:159
+#: src/components/ListingForm.tsx:160
 msgid "Successfully saved listing"
 msgstr "Successfully saved listing"
 
-#: src/components/ListingForm.tsx:343
+#: src/components/ListingForm.tsx:347
 msgid "Title"
 msgstr "Title"
 
-#: src/components/ListingForm.tsx:86
+#: src/components/ListingForm.tsx:87
 msgid "Title is required"
 msgstr "Title is required"
 
@@ -225,12 +230,12 @@ msgstr "Title is required"
 msgid "Update"
 msgstr "Update"
 
-#: src/components/ListingForm.tsx:465
+#: src/components/ListingForm.tsx:469
 #: src/app/(app)/(logged-in)/(tabs)/profile/edit.tsx:165
 msgid "Upload from Camera"
 msgstr "Upload from Camera"
 
-#: src/components/ListingForm.tsx:475
+#: src/components/ListingForm.tsx:479
 #: src/app/(app)/(logged-in)/(tabs)/profile/edit.tsx:175
 msgid "Upload from Library"
 msgstr "Upload from Library"
