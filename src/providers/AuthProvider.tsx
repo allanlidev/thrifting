@@ -47,6 +47,11 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   const [isReady, setIsReady] = useState(false)
 
   async function logIn({ email, password }: AuthCredentials) {
+    if (!email || !password) {
+      Alert.alert('Please enter your email and password.')
+      return
+    }
+
     try {
       await supabase.auth.signInWithPassword({
         email,

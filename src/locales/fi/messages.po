@@ -26,7 +26,7 @@ msgstr "Tilitiedot"
 msgid "Account Management"
 msgstr "Tilinhallinta"
 
-#: src/components/ListingForm.tsx:485
+#: src/components/ListingForm.tsx:488
 #: src/app/(app)/(logged-in)/(tabs)/profile/edit.tsx:189
 msgid "Cancel"
 msgstr "Peruuta"
@@ -38,10 +38,6 @@ msgstr "Osasto"
 #: src/components/ListingForm.tsx:95
 msgid "Category is required"
 msgstr "Osasto vaaditaan"
-
-#: src/app/(app)/login.tsx:89
-msgid "Create account"
-msgstr "Luo käyttäjä"
 
 #: src/app/(app)/(logged-in)/(tabs)/sell/index.tsx:94
 msgid "Create new listing"
@@ -55,7 +51,7 @@ msgstr "Poista tili"
 msgid "Deleting..."
 msgstr "Poistamassa..."
 
-#: src/components/ListingForm.tsx:370
+#: src/components/ListingForm.tsx:373
 msgid "Description"
 msgstr "Kuvaus"
 
@@ -79,12 +75,14 @@ msgstr "Muokkaa profiilia"
 msgid "Edited"
 msgstr "Muokattu"
 
-#: src/app/(app)/login.tsx:46
+#: src/app/(app)/signup.tsx:46
+#: src/app/(app)/login.tsx:38
 #: src/app/(app)/(logged-in)/(tabs)/profile/settings/account.tsx:84
 msgid "Email"
 msgstr "Sähköposti"
 
-#: src/app/(app)/login.tsx:51
+#: src/app/(app)/signup.tsx:51
+#: src/app/(app)/login.tsx:43
 msgid "email@address.com"
 msgstr "sähköposti@osoite.fi"
 
@@ -142,7 +140,7 @@ msgstr "Ei asetettu"
 
 #: src/components/ListingForm.tsx:153
 #: src/components/ListingForm.tsx:202
-#: src/components/ListingForm.tsx:500
+#: src/components/ListingForm.tsx:503
 #: src/app/(app)/(logged-in)/(tabs)/sell/index.tsx:44
 #: src/app/(app)/(logged-in)/(tabs)/sell/index.tsx:81
 #: src/app/(app)/(logged-in)/(tabs)/sell/edit/[id].tsx:36
@@ -152,8 +150,10 @@ msgstr "Ei asetettu"
 msgid "Oops! Something went wrong."
 msgstr "Pahus! Jotain meni pieleen."
 
-#: src/app/(app)/login.tsx:62
-#: src/app/(app)/login.tsx:67
+#: src/app/(app)/signup.tsx:62
+#: src/app/(app)/signup.tsx:67
+#: src/app/(app)/login.tsx:54
+#: src/app/(app)/login.tsx:59
 #: src/app/(app)/(logged-in)/(tabs)/profile/settings/account.tsx:94
 #: src/app/(app)/(logged-in)/(tabs)/profile/settings/_layout.tsx:10
 msgid "Password"
@@ -167,7 +167,7 @@ msgstr "Paina \"Luo uusi ilmoitus\" ja aloita myynti!"
 msgid "Press here to add an image"
 msgstr "Paina tästä lisätäksesi kuvan"
 
-#: src/components/ListingForm.tsx:392
+#: src/components/ListingForm.tsx:395
 msgid "Price"
 msgstr "Hinta"
 
@@ -184,15 +184,31 @@ msgstr "Profiili päivitetty!"
 msgid "Published"
 msgstr "Julkaistu"
 
+#: src/app/(app)/signup.tsx:82
+msgid "Register"
+msgstr "Rekisteröi"
+
+#: src/app/(app)/signup.tsx:41
+msgid "Register account"
+msgstr "Rekisteröi tili"
+
+#: src/app/(app)/index.tsx:40
+msgid "Register now"
+msgstr "Rekisteröi nyt"
+
+#: src/app/(app)/signup.tsx:82
+msgid "Registering..."
+msgstr "Rekisteröidään..."
+
 #: src/app/(app)/(logged-in)/(tabs)/profile/edit.tsx:182
 msgid "Remove avatar"
 msgstr "Poista profiilikuva"
 
-#: src/components/ListingForm.tsx:424
+#: src/components/ListingForm.tsx:427
 msgid "Save and publish"
 msgstr "Tallenna ja julkaise"
 
-#: src/components/ListingForm.tsx:441
+#: src/components/ListingForm.tsx:444
 msgid "Save as draft"
 msgstr "Tallenna luonnos"
 
@@ -201,13 +217,19 @@ msgstr "Tallenna luonnos"
 msgid "Settings"
 msgstr "Asetukset"
 
-#: src/app/(app)/login.tsx:79
+#: src/app/(app)/login.tsx:33
+#: src/app/(app)/login.tsx:74
+#: src/app/(app)/index.tsx:29
 msgid "Sign in"
 msgstr "Kirjaudu sisään"
 
 #: src/app/(app)/(logged-in)/(tabs)/profile/settings/index.tsx:36
 msgid "Sign out"
 msgstr "Kirjaudu ulos"
+
+#: src/app/(app)/login.tsx:74
+msgid "Signing in..."
+msgstr "Kirjaudutaan sisään..."
 
 #: src/components/ListingForm.tsx:160
 msgid "Successfully published listing"
@@ -217,7 +239,7 @@ msgstr "Ilmoitus julkaistu"
 msgid "Successfully saved listing"
 msgstr "Ilmoitus tallennettu"
 
-#: src/components/ListingForm.tsx:347
+#: src/components/ListingForm.tsx:350
 msgid "Title"
 msgstr "Otsikko"
 
@@ -230,12 +252,12 @@ msgstr "Otsikko vaaditaan"
 msgid "Update"
 msgstr "Päivitä"
 
-#: src/components/ListingForm.tsx:469
+#: src/components/ListingForm.tsx:472
 #: src/app/(app)/(logged-in)/(tabs)/profile/edit.tsx:165
 msgid "Upload from Camera"
 msgstr "Lataa kamerasta"
 
-#: src/components/ListingForm.tsx:479
+#: src/components/ListingForm.tsx:482
 #: src/app/(app)/(logged-in)/(tabs)/profile/edit.tsx:175
 msgid "Upload from Library"
 msgstr "Lataa kirjastosta"
