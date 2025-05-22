@@ -7,6 +7,7 @@ import {
   useWindowDimensions,
   View,
 } from 'react-native'
+import { ScrollView as RNGHScrollView } from 'react-native-gesture-handler'
 import { useSafeAreaInsets } from 'react-native-safe-area-context'
 import Toast from 'react-native-toast-message'
 import { useRouter } from 'expo-router'
@@ -317,7 +318,7 @@ export function ListingForm({ listing }: { listing: Tables<'products'> }) {
                           />
                         </SelectTrigger>
                         <SelectContent insets={contentInsets} align="end">
-                          <ScrollView className="max-h-40">
+                          <RNGHScrollView className="max-h-40">
                             <SelectGroup>
                               {categories.map(
                                 (category) =>
@@ -332,7 +333,7 @@ export function ListingForm({ listing }: { listing: Tables<'products'> }) {
                                   )
                               )}
                             </SelectGroup>
-                          </ScrollView>
+                          </RNGHScrollView>
                         </SelectContent>
                       </Select>
                       {field.state.meta.errors.length > 0 && (
