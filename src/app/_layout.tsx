@@ -4,10 +4,12 @@ import { Theme, ThemeProvider, DefaultTheme, DarkTheme } from '@react-navigation
 import { Slot } from 'expo-router'
 import { StatusBar } from 'expo-status-bar'
 import { useLayoutEffect, useRef, useState } from 'react'
+import { GestureHandlerRootView } from 'react-native-gesture-handler'
+import Toast from 'react-native-toast-message'
+import { PortalHost } from '~/src/components/PortalHost'
 import { NAV_THEME } from '~/src/lib/constants'
 import { useColorScheme } from '~/src/hooks/useColorScheme'
 import { AuthProvider } from '~/src/providers/AuthProvider'
-import { GestureHandlerRootView } from 'react-native-gesture-handler'
 import { QueryProvider } from '~/src/providers/QueryProvider'
 import { I18nProvider } from '~/src/providers/i18nProvider'
 
@@ -50,6 +52,8 @@ export default function RootLayout() {
             <ThemeProvider value={isDarkColorScheme ? DARK_THEME : LIGHT_THEME}>
               <StatusBar style={isDarkColorScheme ? 'light' : 'dark'} translucent={false} />
               <Slot />
+              <Toast />
+              <PortalHost />
             </ThemeProvider>
           </GestureHandlerRootView>
         </I18nProvider>

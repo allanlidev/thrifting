@@ -26,13 +26,26 @@ msgstr "Tilitiedot"
 msgid "Account Management"
 msgstr "Tilinhallinta"
 
+#: src/components/ListingForm.tsx:485
 #: src/app/(app)/(logged-in)/(tabs)/profile/edit.tsx:189
 msgid "Cancel"
 msgstr "Peruuta"
 
+#: src/components/ListingForm.tsx:301
+msgid "Category"
+msgstr "Osasto"
+
+#: src/components/ListingForm.tsx:95
+msgid "Category is required"
+msgstr "Osasto vaaditaan"
+
 #: src/app/(app)/login.tsx:89
 msgid "Create account"
 msgstr "Luo käyttäjä"
+
+#: src/app/(app)/(logged-in)/(tabs)/sell/index.tsx:94
+msgid "Create new listing"
+msgstr "Luo uusi ilmoitus"
 
 #: src/app/(app)/(logged-in)/(tabs)/profile/settings/account.tsx:112
 msgid "Delete account"
@@ -42,9 +55,29 @@ msgstr "Poista tili"
 msgid "Deleting..."
 msgstr "Poistamassa..."
 
+#: src/components/ListingForm.tsx:370
+msgid "Description"
+msgstr "Kuvaus"
+
+#: src/components/ListingForm.tsx:88
+msgid "Description is required"
+msgstr "Kuvaus vaaditaan"
+
+#: src/components/MyListing.tsx:37
+msgid "Draft"
+msgstr "Luonnos"
+
+#: src/app/(app)/(logged-in)/(tabs)/sell/_layout.tsx:11
+msgid "Edit listing"
+msgstr "Muokkaa ilmoitusta"
+
 #: src/app/(app)/(logged-in)/(tabs)/profile/index.tsx:39
 msgid "Edit profile"
 msgstr "Muokkaa profiilia"
+
+#: src/components/MyListing.tsx:47
+msgid "Edited"
+msgstr "Muokattu"
 
 #: src/app/(app)/login.tsx:46
 #: src/app/(app)/(logged-in)/(tabs)/profile/settings/account.tsx:84
@@ -64,16 +97,55 @@ msgstr "Koko nimi"
 msgid "Full Name"
 msgstr "Koko nimi"
 
+#. placeholder {0}: index + 1
+#: src/components/ListingForm.tsx:265
+msgid "Image {0} for listing"
+msgstr "Kuva {0} ilmoitukselle"
+
+#: src/components/ListingForm.tsx:97
+msgid "Image is required"
+msgstr "Kuva vaaditaan"
+
+#: src/components/ListingForm.tsx:230
+msgid "Images"
+msgstr "Kuvat"
+
 #: src/app/(app)/(logged-in)/(tabs)/profile/edit.tsx:143
 #: src/app/(app)/(logged-in)/(tabs)/profile/settings/name.tsx:56
 msgid "Loading..."
 msgstr "Hetki..."
+
+#: src/components/ListingForm.tsx:93
+msgid "Maximum price 999 999"
+msgstr "Suurin hinta 999 999"
+
+#: src/components/ListingForm.tsx:92
+msgid "Minimum price 1"
+msgstr "Pienin hinta 1"
+
+#: src/components/ListingForm.tsx:91
+msgid "Must be a valid number"
+msgstr "Syötä numero"
+
+#: src/app/(app)/(logged-in)/(tabs)/sell/_layout.tsx:8
+msgid "New listing"
+msgstr "Uusi ilmoitus"
+
+#: src/components/MyListing.tsx:44
+msgid "No title"
+msgstr "Ei otsikkoa"
 
 #: src/app/(app)/(logged-in)/(tabs)/profile/settings/account.tsx:72
 #: src/app/(app)/(logged-in)/(tabs)/profile/settings/account.tsx:87
 msgid "Not set"
 msgstr "Ei asetettu"
 
+#: src/components/ListingForm.tsx:153
+#: src/components/ListingForm.tsx:202
+#: src/components/ListingForm.tsx:500
+#: src/app/(app)/(logged-in)/(tabs)/sell/index.tsx:44
+#: src/app/(app)/(logged-in)/(tabs)/sell/index.tsx:81
+#: src/app/(app)/(logged-in)/(tabs)/sell/edit/[id].tsx:36
 #: src/app/(app)/(logged-in)/(tabs)/profile/edit.tsx:84
 #: src/app/(app)/(logged-in)/(tabs)/profile/edit.tsx:90
 #: src/app/(app)/(logged-in)/(tabs)/profile/settings/name.tsx:21
@@ -87,6 +159,18 @@ msgstr "Pahus! Jotain meni pieleen."
 msgid "Password"
 msgstr "Salasana"
 
+#: src/app/(app)/(logged-in)/(tabs)/sell/index.tsx:82
+msgid "Press \"Create new listing\" to start selling!"
+msgstr "Paina \"Luo uusi ilmoitus\" ja aloita myynti!"
+
+#: src/components/ListingForm.tsx:257
+msgid "Press here to add an image"
+msgstr "Paina tästä lisätäksesi kuvan"
+
+#: src/components/ListingForm.tsx:392
+msgid "Price"
+msgstr "Hinta"
+
 #: src/app/(app)/(logged-in)/(tabs)/profile/_layout.tsx:8
 msgid "Profile"
 msgstr "Profiili"
@@ -96,9 +180,21 @@ msgstr "Profiili"
 msgid "Profile updated!"
 msgstr "Profiili päivitetty!"
 
+#: src/components/MyListing.tsx:37
+msgid "Published"
+msgstr "Julkaistu"
+
 #: src/app/(app)/(logged-in)/(tabs)/profile/edit.tsx:182
 msgid "Remove avatar"
 msgstr "Poista profiilikuva"
+
+#: src/components/ListingForm.tsx:424
+msgid "Save and publish"
+msgstr "Tallenna ja julkaise"
+
+#: src/components/ListingForm.tsx:441
+msgid "Save as draft"
+msgstr "Tallenna luonnos"
 
 #: src/app/(app)/(logged-in)/(tabs)/profile/settings/index.tsx:18
 #: src/app/(app)/(logged-in)/(tabs)/profile/settings/_layout.tsx:7
@@ -113,15 +209,33 @@ msgstr "Kirjaudu sisään"
 msgid "Sign out"
 msgstr "Kirjaudu ulos"
 
+#: src/components/ListingForm.tsx:160
+msgid "Successfully published listing"
+msgstr "Ilmoitus julkaistu"
+
+#: src/components/ListingForm.tsx:160
+msgid "Successfully saved listing"
+msgstr "Ilmoitus tallennettu"
+
+#: src/components/ListingForm.tsx:347
+msgid "Title"
+msgstr "Otsikko"
+
+#: src/components/ListingForm.tsx:87
+msgid "Title is required"
+msgstr "Otsikko vaaditaan"
+
 #: src/app/(app)/(logged-in)/(tabs)/profile/edit.tsx:143
 #: src/app/(app)/(logged-in)/(tabs)/profile/settings/name.tsx:56
 msgid "Update"
 msgstr "Päivitä"
 
+#: src/components/ListingForm.tsx:469
 #: src/app/(app)/(logged-in)/(tabs)/profile/edit.tsx:165
 msgid "Upload from Camera"
 msgstr "Lataa kamerasta"
 
+#: src/components/ListingForm.tsx:479
 #: src/app/(app)/(logged-in)/(tabs)/profile/edit.tsx:175
 msgid "Upload from Library"
 msgstr "Lataa kirjastosta"

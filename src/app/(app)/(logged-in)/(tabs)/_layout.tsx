@@ -1,6 +1,7 @@
 import { Tabs } from 'expo-router'
 import { Home } from '~/src/components/icons/Home'
 import { Profile } from '~/src/components/icons/Profile'
+import { PlusSquare } from '~/src/components/icons/PlusSquare'
 
 export default function TabLayout() {
   return (
@@ -17,6 +18,13 @@ export default function TabLayout() {
         options={{
           headerShown: false,
           tabBarIcon: ({ color }) => <Home color={color} />,
+        }}
+      />
+      <Tabs.Screen
+        name="sell"
+        options={{
+          headerShown: false,
+          tabBarIcon: ({ color }) => <PlusSquare color={color} />,
         }}
       />
       <Tabs.Screen
