@@ -9,12 +9,7 @@ import { i18n } from '@lingui/core'
 
 import { messages as messagesEn } from '~/src/locales/en/messages'
 import { messages as messagesFi } from '~/src/locales/fi/messages'
-import { useLanguagePrefs } from '~/src/hooks/useLanguagePrefs'
-
-enum AppLanguage {
-  en = 'en',
-  fi = 'fi',
-}
+import { AppLanguage, useLanguagePreference } from '~/src/providers/LanguagePreferenceProvider'
 
 /**
  * We do a dynamic import of just the catalog that we need
@@ -37,8 +32,8 @@ export async function dynamicActivate(locale: AppLanguage) {
 }
 
 export function useLocaleLanguage() {
-  const { appLanguage } = useLanguagePrefs()
+  const { preferredLanguage } = useLanguagePreference()
   useEffect(() => {
-    dynamicActivate((appLanguage as AppLanguage) ?? AppLanguage.en)
-  }, [appLanguage])
+    dynamicActivate((preferredLanguage as AppLanguage) ?? AppLanguage.en)
+  }, [preferredLanguage])
 }

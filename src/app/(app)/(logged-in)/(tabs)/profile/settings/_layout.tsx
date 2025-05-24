@@ -8,6 +8,7 @@ export default function SettingsLayout() {
       <Stack.Screen name="account" options={{ title: t`Account` }} />
       <Stack.Screen name="name" options={{ title: t`Full Name` }} />
       <Stack.Screen name="password" options={{ title: t`Password` }} />
+      <Stack.Screen name="language" options={{ title: t`Language` }} />
     </Stack>
   )
 }

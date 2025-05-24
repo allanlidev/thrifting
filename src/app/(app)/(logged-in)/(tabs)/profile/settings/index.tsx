@@ -8,6 +8,7 @@ import { ChevronRight } from '~/src/components/icons/ChevronRight'
 import { Profile } from '~/src/components/icons/Profile'
 import { ButtonGroup } from '~/src/components/ButtonGroup'
 import { useAuth } from '~/src/providers/AuthProvider'
+import { Languages } from '~/src/components/icons/Languages'
 
 export default function ProfileSettings() {
   const { logOut } = useAuth()
@@ -25,6 +26,17 @@ export default function ProfileSettings() {
                 <Profile className="size-5 color-foreground" />
                 <Text>
                   <Trans>Account</Trans>
+                </Text>
+              </View>
+              <ChevronRight className="color-foreground" />
+            </Button>
+          </Link>
+          <Link href="/profile/settings/language" asChild>
+            <Button variant="outline" size="lg" className="flex-row items-center justify-between">
+              <View className="flex-row items-center gap-2">
+                <Languages className="size-5 color-foreground" />
+                <Text>
+                  <Trans>Language</Trans>
                 </Text>
               </View>
               <ChevronRight className="color-foreground" />

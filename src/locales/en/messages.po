@@ -13,7 +13,7 @@ msgstr ""
 "Language-Team: \n"
 "Plural-Forms: \n"
 
-#: src/app/(app)/(logged-in)/(tabs)/profile/settings/index.tsx:27
+#: src/app/(app)/(logged-in)/(tabs)/profile/settings/index.tsx:28
 #: src/app/(app)/(logged-in)/(tabs)/profile/settings/_layout.tsx:8
 msgid "Account"
 msgstr "Account"
@@ -25,6 +25,10 @@ msgstr "Account Information"
 #: src/app/(app)/(logged-in)/(tabs)/profile/settings/account.tsx:103
 msgid "Account Management"
 msgstr "Account Management"
+
+#: src/app/(app)/(logged-in)/(tabs)/profile/settings/language.tsx:26
+msgid "App Language"
+msgstr "App Language"
 
 #: src/components/ListingForm.tsx:488
 #: src/app/(app)/(logged-in)/(tabs)/profile/edit.tsx:189
@@ -107,6 +111,11 @@ msgstr "Image is required"
 #: src/components/ListingForm.tsx:230
 msgid "Images"
 msgstr "Images"
+
+#: src/app/(app)/(logged-in)/(tabs)/profile/settings/index.tsx:39
+#: src/app/(app)/(logged-in)/(tabs)/profile/settings/_layout.tsx:11
+msgid "Language"
+msgstr "Language"
 
 #: src/app/(app)/(logged-in)/(tabs)/profile/edit.tsx:143
 #: src/app/(app)/(logged-in)/(tabs)/profile/settings/name.tsx:56
@@ -212,7 +221,7 @@ msgstr "Save and publish"
 msgid "Save as draft"
 msgstr "Save as draft"
 
-#: src/app/(app)/(logged-in)/(tabs)/profile/settings/index.tsx:18
+#: src/app/(app)/(logged-in)/(tabs)/profile/settings/index.tsx:19
 #: src/app/(app)/(logged-in)/(tabs)/profile/settings/_layout.tsx:7
 msgid "Settings"
 msgstr "Settings"
@@ -223,7 +232,7 @@ msgstr "Settings"
 msgid "Sign in"
 msgstr "Sign in"
 
-#: src/app/(app)/(logged-in)/(tabs)/profile/settings/index.tsx:36
+#: src/app/(app)/(logged-in)/(tabs)/profile/settings/index.tsx:48
 msgid "Sign out"
 msgstr "Sign out"
 
