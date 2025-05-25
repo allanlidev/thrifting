@@ -47,6 +47,15 @@ msgstr "Category"
 msgid "Category is required"
 msgstr "Category is required"
 
+#: src/app/(app)/(logged-in)/(tabs)/profile/settings/password.tsx:68
+#: src/app/(app)/(logged-in)/(tabs)/profile/settings/password.tsx:118
+msgid "Change password"
+msgstr "Change password"
+
+#: src/app/(app)/(logged-in)/(tabs)/profile/settings/password.tsx:92
+msgid "Confirm password"
+msgstr "Confirm password"
+
 #: src/app/(app)/(logged-in)/(tabs)/sell/index.tsx:94
 msgid "Create new listing"
 msgstr "Create new listing"
@@ -93,6 +102,11 @@ msgstr "Email"
 #: src/app/(app)/login.tsx:43
 msgid "email@address.com"
 msgstr "email@address.com"
+
+#: src/app/(app)/(logged-in)/(tabs)/profile/settings/password.tsx:52
+#: src/app/(app)/(logged-in)/(tabs)/profile/settings/password.tsx:55
+msgid "Error changing password"
+msgstr "Error changing password"
 
 #: src/app/(app)/(logged-in)/(tabs)/profile/settings/name.tsx:34
 #: src/app/(app)/(logged-in)/(tabs)/profile/settings/account.tsx:69
@@ -142,6 +156,10 @@ msgstr "Must be a valid number"
 msgid "New listing"
 msgstr "New listing"
 
+#: src/app/(app)/(logged-in)/(tabs)/profile/settings/password.tsx:74
+msgid "New password"
+msgstr "New password"
+
 #: src/components/MyListing.tsx:44
 msgid "No title"
 msgstr "No title"
@@ -150,6 +168,10 @@ msgstr "No title"
 #: src/app/(app)/(logged-in)/(tabs)/profile/settings/account.tsx:87
 msgid "Not set"
 msgstr "Not set"
+
+#: src/app/(app)/(logged-in)/(tabs)/profile/settings/password.tsx:43
+msgid "OK"
+msgstr "OK"
 
 #: src/components/ListingForm.tsx:153
 #: src/components/ListingForm.tsx:202
@@ -171,6 +193,31 @@ msgstr "Oops! Something went wrong."
 #: src/app/(app)/(logged-in)/(tabs)/profile/settings/_layout.tsx:14
 msgid "Password"
 msgstr "Password"
+
+#. placeholder {0}: issue.minimum
+#: src/lib/i18n.ts:47
+msgid "Password must be at least {0} characters long."
+msgstr "Password must be at least {0} characters long."
+
+#: src/lib/i18n.ts:64
+msgid "Password must contain at least one digit."
+msgstr "Password must contain at least one digit."
+
+#: src/lib/i18n.ts:56
+msgid "Password must contain at least one lowercase letter."
+msgstr "Password must contain at least one lowercase letter."
+
+#: src/lib/i18n.ts:68
+msgid "Password must contain at least one special character: !@#$%^&*()_+-=[]{};':\"|<>?,./`~"
+msgstr "Password must contain at least one special character: !@#$%^&*()_+-=[]{};':\"|<>?,./`~"
+
+#: src/lib/i18n.ts:60
+msgid "Password must contain at least one uppercase letter."
+msgstr "Password must contain at least one uppercase letter."
+
+#: src/app/(app)/(logged-in)/(tabs)/profile/settings/password.tsx:26
+msgid "Passwords don't match"
+msgstr "Passwords don't match"
 
 #: src/app/(app)/(logged-in)/(tabs)/sell/index.tsx:82
 msgid "Press \"Create new listing\" to start selling!"
@@ -282,3 +329,7 @@ msgstr "User name"
 #: src/app/(app)/(logged-in)/(tabs)/(home)/index.tsx:9
 msgid "welcome to thrifting"
 msgstr "welcome to thrifting"
+
+#: src/app/(app)/(logged-in)/(tabs)/profile/settings/password.tsx:41
+msgid "Your password has been successfully changed!"
+msgstr "Your password has been successfully changed!"
