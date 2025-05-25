@@ -12,6 +12,7 @@ import { useColorScheme } from '~/src/hooks/useColorScheme'
 import { AuthProvider } from '~/src/providers/AuthProvider'
 import { QueryProvider } from '~/src/providers/QueryProvider'
 import { I18nProvider } from '~/src/providers/i18nProvider'
+import { LanguagePreferenceProvider } from '~/src//providers/LanguagePreferenceProvider'
 
 const LIGHT_THEME: Theme = {
   ...DefaultTheme,
@@ -47,16 +48,18 @@ export default function RootLayout() {
   return (
     <QueryProvider>
       <AuthProvider>
-        <I18nProvider>
-          <GestureHandlerRootView>
-            <ThemeProvider value={isDarkColorScheme ? DARK_THEME : LIGHT_THEME}>
-              <StatusBar style={isDarkColorScheme ? 'light' : 'dark'} translucent={false} />
-              <Slot />
-              <Toast />
-              <PortalHost />
-            </ThemeProvider>
-          </GestureHandlerRootView>
-        </I18nProvider>
+        <LanguagePreferenceProvider>
+          <I18nProvider>
+            <GestureHandlerRootView>
+              <ThemeProvider value={isDarkColorScheme ? DARK_THEME : LIGHT_THEME}>
+                <StatusBar style={isDarkColorScheme ? 'light' : 'dark'} translucent={false} />
+                <Slot />
+                <Toast />
+                <PortalHost />
+              </ThemeProvider>
+            </GestureHandlerRootView>
+          </I18nProvider>
+        </LanguagePreferenceProvider>
       </AuthProvider>
     </QueryProvider>
   )
