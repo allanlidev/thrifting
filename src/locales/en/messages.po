@@ -47,11 +47,12 @@ msgstr "Category"
 msgid "Category is required"
 msgstr "Category is required"
 
-#: src/app/(app)/(logged-in)/(tabs)/profile/settings/password.tsx:116
+#: src/app/(app)/(logged-in)/(tabs)/profile/settings/password.tsx:68
+#: src/app/(app)/(logged-in)/(tabs)/profile/settings/password.tsx:118
 msgid "Change password"
 msgstr "Change password"
 
-#: src/app/(app)/(logged-in)/(tabs)/profile/settings/password.tsx:90
+#: src/app/(app)/(logged-in)/(tabs)/profile/settings/password.tsx:92
 msgid "Confirm password"
 msgstr "Confirm password"
 
@@ -155,7 +156,7 @@ msgstr "Must be a valid number"
 msgid "New listing"
 msgstr "New listing"
 
-#: src/app/(app)/(logged-in)/(tabs)/profile/settings/password.tsx:72
+#: src/app/(app)/(logged-in)/(tabs)/profile/settings/password.tsx:74
 msgid "New password"
 msgstr "New password"
 

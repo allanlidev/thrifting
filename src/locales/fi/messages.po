@@ -47,11 +47,12 @@ msgstr "Osasto"
 msgid "Category is required"
 msgstr "Osasto vaaditaan"
 
-#: src/app/(app)/(logged-in)/(tabs)/profile/settings/password.tsx:116
+#: src/app/(app)/(logged-in)/(tabs)/profile/settings/password.tsx:68
+#: src/app/(app)/(logged-in)/(tabs)/profile/settings/password.tsx:118
 msgid "Change password"
 msgstr "Vaihda salasana"
 
-#: src/app/(app)/(logged-in)/(tabs)/profile/settings/password.tsx:90
+#: src/app/(app)/(logged-in)/(tabs)/profile/settings/password.tsx:92
 msgid "Confirm password"
 msgstr "Vahvista salasana"
 
@@ -155,7 +156,7 @@ msgstr "Syötä numero"
 msgid "New listing"
 msgstr "Uusi ilmoitus"
 
-#: src/app/(app)/(logged-in)/(tabs)/profile/settings/password.tsx:72
+#: src/app/(app)/(logged-in)/(tabs)/profile/settings/password.tsx:74
 msgid "New password"
 msgstr "Uusi salasana"
 

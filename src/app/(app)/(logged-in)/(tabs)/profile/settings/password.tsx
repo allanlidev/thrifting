@@ -64,7 +64,9 @@ export default function SettingsAccountPassword() {
       contentContainerClassName="flex-1 gap-7"
       automaticallyAdjustKeyboardInsets
     >
-      <H1>Change password</H1>
+      <H1>
+        <Trans>Change password</Trans>
+      </H1>
       <form.Field name="password">
         {(field) => (
           <View className="w-full gap-2">
