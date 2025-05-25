@@ -5,7 +5,6 @@ import { H1 } from '~/src/components/ui/typography'
 import { RadioGroup } from '~/src/components/ui/radio-group'
 import { AppLanguage, useLanguagePreference } from '~/src/providers/LanguagePreferenceProvider'
 import RadioGroupButton from '~/src/components/RadioGroupButton'
-import { reloadAppAsync } from 'expo'
 
 const LANGUAGES = [
   { label: 'English', value: AppLanguage.en },
@@ -17,7 +16,6 @@ export default function SettingsLanguage() {
 
   async function handleValueChange(value: string) {
     await setPreferredLanguage(value as AppLanguage)
-    await reloadAppAsync()
   }
 
   return (
