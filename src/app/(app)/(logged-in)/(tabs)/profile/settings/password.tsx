@@ -69,7 +69,7 @@ export default function SettingsAccountPassword() {
         {(field) => (
           <View className="w-full gap-2">
             <Label nativeID="passwordInput">
-              <Trans>Password</Trans>
+              <Trans>New password</Trans>
             </Label>
             <Input
               value={field.state.value}

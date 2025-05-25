@@ -155,6 +155,10 @@ msgstr "Must be a valid number"
 msgid "New listing"
 msgstr "New listing"
 
+#: src/app/(app)/(logged-in)/(tabs)/profile/settings/password.tsx:72
+msgid "New password"
+msgstr "New password"
+
 #: src/components/MyListing.tsx:44
 msgid "No title"
 msgstr "No title"
@@ -184,7 +188,6 @@ msgstr "Oops! Something went wrong."
 #: src/app/(app)/signup.tsx:67
 #: src/app/(app)/login.tsx:54
 #: src/app/(app)/login.tsx:59
-#: src/app/(app)/(logged-in)/(tabs)/profile/settings/password.tsx:72
 #: src/app/(app)/(logged-in)/(tabs)/profile/settings/account.tsx:94
 #: src/app/(app)/(logged-in)/(tabs)/profile/settings/_layout.tsx:14
 msgid "Password"
