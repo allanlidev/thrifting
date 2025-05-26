@@ -1,10 +1,12 @@
 import {
   infiniteQueryOptions,
   queryOptions,
-  useInfiniteQuery,
+  useMutation,
   useQuery,
+  useInfiniteQuery,
+  useQueryClient,
 } from '@tanstack/react-query'
-import { Tables } from '~/src/database.types'
+import { type Tables } from '~/src/database.types'
 import { supabase } from '~/src/lib/supabase'
 import { getRange } from '~/src/lib/utils'
 
@@ -77,3 +79,36 @@ export const useListings = ({
   userId: Tables<'products'>['user_id'] | undefined
   limit: number
 }) => useInfiniteQuery(getListings({ userId, limit }))
+
+export const useDeleteListing = () => {
+  const queryClient = useQueryClient()
+  const key = ['listings', 'drafts'] as const
+
+  return useMutation({
+    mutationFn: async (id: Tables<'products'>['id']) => {
+      const { error } = await supabase.from('products').delete().eq('id', id)
+
+      if (error) throw error
+    },
+    onMutate: async (id) => {
+      // Cancel any outgoing refetches
+      await queryClient.cancelQueries({ queryKey: key })
+
+      // Snapshot the current value
+      const previous = queryClient.getQueryData<Tables<'products'>[]>(key)
+
+      // Optimistically update by filtering out the deleted item
+      queryClient.setQueryData<Tables<'products'>[]>(key, (oldData) =>
+        oldData ? oldData.filter((item) => item.id !== id) : []
+      )
+
+      return { key, previous }
+    },
+    onError: (_err, _vars, context) => {
+      // Roll back on error
+      if (context?.previous) {
+        queryClient.setQueryData(context.key, context.previous)
+      }
+    },
+  })
+}

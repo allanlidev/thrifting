@@ -12,6 +12,7 @@ import { Muted } from '~/src/components/ui/typography'
 import { useDraftListings } from '~/src/hooks/queries/listings'
 import { supabase } from '~/src/lib/supabase'
 import { Frown } from '~/src/components/icons/Frown'
+import { FlashList } from '@shopify/flash-list'
 
 export default function Sell() {
   const router = useRouter()
@@ -51,24 +52,25 @@ export default function Sell() {
   }
 
   return (
-    <View className="flex-1 gap-6 p-6">
+    <View className="flex-1 gap-6 py-6">
       <View className="flex-1">
         {drafts && drafts.length > 0 && !isLoadingDrafts ? (
-          <ScrollView>
-            {drafts.map((listing) => (
+          <FlashList
+            data={drafts}
+            estimatedItemSize={112}
+            renderItem={({ item }) => (
               <MyListing
-                key={listing.id}
-                item={listing}
-                onPress={() => {
-                  router.push({ pathname: '/sell/edit/[id]', params: { id: listing.id } })
-                }}
+                key={item.id}
+                item={item}
+                href={{ pathname: '/sell/edit/[id]', params: { id: item.id } }}
+                className="my-2"
               />
-            ))}
-          </ScrollView>
+            )}
+          />
         ) : (
           <>
             {isLoadingDrafts ? (
-              <ScrollView>
+              <ScrollView contentContainerClassName="gap-4 pl-6">
                 {Array.from({ length: 6 }, (_, index) => (
                   <MyListingSkeleton key={index} />
                 ))}
@@ -86,15 +88,17 @@ export default function Sell() {
           </>
         )}
       </View>
-      <Button disabled={isLoadingNewListing} onPress={createNewListing}>
-        {isLoadingNewListing ? (
-          <ActivityIndicator />
-        ) : (
-          <Text>
-            <Trans>Create new listing</Trans>
-          </Text>
-        )}
-      </Button>
+      <View className="px-6">
+        <Button disabled={isLoadingNewListing} onPress={createNewListing}>
+          {isLoadingNewListing ? (
+            <ActivityIndicator />
+          ) : (
+            <Text>
+              <Trans>Create new listing</Trans>
+            </Text>
+          )}
+        </Button>
+      </View>
     </View>
   )
 }
