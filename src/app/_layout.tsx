@@ -52,7 +52,7 @@ export default function RootLayout() {
           <I18nProvider>
             <GestureHandlerRootView>
               <ThemeProvider value={isDarkColorScheme ? DARK_THEME : LIGHT_THEME}>
-                <StatusBar style={isDarkColorScheme ? 'light' : 'dark'} translucent={false} />
+                <StatusBar style={isDarkColorScheme ? 'light' : 'dark'} />
                 <Slot />
                 <Toast />
                 <PortalHost />

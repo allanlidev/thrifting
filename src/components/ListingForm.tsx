@@ -419,7 +419,12 @@ export function ListingForm({ listing }: { listing: Tables<'products'> }) {
               </View>
               <form.Subscribe
                 children={({ isDirty, isSubmitting }) => (
-                  <Button disabled={isSubmitting || !isDirty}>
+                  <Button
+                    disabled={isSubmitting || (!isDirty && listing.published)}
+                    onPress={() => {
+                      form.handleSubmit()
+                    }}
+                  >
                     {isSubmitting ? (
                       <ActivityIndicator />
                     ) : (

@@ -34,7 +34,7 @@ msgstr "Sovelluskieli"
 msgid "Back"
 msgstr "Takaisin"
 
-#: src/components/ListingForm.tsx:488
+#: src/components/ListingForm.tsx:493
 #: src/app/(app)/(logged-in)/(tabs)/profile/edit.tsx:189
 msgid "Cancel"
 msgstr "Peruuta"
@@ -126,6 +126,11 @@ msgstr "Kuva {0} ilmoitukselle"
 msgid "Image is required"
 msgstr "Kuva vaaditaan"
 
+#. placeholder {0}: item.title
+#: src/components/Listing.tsx:18
+msgid "Image of \"{0}\" listing"
+msgstr "Kuva \"{0}\" ilmoituksesta"
+
 #: src/components/ListingForm.tsx:230
 msgid "Images"
 msgstr "Kuvat"
@@ -160,7 +165,12 @@ msgstr "Uusi ilmoitus"
 msgid "New password"
 msgstr "Uusi salasana"
 
+#: src/app/(app)/(logged-in)/(tabs)/(home)/index.tsx:67
+msgid "No listings found."
+msgstr "Ei ilmoituksia."
+
 #: src/components/MyListing.tsx:44
+#: src/components/Listing.tsx:26
 msgid "No title"
 msgstr "Ei otsikkoa"
 
@@ -175,13 +185,14 @@ msgstr "OK"
 
 #: src/components/ListingForm.tsx:153
 #: src/components/ListingForm.tsx:202
-#: src/components/ListingForm.tsx:503
+#: src/components/ListingForm.tsx:508
 #: src/app/(app)/(logged-in)/(tabs)/sell/index.tsx:44
 #: src/app/(app)/(logged-in)/(tabs)/sell/index.tsx:81
 #: src/app/(app)/(logged-in)/(tabs)/sell/edit/[id].tsx:36
 #: src/app/(app)/(logged-in)/(tabs)/profile/edit.tsx:84
 #: src/app/(app)/(logged-in)/(tabs)/profile/edit.tsx:90
 #: src/app/(app)/(logged-in)/(tabs)/profile/settings/name.tsx:21
+#: src/app/(app)/(logged-in)/(tabs)/(home)/index.tsx:54
 msgid "Oops! Something went wrong."
 msgstr "Pahus! Jotain meni pieleen."
 
@@ -264,11 +275,11 @@ msgstr "Rekisteröidään..."
 msgid "Remove avatar"
 msgstr "Poista profiilikuva"
 
-#: src/components/ListingForm.tsx:427
+#: src/components/ListingForm.tsx:432
 msgid "Save and publish"
 msgstr "Tallenna ja julkaise"
 
-#: src/components/ListingForm.tsx:444
+#: src/components/ListingForm.tsx:449
 msgid "Save as draft"
 msgstr "Tallenna luonnos"
 
@@ -312,12 +323,12 @@ msgstr "Otsikko vaaditaan"
 msgid "Update"
 msgstr "Päivitä"
 
-#: src/components/ListingForm.tsx:472
+#: src/components/ListingForm.tsx:477
 #: src/app/(app)/(logged-in)/(tabs)/profile/edit.tsx:165
 msgid "Upload from Camera"
 msgstr "Lataa kamerasta"
 
-#: src/components/ListingForm.tsx:482
+#: src/components/ListingForm.tsx:487
 #: src/app/(app)/(logged-in)/(tabs)/profile/edit.tsx:175
 msgid "Upload from Library"
 msgstr "Lataa kirjastosta"
@@ -326,7 +337,7 @@ msgstr "Lataa kirjastosta"
 msgid "User name"
 msgstr "Käyttäjänimi"
 
-#: src/app/(app)/(logged-in)/(tabs)/(home)/index.tsx:9
+#: src/app/(app)/(logged-in)/(tabs)/(home)/index.tsx:17
 msgid "welcome to thrifting"
 msgstr "tervetuloa thriftingiin"
 

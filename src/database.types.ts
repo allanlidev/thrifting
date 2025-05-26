@@ -6,18 +6,15 @@ export type Database = {
       categories: {
         Row: {
           description: string | null
-          id: number
-          title: string | null
+          title: string
         }
         Insert: {
           description?: string | null
-          id?: number
-          title?: string | null
+          title: string
         }
         Update: {
           description?: string | null
-          id?: number
-          title?: string | null
+          title?: string
         }
         Relationships: []
       }
@@ -55,48 +52,48 @@ export type Database = {
       }
       products: {
         Row: {
-          category_id: number | null
+          category: string
           created_at: string
-          description: string | null
+          description: string
           id: number
           images: string[]
-          price: number | null
-          published: boolean | null
-          title: string | null
-          updated_at: string | null
-          user_id: string | null
+          price: number
+          published: boolean
+          title: string
+          updated_at: string
+          user_id: string
         }
         Insert: {
-          category_id?: number | null
+          category?: string
           created_at?: string
-          description?: string | null
+          description?: string
           id?: number
           images?: string[]
-          price?: number | null
-          published?: boolean | null
-          title?: string | null
-          updated_at?: string | null
-          user_id?: string | null
+          price?: number
+          published?: boolean
+          title?: string
+          updated_at?: string
+          user_id?: string
         }
         Update: {
-          category_id?: number | null
+          category?: string
           created_at?: string
-          description?: string | null
+          description?: string
           id?: number
           images?: string[]
-          price?: number | null
-          published?: boolean | null
-          title?: string | null
-          updated_at?: string | null
-          user_id?: string | null
+          price?: number
+          published?: boolean
+          title?: string
+          updated_at?: string
+          user_id?: string
         }
         Relationships: [
           {
-            foreignKeyName: 'products_category_id_fkey'
-            columns: ['category_id']
+            foreignKeyName: 'products_category_fkey'
+            columns: ['category']
             isOneToOne: false
             referencedRelation: 'categories'
-            referencedColumns: ['id']
+            referencedColumns: ['title']
           },
           {
             foreignKeyName: 'products_profile_id_fkey'
