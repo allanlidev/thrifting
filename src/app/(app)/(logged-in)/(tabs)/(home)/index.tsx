@@ -28,37 +28,56 @@ export default function Home() {
   }, [isLoading])
 
   return (
-    <View className="pt-safe-offset-6 flex-1 justify-center gap-4 px-6">
-      {isError ? (
-        <>
-          <Frown className="mx-auto size-12 color-muted-foreground" />
-          <Muted className="mx-auto">
-            <Trans>Oops! Something went wrong.</Trans>
-          </Muted>
-        </>
-      ) : (
-        <FlashList
-          data={isLoadingListings ? Array(8) : (listings ?? [])}
-          renderItem={({ item }) => (
-            <View className="flex-1 items-center">
-              {isLoadingListings ? <ListingSkeleton /> : <Listing item={item} />}
-            </View>
-          )}
-          estimatedItemSize={100}
-          numColumns={2}
-          ListHeaderComponent={() => (
-            <H1 className="text-center">
-              <Trans>welcome to thrifting</Trans>
-            </H1>
-          )}
-          ListFooterComponent={() => (
-            <View className="h-8">{isFetchingNextPage ? <ActivityIndicator /> : <></>}</View>
-          )}
-          onEndReached={() => {
-            hasNextPage && fetchNextPage()
-          }}
-        />
-      )}
+    <View className="pt-safe-offset-6 flex-1 px-6">
+      {isError ||
+        (!listings?.length && (
+          <H1 className="pb-8 text-center">
+            <Trans>welcome to thrifting</Trans>
+          </H1>
+        ))}
+      <View className="flex-1 justify-center gap-4">
+        {isError ? (
+          <>
+            <Frown className="mx-auto size-12 color-muted-foreground" />
+            <Muted className="mx-auto">
+              <Trans>Oops! Something went wrong.</Trans>
+            </Muted>
+          </>
+        ) : (
+          <>
+            {listings?.length ? (
+              <FlashList
+                data={isLoadingListings ? Array(8) : (listings ?? [])}
+                renderItem={({ item }) => (
+                  <View className="flex-1 items-center">
+                    {isLoadingListings ? <ListingSkeleton /> : <Listing item={item} />}
+                  </View>
+                )}
+                estimatedItemSize={100}
+                numColumns={2}
+                ListHeaderComponent={() => (
+                  <H1 className="pb-8 text-center">
+                    <Trans>welcome to thrifting</Trans>
+                  </H1>
+                )}
+                ListFooterComponent={() => (
+                  <View className="h-8">{isFetchingNextPage ? <ActivityIndicator /> : <></>}</View>
+                )}
+                onEndReached={() => {
+                  hasNextPage && fetchNextPage()
+                }}
+              />
+            ) : (
+              <>
+                <Frown className="mx-auto size-12 color-muted-foreground" />
+                <Muted className="mx-auto">
+                  <Trans>No listings found.</Trans>
+                </Muted>
+              </>
+            )}
+          </>
+        )}
+      </View>
     </View>
   )
 }

@@ -13,8 +13,8 @@ msgstr ""
 "Language-Team: \n"
 "Plural-Forms: \n"
 
-#: src/app/(app)/(logged-in)/(tabs)/profile/settings/index.tsx:28
 #: src/app/(app)/(logged-in)/(tabs)/profile/settings/_layout.tsx:12
+#: src/app/(app)/(logged-in)/(tabs)/profile/settings/index.tsx:28
 msgid "Account"
 msgstr "Account"
 
@@ -34,7 +34,7 @@ msgstr "App Language"
 msgid "Back"
 msgstr "Back"
 
-#: src/components/ListingForm.tsx:488
+#: src/components/ListingForm.tsx:493
 #: src/app/(app)/(logged-in)/(tabs)/profile/edit.tsx:189
 msgid "Cancel"
 msgstr "Cancel"
@@ -130,8 +130,8 @@ msgstr "Image is required"
 msgid "Images"
 msgstr "Images"
 
-#: src/app/(app)/(logged-in)/(tabs)/profile/settings/index.tsx:39
 #: src/app/(app)/(logged-in)/(tabs)/profile/settings/_layout.tsx:15
+#: src/app/(app)/(logged-in)/(tabs)/profile/settings/index.tsx:39
 msgid "Language"
 msgstr "Language"
 
@@ -160,7 +160,16 @@ msgstr "New listing"
 msgid "New password"
 msgstr "New password"
 
+#: src/app/(app)/(logged-in)/(tabs)/(home)/index.tsx:74
+msgid "No listings found."
+msgstr "No listings found."
+
+#: src/app/(app)/(logged-in)/(tabs)/(home)/index.tsx:74
+#~ msgid "No products found."
+#~ msgstr "No products found."
+
 #: src/components/MyListing.tsx:44
+#: src/components/Listing.tsx:28
 msgid "No title"
 msgstr "No title"
 
@@ -175,13 +184,14 @@ msgstr "OK"
 
 #: src/components/ListingForm.tsx:153
 #: src/components/ListingForm.tsx:202
-#: src/components/ListingForm.tsx:503
+#: src/components/ListingForm.tsx:508
 #: src/app/(app)/(logged-in)/(tabs)/sell/index.tsx:44
 #: src/app/(app)/(logged-in)/(tabs)/sell/index.tsx:81
 #: src/app/(app)/(logged-in)/(tabs)/sell/edit/[id].tsx:36
 #: src/app/(app)/(logged-in)/(tabs)/profile/edit.tsx:84
 #: src/app/(app)/(logged-in)/(tabs)/profile/edit.tsx:90
 #: src/app/(app)/(logged-in)/(tabs)/profile/settings/name.tsx:21
+#: src/app/(app)/(logged-in)/(tabs)/(home)/index.tsx:43
 msgid "Oops! Something went wrong."
 msgstr "Oops! Something went wrong."
 
@@ -189,8 +199,8 @@ msgstr "Oops! Something went wrong."
 #: src/app/(app)/signup.tsx:67
 #: src/app/(app)/login.tsx:54
 #: src/app/(app)/login.tsx:59
-#: src/app/(app)/(logged-in)/(tabs)/profile/settings/account.tsx:94
 #: src/app/(app)/(logged-in)/(tabs)/profile/settings/_layout.tsx:14
+#: src/app/(app)/(logged-in)/(tabs)/profile/settings/account.tsx:94
 msgid "Password"
 msgstr "Password"
 
@@ -264,16 +274,16 @@ msgstr "Registering..."
 msgid "Remove avatar"
 msgstr "Remove avatar"
 
-#: src/components/ListingForm.tsx:427
+#: src/components/ListingForm.tsx:432
 msgid "Save and publish"
 msgstr "Save and publish"
 
-#: src/components/ListingForm.tsx:444
+#: src/components/ListingForm.tsx:449
 msgid "Save as draft"
 msgstr "Save as draft"
 
-#: src/app/(app)/(logged-in)/(tabs)/profile/settings/index.tsx:19
 #: src/app/(app)/(logged-in)/(tabs)/profile/settings/_layout.tsx:11
+#: src/app/(app)/(logged-in)/(tabs)/profile/settings/index.tsx:19
 msgid "Settings"
 msgstr "Settings"
 
@@ -312,12 +322,12 @@ msgstr "Title is required"
 msgid "Update"
 msgstr "Update"
 
-#: src/components/ListingForm.tsx:472
+#: src/components/ListingForm.tsx:477
 #: src/app/(app)/(logged-in)/(tabs)/profile/edit.tsx:165
 msgid "Upload from Camera"
 msgstr "Upload from Camera"
 
-#: src/components/ListingForm.tsx:482
+#: src/components/ListingForm.tsx:487
 #: src/app/(app)/(logged-in)/(tabs)/profile/edit.tsx:175
 msgid "Upload from Library"
 msgstr "Upload from Library"
@@ -326,7 +336,8 @@ msgstr "Upload from Library"
 msgid "User name"
 msgstr "User name"
 
-#: src/app/(app)/(logged-in)/(tabs)/(home)/index.tsx:9
+#: src/app/(app)/(logged-in)/(tabs)/(home)/index.tsx:35
+#: src/app/(app)/(logged-in)/(tabs)/(home)/index.tsx:60
 msgid "welcome to thrifting"
 msgstr "welcome to thrifting"
 
