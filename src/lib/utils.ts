@@ -22,3 +22,10 @@ export function convertBlobToBase64(blob: Blob): Promise<string> {
     reader.readAsDataURL(blob)
   })
 }
+
+// Function used to return a range of numbers to be used for pagination
+export function getRange(page: number, limit: number) {
+  const from = page * limit
+  const to = from + limit - 1
+  return [from, to]
+}

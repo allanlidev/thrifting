@@ -1,83 +1,94 @@
 import { Trans } from '@lingui/react/macro'
 import { FlashList } from '@shopify/flash-list'
-import { useEffect, useMemo, useState } from 'react'
-import { ActivityIndicator, View } from 'react-native'
+import { ActivityIndicator, View, ViewProps } from 'react-native'
 import { Listing, ListingSkeleton } from '~/src/components/Listing'
 import { H1, Muted } from '~/src/components/ui/typography'
 import { useListings } from '~/src/hooks/queries/listings'
 import { useAuth } from '~/src/providers/AuthProvider'
 import { Frown } from '~/src/components/icons/Frown'
+import { cn } from '~/src/lib/utils'
+
+const Container = ({ className, ...props }: ViewProps) => (
+  <View className={cn(['flex-1', className])} {...props} />
+)
+
+const Header = () => (
+  <H1 className="mt-safe-offset-6 mb-8 px-6 text-center">
+    <Trans>welcome to thrifting</Trans>
+  </H1>
+)
 
 export default function Home() {
-  const [isLoadingListings, setIsLoadingListings] = useState(true)
-
   const { session } = useAuth()
-  const { isLoading, isError, data, isFetchingNextPage, hasNextPage, fetchNextPage } = useListings({
-    userId: session?.user?.id ?? null,
+  const { data, isError, isFetchingNextPage, isLoading, fetchNextPage, hasNextPage } = useListings({
+    userId: session?.user?.id,
     limit: 8,
   })
 
-  const listings = useMemo(() => data?.pages?.flat(), [data])
+  const listings = data?.pages?.flat() ?? []
 
-  useEffect(() => {
-    if (!isLoading) {
-      setTimeout(() => {
-        setIsLoadingListings(false)
-      }, 500)
-    }
-  }, [isLoading])
+  if (isLoading) {
+    return (
+      <FlashList
+        data={Array(8)}
+        renderItem={() => (
+          <View className="flex-1 items-center">
+            <ListingSkeleton />
+          </View>
+        )}
+        estimatedItemSize={180}
+        numColumns={2}
+        ListHeaderComponent={Header}
+        contentContainerClassName="flex-1"
+      />
+    )
+  }
+
+  if (isError) {
+    return (
+      <Container>
+        <Header />
+        <View className="flex-1 items-center justify-center gap-4">
+          <Frown className="size-12 color-muted-foreground" />
+          <Muted className="mx-auto">
+            <Trans>Oops! Something went wrong.</Trans>
+          </Muted>
+        </View>
+      </Container>
+    )
+  }
+
+  if (!listings.length) {
+    return (
+      <Container>
+        <Header />
+        <Frown className="mx-auto size-12 color-muted-foreground" />
+        <Muted className="mx-auto">
+          <Trans>No listings found.</Trans>
+        </Muted>
+      </Container>
+    )
+  }
 
   return (
-    <View className="pt-safe-offset-6 flex-1 px-6">
-      {isError ||
-        (!listings?.length && (
-          <H1 className="pb-8 text-center">
-            <Trans>welcome to thrifting</Trans>
-          </H1>
-        ))}
-      <View className="flex-1 justify-center gap-4">
-        {isError ? (
-          <>
-            <Frown className="mx-auto size-12 color-muted-foreground" />
-            <Muted className="mx-auto">
-              <Trans>Oops! Something went wrong.</Trans>
-            </Muted>
-          </>
-        ) : (
-          <>
-            {listings?.length ? (
-              <FlashList
-                data={isLoadingListings ? Array(8) : (listings ?? [])}
-                renderItem={({ item }) => (
-                  <View className="flex-1 items-center">
-                    {isLoadingListings ? <ListingSkeleton /> : <Listing item={item} />}
-                  </View>
-                )}
-                estimatedItemSize={100}
-                numColumns={2}
-                ListHeaderComponent={() => (
-                  <H1 className="pb-8 text-center">
-                    <Trans>welcome to thrifting</Trans>
-                  </H1>
-                )}
-                ListFooterComponent={() => (
-                  <View className="h-8">{isFetchingNextPage ? <ActivityIndicator /> : <></>}</View>
-                )}
-                onEndReached={() => {
-                  hasNextPage && fetchNextPage()
-                }}
-              />
-            ) : (
-              <>
-                <Frown className="mx-auto size-12 color-muted-foreground" />
-                <Muted className="mx-auto">
-                  <Trans>No listings found.</Trans>
-                </Muted>
-              </>
-            )}
-          </>
-        )}
-      </View>
-    </View>
+    <FlashList
+      data={listings}
+      renderItem={({ item }) => (
+        <View key={item.id} className="flex-1 items-center">
+          <Listing item={item} />
+        </View>
+      )}
+      estimatedItemSize={180}
+      numColumns={2}
+      ListHeaderComponent={Header}
+      ListFooterComponent={() =>
+        isFetchingNextPage && <ActivityIndicator size="large" className="m-4" />
+      }
+      onEndReached={() => {
+        hasNextPage && fetchNextPage()
+      }}
+      className="flex-1"
+      contentContainerClassName="pb-8"
+    />
   )
 }

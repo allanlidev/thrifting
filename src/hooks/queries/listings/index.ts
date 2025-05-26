@@ -6,6 +6,7 @@ import {
 } from '@tanstack/react-query'
 import { Tables } from '~/src/database.types'
 import { supabase } from '~/src/lib/supabase'
+import { getRange } from '~/src/lib/utils'
 
 function getDraftListings() {
   return queryOptions({
@@ -33,10 +34,17 @@ function getCategories() {
   })
 }
 
-function getListings({ userId, limit }: { userId: Tables<'products'>['user_id']; limit: number }) {
+function getListings({
+  userId,
+  limit,
+}: {
+  userId: Tables<'products'>['user_id'] | undefined
+  limit: number
+}) {
   return infiniteQueryOptions({
     queryKey: ['listings', userId, limit],
     queryFn: async ({ pageParam }) => {
+      if (!userId) throw new Error('User ID is required')
       const range = getRange(pageParam, limit)
 
       const { data, error } = await supabase
@@ -56,14 +64,8 @@ function getListings({ userId, limit }: { userId: Tables<'products'>['user_id'];
 
       return nextPage
     },
+    enabled: !!userId,
   })
-}
-
-// Function used to return a range of numbers to be used for pagination
-function getRange(page: number, limit: number) {
-  const from = page * limit
-  const to = from + limit - 1
-  return [from, to]
 }
 
 export const useDraftListings = () => useQuery(getDraftListings())
@@ -72,6 +74,6 @@ export const useListings = ({
   userId,
   limit,
 }: {
-  userId: Tables<'products'>['user_id']
+  userId: Tables<'products'>['user_id'] | undefined
   limit: number
 }) => useInfiniteQuery(getListings({ userId, limit }))

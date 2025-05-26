@@ -13,8 +13,8 @@ msgstr ""
 "Language-Team: \n"
 "Plural-Forms: \n"
 
-#: src/app/(app)/(logged-in)/(tabs)/profile/settings/_layout.tsx:12
 #: src/app/(app)/(logged-in)/(tabs)/profile/settings/index.tsx:28
+#: src/app/(app)/(logged-in)/(tabs)/profile/settings/_layout.tsx:12
 msgid "Account"
 msgstr "Tili"
 
@@ -126,12 +126,17 @@ msgstr "Kuva {0} ilmoitukselle"
 msgid "Image is required"
 msgstr "Kuva vaaditaan"
 
+#. placeholder {0}: item.title
+#: src/components/Listing.tsx:18
+msgid "Image of \"{0}\" listing"
+msgstr "Kuva \"{0}\" ilmoituksesta"
+
 #: src/components/ListingForm.tsx:230
 msgid "Images"
 msgstr "Kuvat"
 
-#: src/app/(app)/(logged-in)/(tabs)/profile/settings/_layout.tsx:15
 #: src/app/(app)/(logged-in)/(tabs)/profile/settings/index.tsx:39
+#: src/app/(app)/(logged-in)/(tabs)/profile/settings/_layout.tsx:15
 msgid "Language"
 msgstr "Kieli"
 
@@ -160,16 +165,12 @@ msgstr "Uusi ilmoitus"
 msgid "New password"
 msgstr "Uusi salasana"
 
-#: src/app/(app)/(logged-in)/(tabs)/(home)/index.tsx:74
+#: src/app/(app)/(logged-in)/(tabs)/(home)/index.tsx:67
 msgid "No listings found."
 msgstr "Ei ilmoituksia."
 
-#: src/app/(app)/(logged-in)/(tabs)/(home)/index.tsx:74
-#~ msgid "No products found."
-#~ msgstr ""
-
 #: src/components/MyListing.tsx:44
-#: src/components/Listing.tsx:28
+#: src/components/Listing.tsx:26
 msgid "No title"
 msgstr "Ei otsikkoa"
 
@@ -191,7 +192,7 @@ msgstr "OK"
 #: src/app/(app)/(logged-in)/(tabs)/profile/edit.tsx:84
 #: src/app/(app)/(logged-in)/(tabs)/profile/edit.tsx:90
 #: src/app/(app)/(logged-in)/(tabs)/profile/settings/name.tsx:21
-#: src/app/(app)/(logged-in)/(tabs)/(home)/index.tsx:43
+#: src/app/(app)/(logged-in)/(tabs)/(home)/index.tsx:54
 msgid "Oops! Something went wrong."
 msgstr "Pahus! Jotain meni pieleen."
 
@@ -199,8 +200,8 @@ msgstr "Pahus! Jotain meni pieleen."
 #: src/app/(app)/signup.tsx:67
 #: src/app/(app)/login.tsx:54
 #: src/app/(app)/login.tsx:59
-#: src/app/(app)/(logged-in)/(tabs)/profile/settings/_layout.tsx:14
 #: src/app/(app)/(logged-in)/(tabs)/profile/settings/account.tsx:94
+#: src/app/(app)/(logged-in)/(tabs)/profile/settings/_layout.tsx:14
 msgid "Password"
 msgstr "Salasana"
 
@@ -282,8 +283,8 @@ msgstr "Tallenna ja julkaise"
 msgid "Save as draft"
 msgstr "Tallenna luonnos"
 
-#: src/app/(app)/(logged-in)/(tabs)/profile/settings/_layout.tsx:11
 #: src/app/(app)/(logged-in)/(tabs)/profile/settings/index.tsx:19
+#: src/app/(app)/(logged-in)/(tabs)/profile/settings/_layout.tsx:11
 msgid "Settings"
 msgstr "Asetukset"
 
@@ -336,8 +337,7 @@ msgstr "Lataa kirjastosta"
 msgid "User name"
 msgstr "Käyttäjänimi"
 
-#: src/app/(app)/(logged-in)/(tabs)/(home)/index.tsx:35
-#: src/app/(app)/(logged-in)/(tabs)/(home)/index.tsx:60
+#: src/app/(app)/(logged-in)/(tabs)/(home)/index.tsx:17
 msgid "welcome to thrifting"
 msgstr "tervetuloa thriftingiin"
 
