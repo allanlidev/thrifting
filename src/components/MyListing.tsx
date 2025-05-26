@@ -18,7 +18,7 @@ export function MyListing({ item, onPress }: { item: any; onPress?: () => void }
   return (
     <Pressable onPress={onPress} className="active:opacity-50">
       <View className="mt-4 flex-1 flex-row gap-4">
-        <View className="h-24 w-24 rounded-md bg-muted">
+        <View className="h-24 w-24 overflow-hidden rounded-md bg-muted">
           {item.images.length > 0 && (
             <RemoteImage
               bucketId="product-images"
