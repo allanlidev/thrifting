@@ -17,8 +17,7 @@ import { useQueryClient } from '@tanstack/react-query'
 import Carousel, { type ICarouselInstance } from 'react-native-reanimated-carousel'
 import { useSharedValue } from 'react-native-reanimated'
 import { z } from 'zod'
-import { Trans } from '@lingui/react/macro'
-import { t } from '@lingui/core/macro'
+import { Trans, useLingui } from '@lingui/react/macro'
 import { Input } from '~/src/components/ui/input'
 import { Label } from '~/src/components/ui/label'
 import { Textarea } from '~/src/components/ui/textarea'
@@ -47,6 +46,7 @@ import { Trash } from '~/src/components/icons/Trash'
 import { useColorScheme } from '~/src/hooks/useColorScheme'
 import { RemoteImage } from '~/src/components/RemoteImage'
 import { PaginationBasic } from '~/src/components/Pagination'
+import { type Category, category as productCategory } from '~/src/lib/productCategory'
 
 const isOption = (val: unknown): val is NonNullable<Option> => {
   return (
@@ -71,6 +71,7 @@ export function ListingForm({ listing }: { listing: Tables<'products'> }) {
   const progress = useSharedValue<number>(0)
   const { width } = useWindowDimensions()
   const { isDarkColorScheme } = useColorScheme()
+  const { t } = useLingui()
 
   const onPressPagination = (index: number) => {
     carouselRef.current?.scrollTo({
@@ -100,19 +101,27 @@ export function ListingForm({ listing }: { listing: Tables<'products'> }) {
     category: Option | null
   }
 
+  const getDefaultCategory = (listingCategory: string) => {
+    if (!listingCategory) return null
+    const defaultCategory = categories?.find((category) => listingCategory === category.title)
+    if (defaultCategory) {
+      return {
+        value: defaultCategory.title,
+        label: t(productCategory[defaultCategory.title as Category]),
+      }
+    }
+    return {
+      value: 'fashion',
+      label: t(productCategory['fashion']),
+    }
+  }
+
   const form = useForm({
     defaultValues: {
-      title: listing.title ?? '',
-      description: listing.description ?? '',
-      price: listing.price ? String(listing.price) : '0',
-      category: listing.category_id
-        ? {
-            value: String(
-              categories?.find((category) => listing.category_id === category.id)?.id ?? ''
-            ),
-            label: categories?.find((category) => listing.category_id === category.id)?.title ?? '',
-          }
-        : null,
+      title: listing.title,
+      description: listing.description,
+      price: String(listing.price),
+      category: getDefaultCategory(listing.category),
       images: listing.images,
     },
     validators: { onChange: updateSchema },
@@ -137,7 +146,7 @@ export function ListingForm({ listing }: { listing: Tables<'products'> }) {
       .from('products')
       .update({
         ...rest,
-        category_id: value.category?.value ? parseInt(value.category.value) : null,
+        category: category?.value ?? 'fashion',
         price: parseInt(value.price),
         published: publish,
         updated_at: new Date().toISOString(),
@@ -148,6 +157,7 @@ export function ListingForm({ listing }: { listing: Tables<'products'> }) {
     if (!publish) setIsSubmittingDraft(false)
 
     if (error) {
+      console.error(error)
       Toast.show({
         type: 'error',
         text1: t`Oops! Something went wrong.`,
@@ -159,7 +169,8 @@ export function ListingForm({ listing }: { listing: Tables<'products'> }) {
       type: 'success',
       text1: publish ? t`Successfully published listing` : t`Successfully saved listing`,
     })
-    queryClient.invalidateQueries({ queryKey: ['listings', 'drafts'] })
+    queryClient.invalidateQueries({ queryKey: ['listings', 'draft'], exact: false })
+    queryClient.invalidateQueries({ queryKey: ['listing', listing.id] })
     router.dismiss()
   }
 
@@ -320,18 +331,16 @@ export function ListingForm({ listing }: { listing: Tables<'products'> }) {
                         <SelectContent insets={contentInsets} align="end">
                           <RNGHScrollView className="max-h-40">
                             <SelectGroup>
-                              {categories.map(
-                                (category) =>
-                                  category.title && (
-                                    <SelectItem
-                                      key={category.id}
-                                      label={category.title}
-                                      value={String(category.id)}
-                                    >
-                                      {category.title}
-                                    </SelectItem>
-                                  )
-                              )}
+                              {categories.map((category) => (
+                                <SelectItem
+                                  key={category.title}
+                                  label={t(productCategory[category.title as Category])}
+                                  value={category.title}
+                                  className="min-w-48"
+                                >
+                                  {t(productCategory[category.title as Category])}
+                                </SelectItem>
+                              ))}
                             </SelectGroup>
                           </RNGHScrollView>
                         </SelectContent>

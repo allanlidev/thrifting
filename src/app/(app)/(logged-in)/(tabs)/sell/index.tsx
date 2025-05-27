@@ -69,7 +69,7 @@ export default function Sell() {
       return
     }
 
-    queryClient.invalidateQueries({ queryKey: ['listings', 'drafts'] })
+    queryClient.invalidateQueries({ queryKey: ['listings', 'draft'], exact: false })
     router.push({ pathname: '/sell/edit/[id]', params: { id: data[0].id } })
   }
 
