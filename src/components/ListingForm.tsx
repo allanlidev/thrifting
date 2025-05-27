@@ -102,15 +102,18 @@ export function ListingForm({ listing }: { listing: Tables<'products'> }) {
 
   const form = useForm({
     defaultValues: {
-      title: listing.title ?? '',
-      description: listing.description ?? '',
-      price: listing.price ? String(listing.price) : '0',
-      category: listing.category_id
+      title: listing.title,
+      description: listing.description,
+      price: String(listing.price),
+      category: listing.category
         ? {
             value: String(
-              categories?.find((category) => listing.category_id === category.id)?.id ?? ''
+              categories?.find((category) => listing.category === category.title)?.title ??
+                'fashion'
             ),
-            label: categories?.find((category) => listing.category_id === category.id)?.title ?? '',
+            label:
+              categories?.find((category) => listing.category === category.title)?.title ??
+              'fashion',
           }
         : null,
       images: listing.images,
@@ -137,7 +140,7 @@ export function ListingForm({ listing }: { listing: Tables<'products'> }) {
       .from('products')
       .update({
         ...rest,
-        category_id: value.category?.value ? parseInt(value.category.value) : null,
+        category: value.category?.value ?? 'fashion',
         price: parseInt(value.price),
         published: publish,
         updated_at: new Date().toISOString(),
@@ -148,6 +151,7 @@ export function ListingForm({ listing }: { listing: Tables<'products'> }) {
     if (!publish) setIsSubmittingDraft(false)
 
     if (error) {
+      console.error(error)
       Toast.show({
         type: 'error',
         text1: t`Oops! Something went wrong.`,
@@ -324,11 +328,11 @@ export function ListingForm({ listing }: { listing: Tables<'products'> }) {
                                 (category) =>
                                   category.title && (
                                     <SelectItem
-                                      key={category.id}
-                                      label={category.title}
-                                      value={String(category.id)}
+                                      key={category.title}
+                                      label={category.title} // TODO: add translation here
+                                      value={category.title}
                                     >
-                                      {category.title}
+                                      {category.title /* TODO: add translation here*/}
                                     </SelectItem>
                                   )
                               )}
