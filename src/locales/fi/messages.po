@@ -61,7 +61,9 @@ msgstr "Vaihda salasana"
 msgid "Confirm password"
 msgstr "Vahvista salasana"
 
-#: src/app/(app)/(logged-in)/(tabs)/sell/index.tsx:97
+#: src/app/(app)/(logged-in)/(tabs)/sell/index.tsx:75
+#: src/app/(app)/(logged-in)/(tabs)/sell/index.tsx:93
+#: src/app/(app)/(logged-in)/(tabs)/sell/index.tsx:138
 msgid "Create new listing"
 msgstr "Luo uusi ilmoitus"
 
@@ -92,6 +94,10 @@ msgstr "Kuvaus vaaditaan"
 #: src/components/MyListing.tsx:112
 msgid "Draft"
 msgstr "Luonnos"
+
+#: src/app/(app)/(logged-in)/(tabs)/sell/index.tsx:117
+msgid "Drafts"
+msgstr "Luonnokset"
 
 #: src/app/(app)/(logged-in)/(tabs)/sell/_layout.tsx:11
 msgid "Edit listing"
@@ -178,7 +184,7 @@ msgstr "Uusi ilmoitus"
 msgid "New password"
 msgstr "Uusi salasana"
 
-#: src/app/(app)/(logged-in)/(tabs)/(home)/index.tsx:67
+#: src/app/(app)/(logged-in)/(tabs)/(home)/index.tsx:68
 msgid "No listings found."
 msgstr "Ei ilmoituksia."
 
@@ -200,13 +206,13 @@ msgstr "OK"
 #: src/components/ListingForm.tsx:153
 #: src/components/ListingForm.tsx:202
 #: src/components/ListingForm.tsx:508
-#: src/app/(app)/(logged-in)/(tabs)/sell/index.tsx:45
-#: src/app/(app)/(logged-in)/(tabs)/sell/index.tsx:83
-#: src/app/(app)/(logged-in)/(tabs)/sell/edit/[id].tsx:36
+#: src/app/(app)/(logged-in)/(tabs)/sell/index.tsx:53
+#: src/app/(app)/(logged-in)/(tabs)/sell/index.tsx:88
+#: src/app/(app)/(logged-in)/(tabs)/sell/edit/[id].tsx:28
 #: src/app/(app)/(logged-in)/(tabs)/profile/edit.tsx:84
 #: src/app/(app)/(logged-in)/(tabs)/profile/edit.tsx:90
 #: src/app/(app)/(logged-in)/(tabs)/profile/settings/name.tsx:21
-#: src/app/(app)/(logged-in)/(tabs)/(home)/index.tsx:54
+#: src/app/(app)/(logged-in)/(tabs)/(home)/index.tsx:55
 msgid "Oops! Something went wrong."
 msgstr "Pahus! Jotain meni pieleen."
 
@@ -244,7 +250,7 @@ msgstr "Salasanan on sisällettävä vähintään yksi iso kirjain."
 msgid "Passwords don't match"
 msgstr "Salasanat eivät täsmää"
 
-#: src/app/(app)/(logged-in)/(tabs)/sell/index.tsx:84
+#: src/app/(app)/(logged-in)/(tabs)/sell/index.tsx:129
 msgid "Press \"Create new listing\" to start selling!"
 msgstr "Paina \"Luo uusi ilmoitus\" ja aloita myynti!"
 

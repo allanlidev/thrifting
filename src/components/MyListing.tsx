@@ -20,7 +20,7 @@ function RightAction(
   drag: SharedValue<number>,
   itemId: Tables<'products'>['id']
 ) {
-  const { mutateAsync } = useDeleteListing()
+  const { mutateAsync } = useDeleteListing({ status: 'draft' })
   const styleAnimation = useAnimatedStyle(() => {
     return {
       transform: [{ translateX: drag.value + 200 }],

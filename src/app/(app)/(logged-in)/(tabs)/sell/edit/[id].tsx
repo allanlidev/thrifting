@@ -1,44 +1,35 @@
 import { Trans } from '@lingui/react/macro'
 import { useLocalSearchParams } from 'expo-router'
-import { useMemo } from 'react'
-import { ActivityIndicator, View } from 'react-native'
+import { ActivityIndicator, View, ViewProps } from 'react-native'
 import { Frown } from '~/src/components/icons/Frown'
 import { ListingForm } from '~/src/components/ListingForm'
 import { Muted } from '~/src/components/ui/typography'
-import { useDraftListings } from '~/src/hooks/queries/listings'
+import { useListing } from '~/src/hooks/queries/listings'
+
+const Container = (props: ViewProps) => <View className="flex-1 justify-center gap-4" {...props} />
 
 export default function EditListing() {
   const { id } = useLocalSearchParams()
-  const { data: drafts, isFetching: isDraftsFetching } = useDraftListings()
+  const { data, isError, isLoading } = useListing(Number(typeof id === 'string' ? id : id[0]))
 
-  const listingId = useMemo(() => {
-    const parsedId = typeof id === 'string' ? parseInt(id) : null
-    return Number.isInteger(parsedId) ? parsedId : null
-  }, [id])
+  if (isLoading) {
+    return (
+      <Container>
+        <ActivityIndicator />
+      </Container>
+    )
+  }
 
-  const listing = useMemo(() => {
-    if (listingId == null) return null
-    return drafts?.find((draft) => draft.id === listingId)
-  }, [listingId, drafts])
+  if (isError || !data) {
+    return (
+      <Container>
+        <Frown className="mx-auto size-12 color-muted-foreground" />
+        <Muted className="mx-auto">
+          <Trans>Oops! Something went wrong.</Trans>
+        </Muted>
+      </Container>
+    )
+  }
 
-  return (
-    <>
-      {listing && !isDraftsFetching ? (
-        <ListingForm listing={listing} />
-      ) : (
-        <View className="flex-1 justify-center gap-4">
-          {isDraftsFetching ? (
-            <ActivityIndicator />
-          ) : (
-            <>
-              <Frown className="mx-auto size-12 color-muted-foreground" />
-              <Muted className="mx-auto">
-                <Trans>Oops! Something went wrong.</Trans>
-              </Muted>
-            </>
-          )}
-        </View>
-      )}
-    </>
-  )
+  return <ListingForm listing={data} />
 }

@@ -5,6 +5,7 @@ import {
   useQuery,
   useInfiniteQuery,
   useQueryClient,
+  InfiniteData,
 } from '@tanstack/react-query'
 import { type Tables } from '~/src/database.types'
 import { supabase } from '~/src/lib/supabase'
@@ -36,29 +37,45 @@ function getCategories() {
   })
 }
 
-function getListings({
-  userId,
-  limit,
-}: {
-  userId: Tables<'products'>['user_id'] | undefined
-  limit: number
-}) {
+export const useDraftListings = () => {
+  return useQuery(getDraftListings())
+}
+
+type ListingQueryProps =
+  | { status: 'draft'; limit?: number }
+  | { status: 'published'; userId: Tables<'products'>['user_id'] | undefined; limit?: number }
+
+function getListings(props: ListingQueryProps) {
+  const { status, limit = 8 } = props
   return infiniteQueryOptions({
-    queryKey: ['listings', userId, limit],
+    queryKey: ['listings', status],
     queryFn: async ({ pageParam }) => {
-      if (!userId) throw new Error('User ID is required')
       const range = getRange(pageParam, limit)
+      if (status === 'draft') {
+        const { data, error } = await supabase
+          .from('products')
+          .select('*')
+          .eq('published', false)
+          .order('created_at', { ascending: false })
+          .range(range[0], range[1])
 
-      const { data, error } = await supabase
-        .from('products')
-        .select('*')
-        .eq('published', true)
-        .neq('user_id', userId)
-        .order('created_at', { ascending: false })
-        .range(range[0], range[1])
+        if (error) throw error
+        return data
+      } else {
+        const { userId } = props
+        if (!userId) throw new Error('User ID is required')
 
-      if (error) throw error
-      return data
+        const { data, error } = await supabase
+          .from('products')
+          .select('*')
+          .eq('published', true)
+          .neq('user_id', userId)
+          .order('created_at', { ascending: false })
+          .range(range[0], range[1])
+
+        if (error) throw error
+        return data
+      }
     },
     initialPageParam: 0,
     getNextPageParam: (lastPage, allPages) => {
@@ -66,23 +83,37 @@ function getListings({
 
       return nextPage
     },
-    enabled: !!userId,
+    enabled: status === 'draft' || !!props.userId,
   })
 }
 
-export const useDraftListings = () => useQuery(getDraftListings())
-export const useCategories = () => useQuery(getCategories())
-export const useListings = ({
-  userId,
-  limit,
-}: {
-  userId: Tables<'products'>['user_id'] | undefined
-  limit: number
-}) => useInfiniteQuery(getListings({ userId, limit }))
+const getListing = (id: Tables<'products'>['id']) => {
+  return queryOptions({
+    queryKey: ['listing', id],
+    queryFn: async () => {
+      const { data, error } = await supabase.from('products').select('*').eq('id', id).single()
+      if (error) throw error
+      return data
+    },
+  })
+}
 
-export const useDeleteListing = () => {
+export const useCategories = () => useQuery(getCategories())
+
+export const useListings = (props: ListingQueryProps) => {
+  const { status, limit } = props
+  return useInfiniteQuery(
+    getListings(status === 'draft' ? { status, limit } : { status, userId: props.userId, limit })
+  )
+}
+
+export const useListing = (id: Tables<'products'>['id']) => {
+  return useQuery(getListing(id))
+}
+
+export const useDeleteListing = (props: Pick<ListingQueryProps, 'status'>) => {
   const queryClient = useQueryClient()
-  const key = ['listings', 'drafts'] as const
+  const key = ['listings', props.status] as const
 
   return useMutation({
     mutationFn: async (id: Tables<'products'>['id']) => {
@@ -91,19 +122,27 @@ export const useDeleteListing = () => {
       if (error) throw error
     },
     onMutate: async (id) => {
-      // Cancel any outgoing refetches
+      // Cancel any outgoing refetches for this infinite query
       await queryClient.cancelQueries({ queryKey: key })
 
-      // Snapshot the current value
-      const previous = queryClient.getQueryData<Tables<'products'>[]>(key)
+      // Snapshot the current infinite data
+      const previous = queryClient.getQueryData<InfiniteData<Tables<'products'>[]>>(key)
 
-      // Optimistically update by filtering out the deleted item
-      queryClient.setQueryData<Tables<'products'>[]>(key, (oldData) =>
-        oldData ? oldData.filter((item) => item.id !== id) : []
-      )
+      // Optimistically update each page
+      queryClient.setQueryData<InfiniteData<Tables<'products'>[]>>(key, (oldData) => {
+        if (!oldData) return oldData
+
+        const newPages = oldData.pages.map((page) => page.filter((item) => item.id !== id))
+
+        return {
+          ...oldData,
+          pages: newPages,
+        }
+      })
 
       return { key, previous }
     },
+
     onError: (_err, _vars, context) => {
       // Roll back on error
       if (context?.previous) {

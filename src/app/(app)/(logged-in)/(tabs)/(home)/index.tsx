@@ -21,6 +21,7 @@ const Header = () => (
 export default function Home() {
   const { session } = useAuth()
   const { data, isError, isFetchingNextPage, isLoading, fetchNextPage, hasNextPage } = useListings({
+    status: 'published',
     userId: session?.user?.id,
     limit: 8,
   })
