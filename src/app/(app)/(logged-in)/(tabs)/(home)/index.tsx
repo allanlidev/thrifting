@@ -1,6 +1,12 @@
 import { Trans } from '@lingui/react/macro'
 import { FlashList } from '@shopify/flash-list'
-import { ActivityIndicator, View, ViewProps } from 'react-native'
+import {
+  ActivityIndicator,
+  RefreshControl,
+  ScrollView,
+  type ScrollViewProps,
+  View,
+} from 'react-native'
 import { Listing, ListingSkeleton } from '~/src/components/Listing'
 import { H1, Muted } from '~/src/components/ui/typography'
 import { useListings } from '~/src/hooks/queries/listings'
@@ -12,14 +18,17 @@ import { useRef } from 'react'
 import { Tables } from '~/src/database.types'
 import { useScrollToTop } from '@react-navigation/native'
 
-const Container = ({ className, ...props }: ViewProps) => (
-  <View className={cn(['pt-safe-offset-6 flex-1', className])} {...props} />
-)
-
 const Header = () => (
   <H1 className="mb-8 px-6 text-center">
     <Trans>welcome to thrifting</Trans>
   </H1>
+)
+
+const Container = ({ className, children, ...props }: ScrollViewProps) => (
+  <ScrollView contentContainerClassName={cn(['pt-safe-offset-6 flex-1', className])} {...props}>
+    <Header />
+    {children}
+  </ScrollView>
 )
 
 export default function Home() {
@@ -65,11 +74,18 @@ export default function Home() {
 
   if (isError) {
     return (
-      <Container>
-        <Header />
-        <View className="flex-1 items-center justify-center gap-4">
+      <Container
+        refreshControl={
+          <RefreshControl
+            refreshing={isRefetching}
+            onRefresh={refetch}
+            progressViewOffset={safeAreaTop}
+          />
+        }
+      >
+        <View className="flex-1 items-center justify-center gap-3">
           <Frown className="size-12 color-muted-foreground" />
-          <Muted className="mx-auto">
+          <Muted>
             <Trans>Oops! Something went wrong.</Trans>
           </Muted>
         </View>
@@ -79,11 +95,18 @@ export default function Home() {
 
   if (!listings.length) {
     return (
-      <Container>
-        <Header />
+      <Container
+        refreshControl={
+          <RefreshControl
+            refreshing={isRefetching}
+            onRefresh={refetch}
+            progressViewOffset={safeAreaTop}
+          />
+        }
+      >
         <View className="flex-1 items-center justify-center gap-4">
-          <Frown className="mx-auto size-12 color-muted-foreground" />
-          <Muted className="mx-auto">
+          <Frown className="size-12 color-muted-foreground" />
+          <Muted>
             <Trans>No listings found.</Trans>
           </Muted>
         </View>

@@ -1,6 +1,6 @@
 import { useRouter } from 'expo-router'
 import { useEffect, useRef, useState } from 'react'
-import { ActivityIndicator, ScrollView, View, ViewProps } from 'react-native'
+import { ActivityIndicator, RefreshControl, ScrollView, View, ViewProps } from 'react-native'
 import Toast from 'react-native-toast-message'
 import { useQueryClient } from '@tanstack/react-query'
 import { Trans } from '@lingui/react/macro'
@@ -19,7 +19,7 @@ import { Tables } from '~/src/database.types'
 
 const Container = (props: ViewProps) => <View className="flex-1 gap-6" {...props} />
 
-const NewListingButton = (props: ButtonProps) => <Button className="mx-6" {...props} />
+const NewListingButton = (props: ButtonProps) => <Button className="mx-6 mb-4" {...props} />
 
 export default function Sell() {
   const router = useRouter()
@@ -96,12 +96,15 @@ export default function Sell() {
   if (isLoadingError) {
     return (
       <Container>
-        <View className="flex-1">
-          <Frown className="mx-auto size-12 color-muted-foreground" />
-          <Muted className="m-auto">
+        <ScrollView
+          refreshControl={<RefreshControl refreshing={isRefetching} onRefresh={refetch} />}
+          contentContainerClassName="flex-1 items-center justify-center gap-3"
+        >
+          <Frown className="size-12 color-muted-foreground" />
+          <Muted>
             <Trans>Oops! Something went wrong.</Trans>
           </Muted>
-        </View>
+        </ScrollView>
         <NewListingButton disabled>
           <Text>
             <Trans>Create new listing</Trans>
@@ -111,40 +114,56 @@ export default function Sell() {
     )
   }
 
-  return (
-    <Container>
-      <View className="flex-1">
-        {drafts.length ? (
-          <FlashList
-            ref={listRef}
-            data={drafts}
-            estimatedItemSize={120}
-            renderItem={({ item }) => (
-              <MyListing
-                key={item.id}
-                item={item}
-                href={{ pathname: '/sell/edit/[id]', params: { id: item.id } }}
-                className="mt-4"
-              />
-            )}
-            ListHeaderComponent={() => (
-              <H1 className="mt-6 px-6">
-                <Trans>Drafts</Trans>
-              </H1>
-            )}
-            ListFooterComponent={() => isFetchingNextPage && <ActivityIndicator className="m-4" />}
-            onEndReached={() => {
-              hasNextPage && fetchNextPage()
-            }}
-            refreshing={isRefetching}
-            onRefresh={refetch}
-          />
-        ) : (
-          <Muted className="m-auto">
+  if (!drafts.length) {
+    return (
+      <Container>
+        <ScrollView
+          refreshControl={<RefreshControl refreshing={isRefetching} onRefresh={refetch} />}
+          contentContainerClassName="flex-1 items-center justify-center"
+        >
+          <Muted>
             <Trans>Press "Create new listing" to start selling!</Trans>
           </Muted>
+        </ScrollView>
+        <NewListingButton disabled={isLoadingNewListing} onPress={createNewListing}>
+          {isLoadingNewListing ? (
+            <ActivityIndicator />
+          ) : (
+            <Text>
+              <Trans>Create new listing</Trans>
+            </Text>
+          )}
+        </NewListingButton>
+      </Container>
+    )
+  }
+
+  return (
+    <Container>
+      <FlashList
+        ref={listRef}
+        data={drafts}
+        estimatedItemSize={120}
+        renderItem={({ item }) => (
+          <MyListing
+            key={item.id}
+            item={item}
+            href={{ pathname: '/sell/edit/[id]', params: { id: item.id } }}
+            className="mt-4"
+          />
         )}
-      </View>
+        ListHeaderComponent={() => (
+          <H1 className="mt-6 px-6">
+            <Trans>Drafts</Trans>
+          </H1>
+        )}
+        ListFooterComponent={() => isFetchingNextPage && <ActivityIndicator className="m-4" />}
+        onEndReached={() => {
+          hasNextPage && fetchNextPage()
+        }}
+        refreshing={isRefetching}
+        onRefresh={refetch}
+      />
       <NewListingButton disabled={isLoadingNewListing} onPress={createNewListing}>
         {isLoadingNewListing ? (
           <ActivityIndicator />
