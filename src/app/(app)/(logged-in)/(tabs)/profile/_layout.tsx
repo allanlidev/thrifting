@@ -7,6 +7,7 @@ export default function ProfileLayout() {
       <Stack.Screen name="index" options={{ headerShown: false }} />
       <Stack.Screen name="edit" options={{ title: t`Profile`, presentation: 'modal' }} />
       <Stack.Screen name="settings" options={{ headerShown: false, presentation: 'modal' }} />
+      <Stack.Screen name="listings" options={{ headerShown: false, presentation: 'modal' }} />
     </Stack>
   )
 }

@@ -43,12 +43,17 @@ export const useDraftListings = () => {
 
 type ListingQueryProps =
   | { status: 'draft'; limit?: number }
-  | { status: 'published'; userId: Tables<'products'>['user_id'] | undefined; limit?: number }
+  | {
+      status: 'published'
+      userId: Tables<'products'>['user_id'] | undefined
+      limit?: number
+      own?: boolean
+    }
 
 function getListings(props: ListingQueryProps) {
   const { status, limit = 8 } = props
   return infiniteQueryOptions({
-    queryKey: ['listings', status, limit],
+    queryKey: ['listings', status, limit, status === 'published' && props.own && 'own'],
     queryFn: async ({ pageParam }) => {
       const range = getRange(pageParam, limit)
       if (status === 'draft') {
@@ -62,19 +67,32 @@ function getListings(props: ListingQueryProps) {
         if (error) throw error
         return data
       } else {
-        const { userId } = props
+        const { userId, own } = props
         if (!userId) throw new Error('User ID is required')
 
-        const { data, error } = await supabase
-          .from('products')
-          .select('*')
-          .eq('published', true)
-          .neq('user_id', userId)
-          .order('created_at', { ascending: false })
-          .range(range[0], range[1])
+        if (own) {
+          const { data, error } = await supabase
+            .from('products')
+            .select('*')
+            .eq('published', true)
+            .eq('user_id', userId)
+            .order('created_at', { ascending: false })
+            .range(range[0], range[1])
 
-        if (error) throw error
-        return data
+          if (error) throw error
+          return data
+        } else {
+          const { data, error } = await supabase
+            .from('products')
+            .select('*')
+            .eq('published', true)
+            .neq('user_id', userId)
+            .order('created_at', { ascending: false })
+            .range(range[0], range[1])
+
+          if (error) throw error
+          return data
+        }
       }
     },
     initialPageParam: 0,
@@ -103,7 +121,11 @@ export const useCategories = () => useQuery(getCategories())
 export const useListings = (props: ListingQueryProps) => {
   const { status, limit } = props
   return useInfiniteQuery(
-    getListings(status === 'draft' ? { status, limit } : { status, userId: props.userId, limit })
+    getListings(
+      status === 'draft'
+        ? { status, limit }
+        : { status, userId: props.userId, limit, own: props.own }
+    )
   )
 }
 

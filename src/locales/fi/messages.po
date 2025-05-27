@@ -13,8 +13,8 @@ msgstr ""
 "Language-Team: \n"
 "Plural-Forms: \n"
 
-#: src/app/(app)/(logged-in)/(tabs)/profile/settings/index.tsx:28
 #: src/app/(app)/(logged-in)/(tabs)/profile/settings/_layout.tsx:12
+#: src/app/(app)/(logged-in)/(tabs)/profile/settings/index.tsx:28
 msgid "Account"
 msgstr "Tili"
 
@@ -101,10 +101,11 @@ msgid "Drafts"
 msgstr "Luonnokset"
 
 #: src/app/(app)/(logged-in)/(tabs)/sell/_layout.tsx:11
+#: src/app/(app)/(logged-in)/(tabs)/profile/listings/_layout.tsx:9
 msgid "Edit listing"
 msgstr "Muokkaa ilmoitusta"
 
-#: src/app/(app)/(logged-in)/(tabs)/profile/index.tsx:39
+#: src/app/(app)/(logged-in)/(tabs)/profile/index.tsx:41
 msgid "Edit profile"
 msgstr "Muokkaa profiilia"
 
@@ -171,10 +172,14 @@ msgstr "Kuva \"{0}\" ilmoituksesta"
 msgid "Images"
 msgstr "Kuvat"
 
-#: src/app/(app)/(logged-in)/(tabs)/profile/settings/index.tsx:39
 #: src/app/(app)/(logged-in)/(tabs)/profile/settings/_layout.tsx:15
+#: src/app/(app)/(logged-in)/(tabs)/profile/settings/index.tsx:39
 msgid "Language"
 msgstr "Kieli"
+
+#: src/app/(app)/(logged-in)/(tabs)/profile/listings/index.tsx:106
+msgid "Listings"
+msgstr "Ilmoitukset"
 
 #: src/app/(app)/(logged-in)/(tabs)/profile/edit.tsx:143
 #: src/app/(app)/(logged-in)/(tabs)/profile/settings/name.tsx:56
@@ -192,6 +197,11 @@ msgstr "Pienin hinta 1"
 #: src/components/ListingForm.tsx:92
 msgid "Must be a valid number"
 msgstr "Syötä numero"
+
+#: src/app/(app)/(logged-in)/(tabs)/profile/index.tsx:65
+#: src/app/(app)/(logged-in)/(tabs)/profile/listings/_layout.tsx:8
+msgid "My listings"
+msgstr "Omat ilmoitukset"
 
 #: src/app/(app)/(logged-in)/(tabs)/sell/_layout.tsx:8
 msgid "New listing"
@@ -229,6 +239,8 @@ msgstr "OK"
 #: src/app/(app)/(logged-in)/(tabs)/profile/edit.tsx:84
 #: src/app/(app)/(logged-in)/(tabs)/profile/edit.tsx:90
 #: src/app/(app)/(logged-in)/(tabs)/profile/settings/name.tsx:21
+#: src/app/(app)/(logged-in)/(tabs)/profile/listings/index.tsx:68
+#: src/app/(app)/(logged-in)/(tabs)/profile/listings/edit/[id].tsx:28
 #: src/app/(app)/(logged-in)/(tabs)/(home)/index.tsx:89
 msgid "Oops! Something went wrong."
 msgstr "Pahus! Jotain meni pieleen."
@@ -237,8 +249,8 @@ msgstr "Pahus! Jotain meni pieleen."
 #: src/app/(app)/signup.tsx:67
 #: src/app/(app)/login.tsx:54
 #: src/app/(app)/login.tsx:59
-#: src/app/(app)/(logged-in)/(tabs)/profile/settings/account.tsx:94
 #: src/app/(app)/(logged-in)/(tabs)/profile/settings/_layout.tsx:14
+#: src/app/(app)/(logged-in)/(tabs)/profile/settings/account.tsx:94
 msgid "Password"
 msgstr "Salasana"
 
@@ -320,8 +332,8 @@ msgstr "Tallenna ja julkaise"
 msgid "Save as draft"
 msgstr "Tallenna luonnos"
 
-#: src/app/(app)/(logged-in)/(tabs)/profile/settings/index.tsx:19
 #: src/app/(app)/(logged-in)/(tabs)/profile/settings/_layout.tsx:11
+#: src/app/(app)/(logged-in)/(tabs)/profile/settings/index.tsx:19
 msgid "Settings"
 msgstr "Asetukset"
 
@@ -381,6 +393,10 @@ msgstr "Käyttäjänimi"
 #: src/app/(app)/(logged-in)/(tabs)/(home)/index.tsx:23
 msgid "welcome to thrifting"
 msgstr "tervetuloa thriftingiin"
+
+#: src/app/(app)/(logged-in)/(tabs)/profile/listings/index.tsx:83
+msgid "You have no listings yet."
+msgstr "Ei ilmoituksia."
 
 #: src/app/(app)/(logged-in)/(tabs)/profile/settings/password.tsx:41
 msgid "Your password has been successfully changed!"
