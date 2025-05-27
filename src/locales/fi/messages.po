@@ -61,7 +61,9 @@ msgstr "Vaihda salasana"
 msgid "Confirm password"
 msgstr "Vahvista salasana"
 
-#: src/app/(app)/(logged-in)/(tabs)/sell/index.tsx:97
+#: src/app/(app)/(logged-in)/(tabs)/sell/index.tsx:89
+#: src/app/(app)/(logged-in)/(tabs)/sell/index.tsx:107
+#: src/app/(app)/(logged-in)/(tabs)/sell/index.tsx:153
 msgid "Create new listing"
 msgstr "Luo uusi ilmoitus"
 
@@ -89,9 +91,13 @@ msgstr "Kuvaus"
 msgid "Description is required"
 msgstr "Kuvaus vaaditaan"
 
-#: src/components/MyListing.tsx:112
+#: src/components/MyListing.tsx:114
 msgid "Draft"
 msgstr "Luonnos"
+
+#: src/app/(app)/(logged-in)/(tabs)/sell/index.tsx:132
+msgid "Drafts"
+msgstr "Luonnokset"
 
 #: src/app/(app)/(logged-in)/(tabs)/sell/_layout.tsx:11
 msgid "Edit listing"
@@ -101,7 +107,7 @@ msgstr "Muokkaa ilmoitusta"
 msgid "Edit profile"
 msgstr "Muokkaa profiilia"
 
-#: src/components/MyListing.tsx:122
+#: src/components/MyListing.tsx:124
 msgid "Edited"
 msgstr "Muokattu"
 
@@ -178,11 +184,11 @@ msgstr "Uusi ilmoitus"
 msgid "New password"
 msgstr "Uusi salasana"
 
-#: src/app/(app)/(logged-in)/(tabs)/(home)/index.tsx:67
+#: src/app/(app)/(logged-in)/(tabs)/(home)/index.tsx:87
 msgid "No listings found."
 msgstr "Ei ilmoituksia."
 
-#: src/components/MyListing.tsx:119
+#: src/components/MyListing.tsx:121
 #: src/components/Listing.tsx:26
 msgid "No title"
 msgstr "Ei otsikkoa"
@@ -200,13 +206,13 @@ msgstr "OK"
 #: src/components/ListingForm.tsx:153
 #: src/components/ListingForm.tsx:202
 #: src/components/ListingForm.tsx:508
-#: src/app/(app)/(logged-in)/(tabs)/sell/index.tsx:45
-#: src/app/(app)/(logged-in)/(tabs)/sell/index.tsx:83
-#: src/app/(app)/(logged-in)/(tabs)/sell/edit/[id].tsx:36
+#: src/app/(app)/(logged-in)/(tabs)/sell/index.tsx:67
+#: src/app/(app)/(logged-in)/(tabs)/sell/index.tsx:102
+#: src/app/(app)/(logged-in)/(tabs)/sell/edit/[id].tsx:28
 #: src/app/(app)/(logged-in)/(tabs)/profile/edit.tsx:84
 #: src/app/(app)/(logged-in)/(tabs)/profile/edit.tsx:90
 #: src/app/(app)/(logged-in)/(tabs)/profile/settings/name.tsx:21
-#: src/app/(app)/(logged-in)/(tabs)/(home)/index.tsx:54
+#: src/app/(app)/(logged-in)/(tabs)/(home)/index.tsx:73
 msgid "Oops! Something went wrong."
 msgstr "Pahus! Jotain meni pieleen."
 
@@ -244,7 +250,7 @@ msgstr "Salasanan on sisällettävä vähintään yksi iso kirjain."
 msgid "Passwords don't match"
 msgstr "Salasanat eivät täsmää"
 
-#: src/app/(app)/(logged-in)/(tabs)/sell/index.tsx:84
+#: src/app/(app)/(logged-in)/(tabs)/sell/index.tsx:144
 msgid "Press \"Create new listing\" to start selling!"
 msgstr "Paina \"Luo uusi ilmoitus\" ja aloita myynti!"
 
@@ -265,7 +271,7 @@ msgstr "Profiili"
 msgid "Profile updated!"
 msgstr "Profiili päivitetty!"
 
-#: src/components/MyListing.tsx:112
+#: src/components/MyListing.tsx:114
 msgid "Published"
 msgstr "Julkaistu"
 
@@ -351,7 +357,7 @@ msgstr "Lataa kirjastosta"
 msgid "User name"
 msgstr "Käyttäjänimi"
 
-#: src/app/(app)/(logged-in)/(tabs)/(home)/index.tsx:17
+#: src/app/(app)/(logged-in)/(tabs)/(home)/index.tsx:21
 msgid "welcome to thrifting"
 msgstr "tervetuloa thriftingiin"
 

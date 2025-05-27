@@ -1,31 +1,59 @@
 import { Trans } from '@lingui/react/macro'
 import { FlashList } from '@shopify/flash-list'
-import { ActivityIndicator, View, ViewProps } from 'react-native'
+import {
+  ActivityIndicator,
+  RefreshControl,
+  ScrollView,
+  type ScrollViewProps,
+  View,
+} from 'react-native'
 import { Listing, ListingSkeleton } from '~/src/components/Listing'
 import { H1, Muted } from '~/src/components/ui/typography'
 import { useListings } from '~/src/hooks/queries/listings'
 import { useAuth } from '~/src/providers/AuthProvider'
 import { Frown } from '~/src/components/icons/Frown'
 import { cn } from '~/src/lib/utils'
-
-const Container = ({ className, ...props }: ViewProps) => (
-  <View className={cn(['flex-1', className])} {...props} />
-)
+import { useSafeAreaInsets } from 'react-native-safe-area-context'
+import { useRef } from 'react'
+import { Tables } from '~/src/database.types'
+import { useScrollToTop } from '@react-navigation/native'
 
 const Header = () => (
-  <H1 className="mt-safe-offset-6 mb-8 px-6 text-center">
+  <H1 className="mb-8 px-6 text-center">
     <Trans>welcome to thrifting</Trans>
   </H1>
 )
 
+const Container = ({ className, children, ...props }: ScrollViewProps) => (
+  <ScrollView contentContainerClassName={cn(['pt-safe-offset-6 flex-1', className])} {...props}>
+    <Header />
+    {children}
+  </ScrollView>
+)
+
 export default function Home() {
   const { session } = useAuth()
-  const { data, isError, isFetchingNextPage, isLoading, fetchNextPage, hasNextPage } = useListings({
+  const {
+    data,
+    isError,
+    isFetchingNextPage,
+    isLoading,
+    fetchNextPage,
+    hasNextPage,
+    refetch,
+    isRefetching,
+  } = useListings({
+    status: 'published',
     userId: session?.user?.id,
     limit: 8,
   })
+  const { top: safeAreaTop } = useSafeAreaInsets()
 
   const listings = data?.pages?.flat() ?? []
+
+  const listRef = useRef<FlashList<Tables<'products'>>>(null)
+
+  useScrollToTop(listRef)
 
   if (isLoading) {
     return (
@@ -39,18 +67,25 @@ export default function Home() {
         estimatedItemSize={180}
         numColumns={2}
         ListHeaderComponent={Header}
-        contentContainerClassName="flex-1"
+        contentContainerClassName="pt-safe-offset-6"
       />
     )
   }
 
   if (isError) {
     return (
-      <Container>
-        <Header />
-        <View className="flex-1 items-center justify-center gap-4">
+      <Container
+        refreshControl={
+          <RefreshControl
+            refreshing={isRefetching}
+            onRefresh={refetch}
+            progressViewOffset={safeAreaTop}
+          />
+        }
+      >
+        <View className="flex-1 items-center justify-center gap-3">
           <Frown className="size-12 color-muted-foreground" />
-          <Muted className="mx-auto">
+          <Muted>
             <Trans>Oops! Something went wrong.</Trans>
           </Muted>
         </View>
@@ -60,18 +95,28 @@ export default function Home() {
 
   if (!listings.length) {
     return (
-      <Container>
-        <Header />
-        <Frown className="mx-auto size-12 color-muted-foreground" />
-        <Muted className="mx-auto">
-          <Trans>No listings found.</Trans>
-        </Muted>
+      <Container
+        refreshControl={
+          <RefreshControl
+            refreshing={isRefetching}
+            onRefresh={refetch}
+            progressViewOffset={safeAreaTop}
+          />
+        }
+      >
+        <View className="flex-1 items-center justify-center gap-4">
+          <Frown className="size-12 color-muted-foreground" />
+          <Muted>
+            <Trans>No listings found.</Trans>
+          </Muted>
+        </View>
       </Container>
     )
   }
 
   return (
     <FlashList
+      ref={listRef}
       data={listings}
       renderItem={({ item }) => (
         <View key={item.id} className="flex-1 items-center">
@@ -81,14 +126,14 @@ export default function Home() {
       estimatedItemSize={180}
       numColumns={2}
       ListHeaderComponent={Header}
-      ListFooterComponent={() =>
-        isFetchingNextPage && <ActivityIndicator size="large" className="m-4" />
-      }
+      ListFooterComponent={() => isFetchingNextPage && <ActivityIndicator className="m-4" />}
       onEndReached={() => {
         hasNextPage && fetchNextPage()
       }}
-      className="flex-1"
-      contentContainerClassName="pb-8"
+      refreshing={isRefetching}
+      onRefresh={refetch}
+      progressViewOffset={safeAreaTop}
+      contentContainerClassName="pt-safe-offset-6 pb-8"
     />
   )
 }

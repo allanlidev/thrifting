@@ -1,7 +1,6 @@
 import { Alert, type LayoutChangeEvent, View, ViewProps } from 'react-native'
 import { useState } from 'react'
-import { Trans } from '@lingui/react/macro'
-import { t } from '@lingui/core/macro'
+import { Trans, useLingui } from '@lingui/react/macro'
 import { Large, Muted } from '~/src/components/ui/typography'
 import { Skeleton } from '~/src/components/ui/skeleton'
 import { Badge } from '~/src/components/ui/badge'
@@ -20,7 +19,8 @@ function RightAction(
   drag: SharedValue<number>,
   itemId: Tables<'products'>['id']
 ) {
-  const { mutateAsync } = useDeleteListing()
+  const { t } = useLingui()
+  const { mutateAsync } = useDeleteListing({ status: 'draft' })
   const styleAnimation = useAnimatedStyle(() => {
     return {
       transform: [{ translateX: drag.value + 200 }],
@@ -72,6 +72,8 @@ export function MyListing({
   href: Href
   className?: ViewProps['className']
 }) {
+  const { i18n } = useLingui()
+
   const [titleWidth, setTitleWidth] = useState<number | undefined>()
 
   const onLayout = (event: LayoutChangeEvent) => {
@@ -109,19 +111,19 @@ export function MyListing({
                 variant={item.published ? 'default' : 'secondary'}
                 className="pointer-events-none w-24"
               >
-                <Text>{item.published ? t`Published` : t`Draft`}</Text>
+                <Text>{item.published ? <Trans>Published</Trans> : <Trans>Draft</Trans>}</Text>
               </Badge>
               <Large
                 numberOfLines={1}
                 ellipsizeMode="tail"
                 style={titleWidth ? { maxWidth: titleWidth } : undefined}
               >
-                {item.title ?? t`No title`}
+                {item.title || <Trans>No title</Trans>}
               </Large>
               <Muted>
                 <Trans>Edited</Trans>:{' '}
                 {item.updated_at &&
-                  new Date(item.updated_at).toLocaleString(undefined, { dateStyle: 'short' })}
+                  new Date(item.updated_at).toLocaleString(i18n.locale, { dateStyle: 'short' })}
               </Muted>
             </View>
           </View>

@@ -61,7 +61,9 @@ msgstr "Change password"
 msgid "Confirm password"
 msgstr "Confirm password"
 
-#: src/app/(app)/(logged-in)/(tabs)/sell/index.tsx:97
+#: src/app/(app)/(logged-in)/(tabs)/sell/index.tsx:89
+#: src/app/(app)/(logged-in)/(tabs)/sell/index.tsx:107
+#: src/app/(app)/(logged-in)/(tabs)/sell/index.tsx:153
 msgid "Create new listing"
 msgstr "Create new listing"
 
@@ -89,9 +91,13 @@ msgstr "Description"
 msgid "Description is required"
 msgstr "Description is required"
 
-#: src/components/MyListing.tsx:112
+#: src/components/MyListing.tsx:114
 msgid "Draft"
 msgstr "Draft"
+
+#: src/app/(app)/(logged-in)/(tabs)/sell/index.tsx:132
+msgid "Drafts"
+msgstr "Drafts"
 
 #: src/app/(app)/(logged-in)/(tabs)/sell/_layout.tsx:11
 msgid "Edit listing"
@@ -101,7 +107,7 @@ msgstr "Edit listing"
 msgid "Edit profile"
 msgstr "Edit profile"
 
-#: src/components/MyListing.tsx:122
+#: src/components/MyListing.tsx:124
 msgid "Edited"
 msgstr "Edited"
 
@@ -178,11 +184,11 @@ msgstr "New listing"
 msgid "New password"
 msgstr "New password"
 
-#: src/app/(app)/(logged-in)/(tabs)/(home)/index.tsx:67
+#: src/app/(app)/(logged-in)/(tabs)/(home)/index.tsx:87
 msgid "No listings found."
 msgstr "No listings found."
 
-#: src/components/MyListing.tsx:119
+#: src/components/MyListing.tsx:121
 #: src/components/Listing.tsx:26
 msgid "No title"
 msgstr "No title"
@@ -200,13 +206,13 @@ msgstr "OK"
 #: src/components/ListingForm.tsx:153
 #: src/components/ListingForm.tsx:202
 #: src/components/ListingForm.tsx:508
-#: src/app/(app)/(logged-in)/(tabs)/sell/index.tsx:45
-#: src/app/(app)/(logged-in)/(tabs)/sell/index.tsx:83
-#: src/app/(app)/(logged-in)/(tabs)/sell/edit/[id].tsx:36
+#: src/app/(app)/(logged-in)/(tabs)/sell/index.tsx:67
+#: src/app/(app)/(logged-in)/(tabs)/sell/index.tsx:102
+#: src/app/(app)/(logged-in)/(tabs)/sell/edit/[id].tsx:28
 #: src/app/(app)/(logged-in)/(tabs)/profile/edit.tsx:84
 #: src/app/(app)/(logged-in)/(tabs)/profile/edit.tsx:90
 #: src/app/(app)/(logged-in)/(tabs)/profile/settings/name.tsx:21
-#: src/app/(app)/(logged-in)/(tabs)/(home)/index.tsx:54
+#: src/app/(app)/(logged-in)/(tabs)/(home)/index.tsx:73
 msgid "Oops! Something went wrong."
 msgstr "Oops! Something went wrong."
 
@@ -244,7 +250,7 @@ msgstr "Password must contain at least one uppercase letter."
 msgid "Passwords don't match"
 msgstr "Passwords don't match"
 
-#: src/app/(app)/(logged-in)/(tabs)/sell/index.tsx:84
+#: src/app/(app)/(logged-in)/(tabs)/sell/index.tsx:144
 msgid "Press \"Create new listing\" to start selling!"
 msgstr "Press \"Create new listing\" to start selling!"
 
@@ -265,7 +271,7 @@ msgstr "Profile"
 msgid "Profile updated!"
 msgstr "Profile updated!"
 
-#: src/components/MyListing.tsx:112
+#: src/components/MyListing.tsx:114
 msgid "Published"
 msgstr "Published"
 
@@ -351,7 +357,7 @@ msgstr "Upload from Library"
 msgid "User name"
 msgstr "User name"
 
-#: src/app/(app)/(logged-in)/(tabs)/(home)/index.tsx:17
+#: src/app/(app)/(logged-in)/(tabs)/(home)/index.tsx:21
 msgid "welcome to thrifting"
 msgstr "welcome to thrifting"
 

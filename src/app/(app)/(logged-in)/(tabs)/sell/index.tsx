@@ -1,36 +1,58 @@
 import { useRouter } from 'expo-router'
-import { useEffect, useState } from 'react'
-import { ActivityIndicator, ScrollView, View } from 'react-native'
+import { useEffect, useRef, useState } from 'react'
+import { ActivityIndicator, RefreshControl, ScrollView, View, ViewProps } from 'react-native'
 import Toast from 'react-native-toast-message'
 import { useQueryClient } from '@tanstack/react-query'
 import { Trans } from '@lingui/react/macro'
 import { t } from '@lingui/core/macro'
 import { MyListing, MyListingSkeleton } from '~/src/components/MyListing'
-import { Button } from '~/src/components/ui/button'
+import { Button, ButtonProps } from '~/src/components/ui/button'
 import { Text } from '~/src/components/ui/text'
-import { Muted } from '~/src/components/ui/typography'
-import { useDraftListings } from '~/src/hooks/queries/listings'
+import { H1, Muted } from '~/src/components/ui/typography'
+import { useListings } from '~/src/hooks/queries/listings'
 import { supabase } from '~/src/lib/supabase'
 import { Frown } from '~/src/components/icons/Frown'
 import { FlashList } from '@shopify/flash-list'
+import { Skeleton } from '~/src/components/ui/skeleton'
+import { useScrollToTop } from '@react-navigation/native'
+import { Tables } from '~/src/database.types'
+
+const Container = (props: ViewProps) => <View className="flex-1 gap-6" {...props} />
+
+const NewListingButton = (props: ButtonProps) => <Button className="mx-6 mb-4" {...props} />
 
 export default function Sell() {
   const router = useRouter()
-  const { data: drafts, error: draftsError, isFetching: isDraftsFetching } = useDraftListings()
+  const {
+    data,
+    isLoadingError,
+    isLoading,
+    isRefetching,
+    isFetchingNextPage,
+    fetchNextPage,
+    hasNextPage,
+    refetch,
+  } = useListings({ status: 'draft' })
   const queryClient = useQueryClient()
+
+  const drafts = data?.pages.flat() ?? []
 
   const [isLoadingDrafts, setIsLoadingDrafts] = useState(false)
   const [isLoadingNewListing, setIsLoadingNewListing] = useState(false)
 
+  const listRef = useRef<FlashList<Tables<'products'>>>(null)
+
+  useScrollToTop(listRef)
+
   useEffect(() => {
-    if (isDraftsFetching) {
+    if (isLoading) {
       setIsLoadingDrafts(true)
     } else {
       setTimeout(() => {
         setIsLoadingDrafts(false)
       }, 500)
     }
-  }, [isDraftsFetching])
+  }, [isLoading])
 
   const createNewListing = async () => {
     setIsLoadingNewListing(true)
@@ -51,45 +73,59 @@ export default function Sell() {
     router.push({ pathname: '/sell/edit/[id]', params: { id: data[0].id } })
   }
 
-  return (
-    <View className="flex-1 gap-6 py-6">
-      <View className="flex-1">
-        {drafts && drafts.length > 0 && !isLoadingDrafts ? (
-          <FlashList
-            data={drafts}
-            estimatedItemSize={112}
-            renderItem={({ item }) => (
-              <MyListing
-                key={item.id}
-                item={item}
-                href={{ pathname: '/sell/edit/[id]', params: { id: item.id } }}
-                className="my-2"
-              />
-            )}
-          />
-        ) : (
-          <>
-            {isLoadingDrafts ? (
-              <ScrollView contentContainerClassName="gap-4 pl-6">
-                {Array.from({ length: 6 }, (_, index) => (
-                  <MyListingSkeleton key={index} />
-                ))}
-              </ScrollView>
-            ) : (
-              <>
-                {draftsError && <Frown className="mx-auto size-12 color-muted-foreground" />}
-                <Muted className="m-auto">
-                  {draftsError
-                    ? t`Oops! Something went wrong.`
-                    : t`Press "Create new listing" to start selling!`}
-                </Muted>
-              </>
-            )}
-          </>
-        )}
-      </View>
-      <View className="px-6">
-        <Button disabled={isLoadingNewListing} onPress={createNewListing}>
+  if (isLoadingDrafts) {
+    return (
+      <Container>
+        <View className="mt-6 flex-1 overflow-hidden">
+          <Skeleton className="mx-6 mb-4 h-10 w-40" />
+          <View className="flex-1 gap-4 px-6">
+            {Array.from({ length: 6 }, (_, index) => (
+              <MyListingSkeleton key={index} />
+            ))}
+          </View>
+        </View>
+        <NewListingButton disabled>
+          <Text>
+            <Trans>Create new listing</Trans>
+          </Text>
+        </NewListingButton>
+      </Container>
+    )
+  }
+
+  if (isLoadingError) {
+    return (
+      <Container>
+        <ScrollView
+          refreshControl={<RefreshControl refreshing={isRefetching} onRefresh={refetch} />}
+          contentContainerClassName="flex-1 items-center justify-center gap-3"
+        >
+          <Frown className="size-12 color-muted-foreground" />
+          <Muted>
+            <Trans>Oops! Something went wrong.</Trans>
+          </Muted>
+        </ScrollView>
+        <NewListingButton disabled>
+          <Text>
+            <Trans>Create new listing</Trans>
+          </Text>
+        </NewListingButton>
+      </Container>
+    )
+  }
+
+  if (!drafts.length) {
+    return (
+      <Container>
+        <ScrollView
+          refreshControl={<RefreshControl refreshing={isRefetching} onRefresh={refetch} />}
+          contentContainerClassName="flex-1 items-center justify-center"
+        >
+          <Muted>
+            <Trans>Press "Create new listing" to start selling!</Trans>
+          </Muted>
+        </ScrollView>
+        <NewListingButton disabled={isLoadingNewListing} onPress={createNewListing}>
           {isLoadingNewListing ? (
             <ActivityIndicator />
           ) : (
@@ -97,8 +133,46 @@ export default function Sell() {
               <Trans>Create new listing</Trans>
             </Text>
           )}
-        </Button>
-      </View>
-    </View>
+        </NewListingButton>
+      </Container>
+    )
+  }
+
+  return (
+    <Container>
+      <FlashList
+        ref={listRef}
+        data={drafts}
+        estimatedItemSize={120}
+        renderItem={({ item }) => (
+          <MyListing
+            key={item.id}
+            item={item}
+            href={{ pathname: '/sell/edit/[id]', params: { id: item.id } }}
+            className="mt-4"
+          />
+        )}
+        ListHeaderComponent={() => (
+          <H1 className="mt-6 px-6">
+            <Trans>Drafts</Trans>
+          </H1>
+        )}
+        ListFooterComponent={() => isFetchingNextPage && <ActivityIndicator className="m-4" />}
+        onEndReached={() => {
+          hasNextPage && fetchNextPage()
+        }}
+        refreshing={isRefetching}
+        onRefresh={refetch}
+      />
+      <NewListingButton disabled={isLoadingNewListing} onPress={createNewListing}>
+        {isLoadingNewListing ? (
+          <ActivityIndicator />
+        ) : (
+          <Text>
+            <Trans>Create new listing</Trans>
+          </Text>
+        )}
+      </NewListingButton>
+    </Container>
   )
 }
