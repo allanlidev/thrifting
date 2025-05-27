@@ -161,6 +161,7 @@ export default function Sell() {
         onEndReached={() => {
           hasNextPage && fetchNextPage()
         }}
+        onEndReachedThreshold={0.1}
         refreshing={isRefetching}
         onRefresh={refetch}
       />
