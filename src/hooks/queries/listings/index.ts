@@ -48,7 +48,7 @@ type ListingQueryProps =
 function getListings(props: ListingQueryProps) {
   const { status, limit = 8 } = props
   return infiniteQueryOptions({
-    queryKey: ['listings', status],
+    queryKey: ['listings', status, limit],
     queryFn: async ({ pageParam }) => {
       const range = getRange(pageParam, limit)
       if (status === 'draft') {
@@ -126,19 +126,25 @@ export const useDeleteListing = (props: Pick<ListingQueryProps, 'status'>) => {
       await queryClient.cancelQueries({ queryKey: key })
 
       // Snapshot the current infinite data
-      const previous = queryClient.getQueryData<InfiniteData<Tables<'products'>[]>>(key)
+      const previous = queryClient.getQueriesData<InfiniteData<Tables<'products'>[]>>({
+        queryKey: key,
+        exact: false,
+      })
 
       // Optimistically update each page
-      queryClient.setQueryData<InfiniteData<Tables<'products'>[]>>(key, (oldData) => {
-        if (!oldData) return oldData
+      queryClient.setQueriesData<InfiniteData<Tables<'products'>[]>>(
+        { queryKey: key, exact: false },
+        (oldData) => {
+          if (!oldData) return oldData
 
-        const newPages = oldData.pages.map((page) => page.filter((item) => item.id !== id))
+          const newPages = oldData.pages.map((page) => page.filter((item) => item.id !== id))
 
-        return {
-          ...oldData,
-          pages: newPages,
+          return {
+            ...oldData,
+            pages: newPages,
+          }
         }
-      })
+      )
 
       return { key, previous }
     },
