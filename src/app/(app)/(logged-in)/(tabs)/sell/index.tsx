@@ -1,5 +1,5 @@
 import { useRouter } from 'expo-router'
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { ActivityIndicator, ScrollView, View, ViewProps } from 'react-native'
 import Toast from 'react-native-toast-message'
 import { useQueryClient } from '@tanstack/react-query'
@@ -14,6 +14,8 @@ import { supabase } from '~/src/lib/supabase'
 import { Frown } from '~/src/components/icons/Frown'
 import { FlashList } from '@shopify/flash-list'
 import { Skeleton } from '~/src/components/ui/skeleton'
+import { useScrollToTop } from '@react-navigation/native'
+import { Tables } from '~/src/database.types'
 
 const Container = (props: ViewProps) => <View className="flex-1 gap-6" {...props} />
 
@@ -37,6 +39,10 @@ export default function Sell() {
 
   const [isLoadingDrafts, setIsLoadingDrafts] = useState(false)
   const [isLoadingNewListing, setIsLoadingNewListing] = useState(false)
+
+  const listRef = useRef<FlashList<Tables<'products'>>>(null)
+
+  useScrollToTop(listRef)
 
   useEffect(() => {
     if (isLoading) {
@@ -110,6 +116,7 @@ export default function Sell() {
       <View className="flex-1">
         {drafts.length ? (
           <FlashList
+            ref={listRef}
             data={drafts}
             estimatedItemSize={120}
             renderItem={({ item }) => (

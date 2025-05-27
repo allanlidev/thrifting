@@ -8,6 +8,9 @@ import { useAuth } from '~/src/providers/AuthProvider'
 import { Frown } from '~/src/components/icons/Frown'
 import { cn } from '~/src/lib/utils'
 import { useSafeAreaInsets } from 'react-native-safe-area-context'
+import { useRef } from 'react'
+import { Tables } from '~/src/database.types'
+import { useScrollToTop } from '@react-navigation/native'
 
 const Container = ({ className, ...props }: ViewProps) => (
   <View className={cn(['pt-safe-offset-6 flex-1', className])} {...props} />
@@ -38,6 +41,10 @@ export default function Home() {
   const { top: safeAreaTop } = useSafeAreaInsets()
 
   const listings = data?.pages?.flat() ?? []
+
+  const listRef = useRef<FlashList<Tables<'products'>>>(null)
+
+  useScrollToTop(listRef)
 
   if (isLoading) {
     return (
@@ -86,6 +93,7 @@ export default function Home() {
 
   return (
     <FlashList
+      ref={listRef}
       data={listings}
       renderItem={({ item }) => (
         <View key={item.id} className="flex-1 items-center">
