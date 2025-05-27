@@ -62,8 +62,9 @@ msgid "Confirm password"
 msgstr "Vahvista salasana"
 
 #: src/app/(app)/(logged-in)/(tabs)/sell/index.tsx:89
-#: src/app/(app)/(logged-in)/(tabs)/sell/index.tsx:107
-#: src/app/(app)/(logged-in)/(tabs)/sell/index.tsx:153
+#: src/app/(app)/(logged-in)/(tabs)/sell/index.tsx:110
+#: src/app/(app)/(logged-in)/(tabs)/sell/index.tsx:133
+#: src/app/(app)/(logged-in)/(tabs)/sell/index.tsx:172
 msgid "Create new listing"
 msgstr "Luo uusi ilmoitus"
 
@@ -95,7 +96,7 @@ msgstr "Kuvaus vaaditaan"
 msgid "Draft"
 msgstr "Luonnos"
 
-#: src/app/(app)/(logged-in)/(tabs)/sell/index.tsx:132
+#: src/app/(app)/(logged-in)/(tabs)/sell/index.tsx:157
 msgid "Drafts"
 msgstr "Luonnokset"
 
@@ -184,7 +185,7 @@ msgstr "Uusi ilmoitus"
 msgid "New password"
 msgstr "Uusi salasana"
 
-#: src/app/(app)/(logged-in)/(tabs)/(home)/index.tsx:87
+#: src/app/(app)/(logged-in)/(tabs)/(home)/index.tsx:110
 msgid "No listings found."
 msgstr "Ei ilmoituksia."
 
@@ -207,12 +208,12 @@ msgstr "OK"
 #: src/components/ListingForm.tsx:202
 #: src/components/ListingForm.tsx:508
 #: src/app/(app)/(logged-in)/(tabs)/sell/index.tsx:67
-#: src/app/(app)/(logged-in)/(tabs)/sell/index.tsx:102
+#: src/app/(app)/(logged-in)/(tabs)/sell/index.tsx:105
 #: src/app/(app)/(logged-in)/(tabs)/sell/edit/[id].tsx:28
 #: src/app/(app)/(logged-in)/(tabs)/profile/edit.tsx:84
 #: src/app/(app)/(logged-in)/(tabs)/profile/edit.tsx:90
 #: src/app/(app)/(logged-in)/(tabs)/profile/settings/name.tsx:21
-#: src/app/(app)/(logged-in)/(tabs)/(home)/index.tsx:73
+#: src/app/(app)/(logged-in)/(tabs)/(home)/index.tsx:89
 msgid "Oops! Something went wrong."
 msgstr "Pahus! Jotain meni pieleen."
 
@@ -250,7 +251,7 @@ msgstr "Salasanan on sisällettävä vähintään yksi iso kirjain."
 msgid "Passwords don't match"
 msgstr "Salasanat eivät täsmää"
 
-#: src/app/(app)/(logged-in)/(tabs)/sell/index.tsx:144
+#: src/app/(app)/(logged-in)/(tabs)/sell/index.tsx:125
 msgid "Press \"Create new listing\" to start selling!"
 msgstr "Paina \"Luo uusi ilmoitus\" ja aloita myynti!"
 
@@ -357,7 +358,7 @@ msgstr "Lataa kirjastosta"
 msgid "User name"
 msgstr "Käyttäjänimi"
 
-#: src/app/(app)/(logged-in)/(tabs)/(home)/index.tsx:21
+#: src/app/(app)/(logged-in)/(tabs)/(home)/index.tsx:23
 msgid "welcome to thrifting"
 msgstr "tervetuloa thriftingiin"
 

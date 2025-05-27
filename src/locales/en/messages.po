@@ -62,8 +62,9 @@ msgid "Confirm password"
 msgstr "Confirm password"
 
 #: src/app/(app)/(logged-in)/(tabs)/sell/index.tsx:89
-#: src/app/(app)/(logged-in)/(tabs)/sell/index.tsx:107
-#: src/app/(app)/(logged-in)/(tabs)/sell/index.tsx:153
+#: src/app/(app)/(logged-in)/(tabs)/sell/index.tsx:110
+#: src/app/(app)/(logged-in)/(tabs)/sell/index.tsx:133
+#: src/app/(app)/(logged-in)/(tabs)/sell/index.tsx:172
 msgid "Create new listing"
 msgstr "Create new listing"
 
@@ -95,7 +96,7 @@ msgstr "Description is required"
 msgid "Draft"
 msgstr "Draft"
 
-#: src/app/(app)/(logged-in)/(tabs)/sell/index.tsx:132
+#: src/app/(app)/(logged-in)/(tabs)/sell/index.tsx:157
 msgid "Drafts"
 msgstr "Drafts"
 
@@ -184,7 +185,7 @@ msgstr "New listing"
 msgid "New password"
 msgstr "New password"
 
-#: src/app/(app)/(logged-in)/(tabs)/(home)/index.tsx:87
+#: src/app/(app)/(logged-in)/(tabs)/(home)/index.tsx:110
 msgid "No listings found."
 msgstr "No listings found."
 
@@ -207,12 +208,12 @@ msgstr "OK"
 #: src/components/ListingForm.tsx:202
 #: src/components/ListingForm.tsx:508
 #: src/app/(app)/(logged-in)/(tabs)/sell/index.tsx:67
-#: src/app/(app)/(logged-in)/(tabs)/sell/index.tsx:102
+#: src/app/(app)/(logged-in)/(tabs)/sell/index.tsx:105
 #: src/app/(app)/(logged-in)/(tabs)/sell/edit/[id].tsx:28
 #: src/app/(app)/(logged-in)/(tabs)/profile/edit.tsx:84
 #: src/app/(app)/(logged-in)/(tabs)/profile/edit.tsx:90
 #: src/app/(app)/(logged-in)/(tabs)/profile/settings/name.tsx:21
-#: src/app/(app)/(logged-in)/(tabs)/(home)/index.tsx:73
+#: src/app/(app)/(logged-in)/(tabs)/(home)/index.tsx:89
 msgid "Oops! Something went wrong."
 msgstr "Oops! Something went wrong."
 
@@ -250,7 +251,7 @@ msgstr "Password must contain at least one uppercase letter."
 msgid "Passwords don't match"
 msgstr "Passwords don't match"
 
-#: src/app/(app)/(logged-in)/(tabs)/sell/index.tsx:144
+#: src/app/(app)/(logged-in)/(tabs)/sell/index.tsx:125
 msgid "Press \"Create new listing\" to start selling!"
 msgstr "Press \"Create new listing\" to start selling!"
 
@@ -357,7 +358,7 @@ msgstr "Upload from Library"
 msgid "User name"
 msgstr "User name"
 
-#: src/app/(app)/(logged-in)/(tabs)/(home)/index.tsx:21
+#: src/app/(app)/(logged-in)/(tabs)/(home)/index.tsx:23
 msgid "welcome to thrifting"
 msgstr "welcome to thrifting"
 
