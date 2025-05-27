@@ -9,11 +9,11 @@ import { Frown } from '~/src/components/icons/Frown'
 import { cn } from '~/src/lib/utils'
 
 const Container = ({ className, ...props }: ViewProps) => (
-  <View className={cn(['flex-1', className])} {...props} />
+  <View className={cn(['pt-safe-offset-6 flex-1', className])} {...props} />
 )
 
 const Header = () => (
-  <H1 className="mt-safe-offset-6 mb-8 px-6 text-center">
+  <H1 className="mb-8 px-6 text-center">
     <Trans>welcome to thrifting</Trans>
   </H1>
 )
@@ -40,7 +40,7 @@ export default function Home() {
         estimatedItemSize={180}
         numColumns={2}
         ListHeaderComponent={Header}
-        contentContainerClassName="flex-1"
+        contentContainerClassName="pt-safe-offset-6"
       />
     )
   }
@@ -63,10 +63,12 @@ export default function Home() {
     return (
       <Container>
         <Header />
-        <Frown className="mx-auto size-12 color-muted-foreground" />
-        <Muted className="mx-auto">
-          <Trans>No listings found.</Trans>
-        </Muted>
+        <View className="flex-1 items-center justify-center gap-4">
+          <Frown className="mx-auto size-12 color-muted-foreground" />
+          <Muted className="mx-auto">
+            <Trans>No listings found.</Trans>
+          </Muted>
+        </View>
       </Container>
     )
   }
@@ -88,8 +90,7 @@ export default function Home() {
       onEndReached={() => {
         hasNextPage && fetchNextPage()
       }}
-      className="flex-1"
-      contentContainerClassName="pb-8"
+      contentContainerClassName="pt-safe-offset-6 pb-8"
     />
   )
 }
