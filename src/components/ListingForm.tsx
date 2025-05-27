@@ -169,7 +169,8 @@ export function ListingForm({ listing }: { listing: Tables<'products'> }) {
       type: 'success',
       text1: publish ? t`Successfully published listing` : t`Successfully saved listing`,
     })
-    queryClient.invalidateQueries({ queryKey: ['listings', 'drafts'] })
+    queryClient.invalidateQueries({ queryKey: ['listings', 'draft'], exact: false })
+    queryClient.invalidateQueries({ queryKey: ['listing', listing.id] })
     router.dismiss()
   }
 
@@ -331,14 +332,14 @@ export function ListingForm({ listing }: { listing: Tables<'products'> }) {
                           <RNGHScrollView className="max-h-40">
                             <SelectGroup>
                               {categories.map((category) => (
-                                    <SelectItem
-                                      key={category.title}
+                                <SelectItem
+                                  key={category.title}
                                   label={t(productCategory[category.title as Category])}
-                                      value={category.title}
+                                  value={category.title}
                                   className="min-w-48"
-                                    >
+                                >
                                   {t(productCategory[category.title as Category])}
-                                    </SelectItem>
+                                </SelectItem>
                               ))}
                             </SelectGroup>
                           </RNGHScrollView>
