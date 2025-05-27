@@ -224,7 +224,7 @@ export function ListingForm({ listing }: { listing: Tables<'products'> }) {
       {categories && !isCategoriesFetching ? (
         <KeyboardAvoidingView behavior="padding" className="flex-1">
           <ScrollView automaticallyAdjustKeyboardInsets>
-            <View className="flex-1 gap-6 p-6">
+            <View className="pb-safe-offset-2 flex-1 gap-6 p-6">
               <View className="gap-2">
                 <Label>
                   <Trans>Images</Trans>
