@@ -125,9 +125,7 @@ export default function Sell() {
                 <Trans>Drafts</Trans>
               </H1>
             )}
-            ListFooterComponent={() =>
-              isFetchingNextPage && <ActivityIndicator size="large" className="m-4" />
-            }
+            ListFooterComponent={() => isFetchingNextPage && <ActivityIndicator className="m-4" />}
             onEndReached={() => {
               hasNextPage && fetchNextPage()
             }}

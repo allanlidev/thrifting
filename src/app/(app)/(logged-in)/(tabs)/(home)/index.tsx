@@ -95,9 +95,7 @@ export default function Home() {
       estimatedItemSize={180}
       numColumns={2}
       ListHeaderComponent={Header}
-      ListFooterComponent={() =>
-        isFetchingNextPage && <ActivityIndicator size="large" className="m-4" />
-      }
+      ListFooterComponent={() => isFetchingNextPage && <ActivityIndicator className="m-4" />}
       onEndReached={() => {
         hasNextPage && fetchNextPage()
       }}
