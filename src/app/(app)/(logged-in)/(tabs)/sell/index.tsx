@@ -15,14 +15,22 @@ import { Frown } from '~/src/components/icons/Frown'
 import { FlashList } from '@shopify/flash-list'
 import { Skeleton } from '~/src/components/ui/skeleton'
 
-const Container = (props: ViewProps) => <View className="flex-1 gap-6 py-6" {...props} />
+const Container = (props: ViewProps) => <View className="flex-1 gap-6" {...props} />
 
 const NewListingButton = (props: ButtonProps) => <Button className="mx-6" {...props} />
 
 export default function Sell() {
   const router = useRouter()
-  const { data, isLoadingError, isLoading, isFetchingNextPage, fetchNextPage, hasNextPage } =
-    useListings({ status: 'draft' })
+  const {
+    data,
+    isLoadingError,
+    isLoading,
+    isRefetching,
+    isFetchingNextPage,
+    fetchNextPage,
+    hasNextPage,
+    refetch,
+  } = useListings({ status: 'draft' })
   const queryClient = useQueryClient()
 
   const drafts = data?.pages.flat() ?? []
@@ -62,7 +70,7 @@ export default function Sell() {
   if (isLoadingDrafts) {
     return (
       <Container>
-        <View className="flex-1 overflow-hidden">
+        <View className="mt-6 flex-1 overflow-hidden">
           <Skeleton className="mx-6 mb-4 h-10 w-40" />
           <View className="flex-1 gap-4 px-6">
             {Array.from({ length: 6 }, (_, index) => (
@@ -113,7 +121,7 @@ export default function Sell() {
               />
             )}
             ListHeaderComponent={() => (
-              <H1 className="px-6">
+              <H1 className="mt-6 px-6">
                 <Trans>Drafts</Trans>
               </H1>
             )}
@@ -123,6 +131,8 @@ export default function Sell() {
             onEndReached={() => {
               hasNextPage && fetchNextPage()
             }}
+            refreshing={isRefetching}
+            onRefresh={refetch}
           />
         ) : (
           <Muted className="m-auto">

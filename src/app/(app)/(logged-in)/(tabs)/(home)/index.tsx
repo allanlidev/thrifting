@@ -7,6 +7,7 @@ import { useListings } from '~/src/hooks/queries/listings'
 import { useAuth } from '~/src/providers/AuthProvider'
 import { Frown } from '~/src/components/icons/Frown'
 import { cn } from '~/src/lib/utils'
+import { useSafeAreaInsets } from 'react-native-safe-area-context'
 
 const Container = ({ className, ...props }: ViewProps) => (
   <View className={cn(['pt-safe-offset-6 flex-1', className])} {...props} />
@@ -20,11 +21,21 @@ const Header = () => (
 
 export default function Home() {
   const { session } = useAuth()
-  const { data, isError, isFetchingNextPage, isLoading, fetchNextPage, hasNextPage } = useListings({
+  const {
+    data,
+    isError,
+    isFetchingNextPage,
+    isLoading,
+    fetchNextPage,
+    hasNextPage,
+    refetch,
+    isRefetching,
+  } = useListings({
     status: 'published',
     userId: session?.user?.id,
     limit: 8,
   })
+  const { top: safeAreaTop } = useSafeAreaInsets()
 
   const listings = data?.pages?.flat() ?? []
 
@@ -90,6 +101,9 @@ export default function Home() {
       onEndReached={() => {
         hasNextPage && fetchNextPage()
       }}
+      refreshing={isRefetching}
+      onRefresh={refetch}
+      progressViewOffset={safeAreaTop}
       contentContainerClassName="pt-safe-offset-6 pb-8"
     />
   )
