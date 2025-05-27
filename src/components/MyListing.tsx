@@ -43,6 +43,7 @@ function RightAction(
             try {
               await mutateAsync(itemId)
             } catch (error) {
+              console.error('Error deleting listing:', error)
               Alert.alert(t`Oops! Something went wrong.`)
             }
           },
