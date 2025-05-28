@@ -95,6 +95,7 @@ const getListing = (id: Tables<'products'>['id']) => {
       if (error) throw error
       return data
     },
+    enabled: !!id,
   })
 }
 
