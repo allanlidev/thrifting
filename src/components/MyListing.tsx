@@ -97,7 +97,7 @@ export function MyListing({
         <Link href={href} className="active:opacity-50" asChild>
           <Pressable>
             <View className="mt-4 flex-1 flex-row gap-4 pl-6">
-              <View className="h-24 w-24 rounded-md bg-muted">
+              <View className="h-24 w-24 overflow-hidden rounded-md bg-muted">
                 {item.images.length > 0 && (
                   <RemoteImage
                     bucketId="product-images"
