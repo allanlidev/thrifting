@@ -125,7 +125,7 @@ export default function Home() {
           key={item.id}
           className={cn('mb-6 flex-1', index % 2 === 0 ? 'ml-4 mr-2' : 'ml-2 mr-4')}
         >
-          <Listing item={item} />
+          <Listing item={item} href={{ pathname: '/listing/[id]', params: { id: item.id } }} />
         </View>
       )}
       estimatedItemSize={180}
