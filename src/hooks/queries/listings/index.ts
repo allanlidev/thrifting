@@ -115,9 +115,9 @@ export const useListing = (id: Tables<'products'>['id']) => {
   return useQuery(getListing(id))
 }
 
-export const useDeleteListing = (props: Pick<ListingQueryProps, 'status'>) => {
+export const useDeleteListing = () => {
   const queryClient = useQueryClient()
-  const key = ['listings', props.status] as const
+  const key = ['listings'] as const
 
   return useMutation({
     mutationFn: async (id: Tables<'products'>['id']) => {

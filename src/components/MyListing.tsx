@@ -20,7 +20,7 @@ function RightAction(
   itemId: Tables<'products'>['id']
 ) {
   const { t } = useLingui()
-  const { mutateAsync } = useDeleteListing({ status: 'draft' })
+  const { mutateAsync } = useDeleteListing()
   const styleAnimation = useAnimatedStyle(() => {
     return {
       transform: [{ translateX: drag.value + 200 }],
