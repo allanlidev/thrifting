@@ -92,7 +92,7 @@ msgstr "Kuvaus"
 msgid "Description is required"
 msgstr "Kuvaus vaaditaan"
 
-#: src/components/MyListing.tsx:115
+#: src/components/MyListing.tsx:116
 msgid "Draft"
 msgstr "Luonnos"
 
@@ -101,14 +101,15 @@ msgid "Drafts"
 msgstr "Luonnokset"
 
 #: src/app/(app)/(logged-in)/(tabs)/sell/_layout.tsx:11
+#: src/app/(app)/(logged-in)/(tabs)/profile/listings/_layout.tsx:9
 msgid "Edit listing"
 msgstr "Muokkaa ilmoitusta"
 
-#: src/app/(app)/(logged-in)/(tabs)/profile/index.tsx:39
+#: src/app/(app)/(logged-in)/(tabs)/profile/index.tsx:41
 msgid "Edit profile"
 msgstr "Muokkaa profiilia"
 
-#: src/components/MyListing.tsx:125
+#: src/components/MyListing.tsx:126
 msgid "Edited"
 msgstr "Muokattu"
 
@@ -176,6 +177,10 @@ msgstr "Kuvat"
 msgid "Language"
 msgstr "Kieli"
 
+#: src/app/(app)/(logged-in)/(tabs)/profile/listings/index.tsx:106
+msgid "Listings"
+msgstr "Ilmoitukset"
+
 #: src/app/(app)/(logged-in)/(tabs)/profile/edit.tsx:143
 #: src/app/(app)/(logged-in)/(tabs)/profile/settings/name.tsx:56
 msgid "Loading..."
@@ -193,6 +198,11 @@ msgstr "Pienin hinta 1"
 msgid "Must be a valid number"
 msgstr "Syötä numero"
 
+#: src/app/(app)/(logged-in)/(tabs)/profile/index.tsx:65
+#: src/app/(app)/(logged-in)/(tabs)/profile/listings/_layout.tsx:8
+msgid "My listings"
+msgstr "Omat ilmoitukset"
+
 #: src/app/(app)/(logged-in)/(tabs)/sell/_layout.tsx:8
 msgid "New listing"
 msgstr "Uusi ilmoitus"
@@ -205,7 +215,7 @@ msgstr "Uusi salasana"
 msgid "No listings found."
 msgstr "Ei ilmoituksia."
 
-#: src/components/MyListing.tsx:122
+#: src/components/MyListing.tsx:123
 #: src/components/Listing.tsx:26
 msgid "No title"
 msgstr "Ei otsikkoa"
@@ -223,12 +233,13 @@ msgstr "OK"
 #: src/components/ListingForm.tsx:163
 #: src/components/ListingForm.tsx:213
 #: src/components/ListingForm.tsx:517
+#: src/components/EditListing.tsx:28
 #: src/app/(app)/(logged-in)/(tabs)/sell/index.tsx:67
 #: src/app/(app)/(logged-in)/(tabs)/sell/index.tsx:105
-#: src/app/(app)/(logged-in)/(tabs)/sell/edit/[id].tsx:28
 #: src/app/(app)/(logged-in)/(tabs)/profile/edit.tsx:84
 #: src/app/(app)/(logged-in)/(tabs)/profile/edit.tsx:90
 #: src/app/(app)/(logged-in)/(tabs)/profile/settings/name.tsx:21
+#: src/app/(app)/(logged-in)/(tabs)/profile/listings/index.tsx:68
 #: src/app/(app)/(logged-in)/(tabs)/(home)/index.tsx:89
 msgid "Oops! Something went wrong."
 msgstr "Pahus! Jotain meni pieleen."
@@ -288,7 +299,7 @@ msgstr "Profiili"
 msgid "Profile updated!"
 msgstr "Profiili päivitetty!"
 
-#: src/components/MyListing.tsx:115
+#: src/components/MyListing.tsx:116
 msgid "Published"
 msgstr "Julkaistu"
 
@@ -381,6 +392,10 @@ msgstr "Käyttäjänimi"
 #: src/app/(app)/(logged-in)/(tabs)/(home)/index.tsx:23
 msgid "welcome to thrifting"
 msgstr "tervetuloa thriftingiin"
+
+#: src/app/(app)/(logged-in)/(tabs)/profile/listings/index.tsx:83
+msgid "You have no listings yet."
+msgstr "Ei ilmoituksia."
 
 #: src/app/(app)/(logged-in)/(tabs)/profile/settings/password.tsx:41
 msgid "Your password has been successfully changed!"

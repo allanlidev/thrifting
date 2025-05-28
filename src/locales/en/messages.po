@@ -92,7 +92,7 @@ msgstr "Description"
 msgid "Description is required"
 msgstr "Description is required"
 
-#: src/components/MyListing.tsx:115
+#: src/components/MyListing.tsx:116
 msgid "Draft"
 msgstr "Draft"
 
@@ -101,14 +101,15 @@ msgid "Drafts"
 msgstr "Drafts"
 
 #: src/app/(app)/(logged-in)/(tabs)/sell/_layout.tsx:11
+#: src/app/(app)/(logged-in)/(tabs)/profile/listings/_layout.tsx:9
 msgid "Edit listing"
 msgstr "Edit listing"
 
-#: src/app/(app)/(logged-in)/(tabs)/profile/index.tsx:39
+#: src/app/(app)/(logged-in)/(tabs)/profile/index.tsx:41
 msgid "Edit profile"
 msgstr "Edit profile"
 
-#: src/components/MyListing.tsx:125
+#: src/components/MyListing.tsx:126
 msgid "Edited"
 msgstr "Edited"
 
@@ -176,6 +177,10 @@ msgstr "Images"
 msgid "Language"
 msgstr "Language"
 
+#: src/app/(app)/(logged-in)/(tabs)/profile/listings/index.tsx:106
+msgid "Listings"
+msgstr "Listings"
+
 #: src/app/(app)/(logged-in)/(tabs)/profile/edit.tsx:143
 #: src/app/(app)/(logged-in)/(tabs)/profile/settings/name.tsx:56
 msgid "Loading..."
@@ -193,6 +198,11 @@ msgstr "Minimum price 1"
 msgid "Must be a valid number"
 msgstr "Must be a valid number"
 
+#: src/app/(app)/(logged-in)/(tabs)/profile/index.tsx:65
+#: src/app/(app)/(logged-in)/(tabs)/profile/listings/_layout.tsx:8
+msgid "My listings"
+msgstr "My listings"
+
 #: src/app/(app)/(logged-in)/(tabs)/sell/_layout.tsx:8
 msgid "New listing"
 msgstr "New listing"
@@ -205,7 +215,7 @@ msgstr "New password"
 msgid "No listings found."
 msgstr "No listings found."
 
-#: src/components/MyListing.tsx:122
+#: src/components/MyListing.tsx:123
 #: src/components/Listing.tsx:26
 msgid "No title"
 msgstr "No title"
@@ -223,12 +233,13 @@ msgstr "OK"
 #: src/components/ListingForm.tsx:163
 #: src/components/ListingForm.tsx:213
 #: src/components/ListingForm.tsx:517
+#: src/components/EditListing.tsx:28
 #: src/app/(app)/(logged-in)/(tabs)/sell/index.tsx:67
 #: src/app/(app)/(logged-in)/(tabs)/sell/index.tsx:105
-#: src/app/(app)/(logged-in)/(tabs)/sell/edit/[id].tsx:28
 #: src/app/(app)/(logged-in)/(tabs)/profile/edit.tsx:84
 #: src/app/(app)/(logged-in)/(tabs)/profile/edit.tsx:90
 #: src/app/(app)/(logged-in)/(tabs)/profile/settings/name.tsx:21
+#: src/app/(app)/(logged-in)/(tabs)/profile/listings/index.tsx:68
 #: src/app/(app)/(logged-in)/(tabs)/(home)/index.tsx:89
 msgid "Oops! Something went wrong."
 msgstr "Oops! Something went wrong."
@@ -288,7 +299,7 @@ msgstr "Profile"
 msgid "Profile updated!"
 msgstr "Profile updated!"
 
-#: src/components/MyListing.tsx:115
+#: src/components/MyListing.tsx:116
 msgid "Published"
 msgstr "Published"
 
@@ -381,6 +392,10 @@ msgstr "User name"
 #: src/app/(app)/(logged-in)/(tabs)/(home)/index.tsx:23
 msgid "welcome to thrifting"
 msgstr "welcome to thrifting"
+
+#: src/app/(app)/(logged-in)/(tabs)/profile/listings/index.tsx:83
+msgid "You have no listings yet."
+msgstr "You have no listings yet."
 
 #: src/app/(app)/(logged-in)/(tabs)/profile/settings/password.tsx:41
 msgid "Your password has been successfully changed!"

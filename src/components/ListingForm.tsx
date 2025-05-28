@@ -170,6 +170,7 @@ export function ListingForm({ listing }: { listing: Tables<'products'> }) {
       text1: publish ? t`Successfully published listing` : t`Successfully saved listing`,
     })
     queryClient.invalidateQueries({ queryKey: ['listings', 'draft'], exact: false })
+    queryClient.invalidateQueries({ queryKey: ['listings', 'published', 'own'], exact: false })
     queryClient.invalidateQueries({ queryKey: ['listing', listing.id] })
     router.dismiss()
   }

@@ -7,6 +7,8 @@ import { Text } from '~/src/components/ui/text'
 import { H1, Large } from '~/src/components/ui/typography'
 import { Trans } from '@lingui/react/macro'
 import { Settings } from '~/src/components/icons/Settings'
+import { ButtonGroup } from '~/src/components/ButtonGroup'
+import { ChevronRight } from '~/src/components/icons/ChevronRight'
 
 export default function ProfileIndex() {
   const { profile } = useAuth()
@@ -55,6 +57,18 @@ export default function ProfileIndex() {
         <H1>{username}</H1>
         <Large>{fullName}</Large>
       </View>
+      <ButtonGroup>
+        <Link href="/profile/listings" asChild>
+          <Button variant="outline" size="lg" className="flex-row items-center justify-between">
+            <View className="flex-row items-center gap-2">
+              <Text>
+                <Trans>My listings</Trans>
+              </Text>
+            </View>
+            <ChevronRight className="color-foreground" />
+          </Button>
+        </Link>
+      </ButtonGroup>
     </ScrollView>
   )
 }
