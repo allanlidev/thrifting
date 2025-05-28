@@ -56,44 +56,26 @@ function getListings(props: ListingQueryProps) {
     queryKey: ['listings', status, limit, status === 'published' && props.own && 'own'],
     queryFn: async ({ pageParam }) => {
       const range = getRange(pageParam, limit)
-      if (status === 'draft') {
-        const { data, error } = await supabase
-          .from('products')
-          .select('*')
-          .eq('published', false)
-          .order('created_at', { ascending: false })
-          .range(range[0], range[1])
 
-        if (error) throw error
-        return data
-      } else {
+      // Base query with common filters
+      let query = supabase
+        .from('products')
+        .select('*')
+        .eq('published', status === 'published')
+        .order('created_at', { ascending: false })
+        .range(range[0], range[1])
+
+      if (status === 'published') {
         const { userId, own } = props
         if (!userId) throw new Error('User ID is required')
 
-        if (own) {
-          const { data, error } = await supabase
-            .from('products')
-            .select('*')
-            .eq('published', true)
-            .eq('user_id', userId)
-            .order('created_at', { ascending: false })
-            .range(range[0], range[1])
-
-          if (error) throw error
-          return data
-        } else {
-          const { data, error } = await supabase
-            .from('products')
-            .select('*')
-            .eq('published', true)
-            .neq('user_id', userId)
-            .order('created_at', { ascending: false })
-            .range(range[0], range[1])
-
-          if (error) throw error
-          return data
-        }
+        // Chain user filtering based on ownership preference
+        query = own ? query.eq('user_id', userId) : query.neq('user_id', userId)
       }
+
+      const { data, error } = await query
+      if (error) throw error
+      return data
     },
     initialPageParam: 0,
     getNextPageParam: (lastPage, allPages) => {
