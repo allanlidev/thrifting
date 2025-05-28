@@ -94,40 +94,42 @@ export function MyListing({
         enableContextMenu
         renderRightActions={(progress, translation) => RightAction(progress, translation, item.id)}
       >
-        <Link href={href} className="active:opacity-50">
-          <View className="mt-4 flex-1 flex-row gap-4 pl-6">
-            <View className="h-24 w-24 rounded-md bg-muted">
-              {item.images.length > 0 && (
-                <RemoteImage
-                  bucketId="product-images"
-                  path={item.images[0]}
-                  accessibilityLabel={`Thumbnail for listing`}
-                  className="h-full w-full"
-                  resizeMode="cover"
-                />
-              )}
+        <Link href={href} className="active:opacity-50" asChild>
+          <Pressable>
+            <View className="mt-4 flex-1 flex-row gap-4 pl-6">
+              <View className="h-24 w-24 rounded-md bg-muted">
+                {item.images.length > 0 && (
+                  <RemoteImage
+                    bucketId="product-images"
+                    path={item.images[0]}
+                    accessibilityLabel={`Thumbnail for listing`}
+                    className="h-full w-full"
+                    resizeMode="cover"
+                  />
+                )}
+              </View>
+              <View className="flex-1 justify-center gap-2" onLayout={onLayout}>
+                <Badge
+                  variant={item.published ? 'default' : 'secondary'}
+                  className="pointer-events-none w-24"
+                >
+                  <Text>{item.published ? <Trans>Published</Trans> : <Trans>Draft</Trans>}</Text>
+                </Badge>
+                <Large
+                  numberOfLines={1}
+                  ellipsizeMode="tail"
+                  style={titleWidth ? { maxWidth: titleWidth } : undefined}
+                >
+                  {item.title || <Trans>No title</Trans>}
+                </Large>
+                <Muted>
+                  <Trans>Edited</Trans>:{' '}
+                  {item.updated_at &&
+                    new Date(item.updated_at).toLocaleString(i18n.locale, { dateStyle: 'short' })}
+                </Muted>
+              </View>
             </View>
-            <View className="flex-1 justify-center gap-2" onLayout={onLayout}>
-              <Badge
-                variant={item.published ? 'default' : 'secondary'}
-                className="pointer-events-none w-24"
-              >
-                <Text>{item.published ? <Trans>Published</Trans> : <Trans>Draft</Trans>}</Text>
-              </Badge>
-              <Large
-                numberOfLines={1}
-                ellipsizeMode="tail"
-                style={titleWidth ? { maxWidth: titleWidth } : undefined}
-              >
-                {item.title || <Trans>No title</Trans>}
-              </Large>
-              <Muted>
-                <Trans>Edited</Trans>:{' '}
-                {item.updated_at &&
-                  new Date(item.updated_at).toLocaleString(i18n.locale, { dateStyle: 'short' })}
-              </Muted>
-            </View>
-          </View>
+          </Pressable>
         </Link>
       </ReanimatedSwipeable>
     </Animated.View>
