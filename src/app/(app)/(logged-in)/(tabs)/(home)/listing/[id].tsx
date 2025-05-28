@@ -1,6 +1,4 @@
-import { t } from '@lingui/core/macro'
 import { Trans, useLingui } from '@lingui/react/macro'
-import { useLocales } from 'expo-localization'
 import { useLocalSearchParams } from 'expo-router'
 import {
   RefreshControl,
