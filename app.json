@@ -24,7 +24,7 @@
     "experiments": {
       "typedRoutes": true
     },
-    "scheme": "myapp",
+    "scheme": "thrifting",
     "orientation": "portrait"
   }
 }
