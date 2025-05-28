@@ -8,8 +8,8 @@ import { Text } from '~/src/components/ui/text'
 
 export function Listing({ item, onPress }: { item: Tables<'products'>; onPress?: () => void }) {
   return (
-    <Pressable onPress={onPress} className="active:opacity-50">
-      <View className="mt-4 w-40 gap-2">
+    <Pressable className="active:opacity-75" onPress={onPress}>
+      <View className="w-full gap-2">
         <View className="h-40 overflow-hidden rounded-md bg-muted">
           {item.images.length > 0 && (
             <RemoteImage
@@ -31,8 +31,8 @@ export function Listing({ item, onPress }: { item: Tables<'products'>; onPress?:
 
 export function ListingSkeleton() {
   return (
-    <View className="mt-4 gap-3">
-      <Skeleton className="size-40" />
+    <View className="w-full gap-2">
+      <Skeleton className="h-40" />
       <Skeleton className="h-6 w-24" />
     </View>
   )

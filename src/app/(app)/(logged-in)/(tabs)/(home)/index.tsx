@@ -55,12 +55,14 @@ export default function Home() {
 
   useScrollToTop(listRef)
 
+  const getListingMargin = (index: number) => (index % 2 === 0 ? 'ml-4 mr-2' : 'ml-2 mr-4')
+
   if (isLoading) {
     return (
       <FlashList
         data={Array(8)}
-        renderItem={() => (
-          <View className="flex-1 items-center">
+        renderItem={({ index }) => (
+          <View className={cn('mb-6 flex-1 items-center', getListingMargin(index))}>
             <ListingSkeleton />
           </View>
         )}
@@ -118,8 +120,11 @@ export default function Home() {
     <FlashList
       ref={listRef}
       data={listings}
-      renderItem={({ item }) => (
-        <View key={item.id} className="flex-1 items-center">
+      renderItem={({ item, index }) => (
+        <View
+          key={item.id}
+          className={cn('mb-6 flex-1', index % 2 === 0 ? 'ml-4 mr-2' : 'ml-2 mr-4')}
+        >
           <Listing item={item} />
         </View>
       )}
