@@ -13,8 +13,8 @@ msgstr ""
 "Language-Team: \n"
 "Plural-Forms: \n"
 
-#: src/app/(app)/(logged-in)/(tabs)/profile/settings/_layout.tsx:12
 #: src/app/(app)/(logged-in)/(tabs)/profile/settings/index.tsx:28
+#: src/app/(app)/(logged-in)/(tabs)/profile/settings/_layout.tsx:12
 msgid "Account"
 msgstr "Account"
 
@@ -92,7 +92,7 @@ msgstr "Description"
 msgid "Description is required"
 msgstr "Description is required"
 
-#: src/components/MyListing.tsx:115
+#: src/components/MyListing.tsx:116
 msgid "Draft"
 msgstr "Draft"
 
@@ -109,7 +109,7 @@ msgstr "Edit listing"
 msgid "Edit profile"
 msgstr "Edit profile"
 
-#: src/components/MyListing.tsx:125
+#: src/components/MyListing.tsx:126
 msgid "Edited"
 msgstr "Edited"
 
@@ -172,8 +172,8 @@ msgstr "Image of \"{0}\" listing"
 msgid "Images"
 msgstr "Images"
 
-#: src/app/(app)/(logged-in)/(tabs)/profile/settings/_layout.tsx:15
 #: src/app/(app)/(logged-in)/(tabs)/profile/settings/index.tsx:39
+#: src/app/(app)/(logged-in)/(tabs)/profile/settings/_layout.tsx:15
 msgid "Language"
 msgstr "Language"
 
@@ -215,7 +215,7 @@ msgstr "New password"
 msgid "No listings found."
 msgstr "No listings found."
 
-#: src/components/MyListing.tsx:122
+#: src/components/MyListing.tsx:123
 #: src/components/Listing.tsx:26
 msgid "No title"
 msgstr "No title"
@@ -233,14 +233,13 @@ msgstr "OK"
 #: src/components/ListingForm.tsx:163
 #: src/components/ListingForm.tsx:213
 #: src/components/ListingForm.tsx:517
+#: src/components/EditListing.tsx:28
 #: src/app/(app)/(logged-in)/(tabs)/sell/index.tsx:67
 #: src/app/(app)/(logged-in)/(tabs)/sell/index.tsx:105
-#: src/app/(app)/(logged-in)/(tabs)/sell/edit/[id].tsx:28
 #: src/app/(app)/(logged-in)/(tabs)/profile/edit.tsx:84
 #: src/app/(app)/(logged-in)/(tabs)/profile/edit.tsx:90
 #: src/app/(app)/(logged-in)/(tabs)/profile/settings/name.tsx:21
 #: src/app/(app)/(logged-in)/(tabs)/profile/listings/index.tsx:68
-#: src/app/(app)/(logged-in)/(tabs)/profile/listings/edit/[id].tsx:28
 #: src/app/(app)/(logged-in)/(tabs)/(home)/index.tsx:89
 msgid "Oops! Something went wrong."
 msgstr "Oops! Something went wrong."
@@ -249,8 +248,8 @@ msgstr "Oops! Something went wrong."
 #: src/app/(app)/signup.tsx:67
 #: src/app/(app)/login.tsx:54
 #: src/app/(app)/login.tsx:59
-#: src/app/(app)/(logged-in)/(tabs)/profile/settings/_layout.tsx:14
 #: src/app/(app)/(logged-in)/(tabs)/profile/settings/account.tsx:94
+#: src/app/(app)/(logged-in)/(tabs)/profile/settings/_layout.tsx:14
 msgid "Password"
 msgstr "Password"
 
@@ -300,7 +299,7 @@ msgstr "Profile"
 msgid "Profile updated!"
 msgstr "Profile updated!"
 
-#: src/components/MyListing.tsx:115
+#: src/components/MyListing.tsx:116
 msgid "Published"
 msgstr "Published"
 
@@ -332,8 +331,8 @@ msgstr "Save and publish"
 msgid "Save as draft"
 msgstr "Save as draft"
 
-#: src/app/(app)/(logged-in)/(tabs)/profile/settings/_layout.tsx:11
 #: src/app/(app)/(logged-in)/(tabs)/profile/settings/index.tsx:19
+#: src/app/(app)/(logged-in)/(tabs)/profile/settings/_layout.tsx:11
 msgid "Settings"
 msgstr "Settings"
 
