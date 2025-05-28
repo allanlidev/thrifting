@@ -98,11 +98,11 @@ export default function Listings() {
             key={item.id}
             item={item}
             href={{ pathname: '/profile/listings/edit/[id]', params: { id: item.id } }}
-            className="mt-4"
+            className="mb-4"
           />
         )}
         ListHeaderComponent={() => (
-          <H1 className="mt-6 px-6">
+          <H1 className="mb-4 mt-6 px-6">
             <Trans>Listings</Trans>
           </H1>
         )}
