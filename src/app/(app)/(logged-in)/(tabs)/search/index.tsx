@@ -27,7 +27,13 @@ const Container = ({ className, children, ...props }: ScrollViewProps) => (
   </ScrollView>
 )
 
-function SearchResults({ query }: { query: ReturnType<typeof useSearchListings> }) {
+function SearchResults({
+  query,
+  searchTerm,
+}: {
+  query: ReturnType<typeof useSearchListings>
+  searchTerm: string
+}) {
   const listRef = useRef<FlashList<Tables<'products'>>>(null)
 
   const {
@@ -79,7 +85,7 @@ function SearchResults({ query }: { query: ReturnType<typeof useSearchListings> 
     )
   }
 
-  if (!listings.length) {
+  if (!searchTerm) {
     return (
       <Container refreshControl={<RefreshControl refreshing={isRefetching} onRefresh={refetch} />}>
         <View className="flex-1 items-center justify-center gap-4">
@@ -87,6 +93,17 @@ function SearchResults({ query }: { query: ReturnType<typeof useSearchListings> 
           <Muted>
             <Trans>Type something to search.</Trans>
           </Muted>
+        </View>
+      </Container>
+    )
+  }
+
+  if (!listings.length) {
+    return (
+      <Container refreshControl={<RefreshControl refreshing={isRefetching} onRefresh={refetch} />}>
+        <View className="flex-1 items-center justify-center gap-4">
+          <Frown className="size-12 color-muted-foreground" />
+          <Muted>{t`No results for "${searchTerm}".`}</Muted>
         </View>
       </Container>
     )
@@ -143,7 +160,7 @@ export default function SearchIndex() {
   return (
     <View className="pt-safe-offset-6 flex-1">
       <Header inputProps={{ onChangeText: (text) => setSearchTerm(text), value: searchTerm }} />
-      <SearchResults query={query} />
+      <SearchResults query={query} searchTerm={searchTerm} />
     </View>
   )
 }

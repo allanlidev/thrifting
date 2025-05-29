@@ -121,14 +121,14 @@ msgstr "Edited"
 msgid "Electronics"
 msgstr "Electronics"
 
-#: src/app/(app)/signup.tsx:52
-#: src/app/(app)/login.tsx:41
+#: src/app/(app)/signup.tsx:63
+#: src/app/(app)/login.tsx:47
 #: src/app/(app)/(logged-in)/(tabs)/profile/settings/account.tsx:92
 msgid "Email"
 msgstr "Email"
 
-#: src/app/(app)/signup.tsx:57
-#: src/app/(app)/login.tsx:46
+#: src/app/(app)/signup.tsx:72
+#: src/app/(app)/login.tsx:56
 msgid "email@address.com"
 msgstr "email@address.com"
 
@@ -160,7 +160,7 @@ msgstr "Home"
 
 #. placeholder {0}: index + 1
 #: src/components/ListingPage.tsx:138
-#: src/components/ListingPage.tsx:229
+#: src/components/ListingPage.tsx:227
 #: src/components/ListingForm.tsx:311
 msgid "Image {0} for listing"
 msgstr "Image {0} for listing"
@@ -177,6 +177,11 @@ msgstr "Image of \"{0}\" listing"
 #: src/components/ListingForm.tsx:276
 msgid "Images"
 msgstr "Images"
+
+#: src/app/(app)/signup.tsx:17
+#: src/app/(app)/login.tsx:18
+msgid "Invalid email address"
+msgstr "Invalid email address"
 
 #: src/app/(app)/(logged-in)/(tabs)/profile/settings/_layout.tsx:15
 #: src/app/(app)/(logged-in)/(tabs)/profile/settings/index.tsx:39
@@ -216,12 +221,16 @@ msgstr "New listing"
 
 #: src/app/(app)/(logged-in)/(tabs)/profile/settings/password.tsx:79
 msgid "New password"
-msgstr "New password<<<<<<< HEAD<<<<<<< HEAD"
+msgstr "New password"
 
 #: src/components/ProfilePage.tsx:179
 #: src/app/(app)/(logged-in)/(tabs)/(home)/index.tsx:116
 msgid "No listings found."
 msgstr "No listings found."
+
+#: src/app/(app)/(logged-in)/(tabs)/search/index.tsx:106
+msgid "No results for \"{searchTerm}\"."
+msgstr "No results for \"{searchTerm}\"."
 
 #: src/components/MyListing.tsx:125
 #: src/components/Listing.tsx:27
@@ -246,19 +255,19 @@ msgstr "OK"
 #: src/components/EditListing.tsx:28
 #: src/app/(app)/(logged-in)/(tabs)/sell/index.tsx:72
 #: src/app/(app)/(logged-in)/(tabs)/sell/index.tsx:110
-#: src/app/(app)/(logged-in)/(tabs)/search/index.tsx:71
+#: src/app/(app)/(logged-in)/(tabs)/search/index.tsx:81
 #: src/app/(app)/(logged-in)/(tabs)/profile/edit.tsx:92
 #: src/app/(app)/(logged-in)/(tabs)/profile/edit.tsx:100
 #: src/app/(app)/(logged-in)/(tabs)/profile/settings/name.tsx:21
 #: src/app/(app)/(logged-in)/(tabs)/profile/listings/index.tsx:68
 #: src/app/(app)/(logged-in)/(tabs)/(home)/index.tsx:95
 msgid "Oops! Something went wrong."
-msgstr "Oops! Something went wrong.<<<<<<< HEAD"
+msgstr "Oops! Something went wrong."
 
-#: src/app/(app)/signup.tsx:68
-#: src/app/(app)/signup.tsx:73
-#: src/app/(app)/login.tsx:57
-#: src/app/(app)/login.tsx:62
+#: src/app/(app)/signup.tsx:91
+#: src/app/(app)/signup.tsx:100
+#: src/app/(app)/login.tsx:75
+#: src/app/(app)/login.tsx:83
 #: src/app/(app)/(logged-in)/(tabs)/profile/settings/_layout.tsx:14
 #: src/app/(app)/(logged-in)/(tabs)/profile/settings/account.tsx:102
 msgid "Password"
@@ -314,11 +323,11 @@ msgstr "Profile updated!"
 msgid "Published"
 msgstr "Published"
 
-#: src/app/(app)/signup.tsx:88
+#: src/app/(app)/signup.tsx:126
 msgid "Register"
 msgstr "Register"
 
-#: src/app/(app)/signup.tsx:47
+#: src/app/(app)/signup.tsx:58
 msgid "Register account"
 msgstr "Register account"
 
@@ -326,7 +335,7 @@ msgstr "Register account"
 msgid "Register now"
 msgstr "Register now"
 
-#: src/app/(app)/signup.tsx:88
+#: src/app/(app)/signup.tsx:126
 msgid "Registering..."
 msgstr "Registering..."
 
@@ -342,7 +351,7 @@ msgstr "Save and publish"
 msgid "Save as draft"
 msgstr "Save as draft"
 
-#: src/app/(app)/(logged-in)/(tabs)/search/index.tsx:126
+#: src/app/(app)/(logged-in)/(tabs)/search/index.tsx:144
 msgid "Search for listings..."
 msgstr "Search for listings..."
 
@@ -351,8 +360,8 @@ msgstr "Search for listings..."
 msgid "Settings"
 msgstr "Settings"
 
-#: src/app/(app)/login.tsx:36
-#: src/app/(app)/login.tsx:77
+#: src/app/(app)/login.tsx:42
+#: src/app/(app)/login.tsx:102
 #: src/app/(app)/index.tsx:29
 msgid "Sign in"
 msgstr "Sign in"
@@ -361,7 +370,7 @@ msgstr "Sign in"
 msgid "Sign out"
 msgstr "Sign out"
 
-#: src/app/(app)/login.tsx:77
+#: src/app/(app)/login.tsx:102
 msgid "Signing in..."
 msgstr "Signing in..."
 
@@ -383,9 +392,9 @@ msgstr "Title"
 
 #: src/components/ListingForm.tsx:95
 msgid "Title is required"
-msgstr "Title is required<<<<<<< HEAD"
+msgstr "Title is required"
 
-#: src/app/(app)/(logged-in)/(tabs)/search/index.tsx:84
+#: src/app/(app)/(logged-in)/(tabs)/search/index.tsx:94
 msgid "Type something to search."
 msgstr "Type something to search."
 

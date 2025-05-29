@@ -121,14 +121,14 @@ msgstr "Muokattu"
 msgid "Electronics"
 msgstr "Elektroniikka"
 
-#: src/app/(app)/signup.tsx:52
-#: src/app/(app)/login.tsx:41
+#: src/app/(app)/signup.tsx:63
+#: src/app/(app)/login.tsx:47
 #: src/app/(app)/(logged-in)/(tabs)/profile/settings/account.tsx:92
 msgid "Email"
 msgstr "Sähköposti"
 
-#: src/app/(app)/signup.tsx:57
-#: src/app/(app)/login.tsx:46
+#: src/app/(app)/signup.tsx:72
+#: src/app/(app)/login.tsx:56
 msgid "email@address.com"
 msgstr "sähköposti@osoite.fi"
 
@@ -160,7 +160,7 @@ msgstr "Koti"
 
 #. placeholder {0}: index + 1
 #: src/components/ListingPage.tsx:138
-#: src/components/ListingPage.tsx:229
+#: src/components/ListingPage.tsx:227
 #: src/components/ListingForm.tsx:311
 msgid "Image {0} for listing"
 msgstr "Kuva {0} ilmoitukselle"
@@ -177,6 +177,11 @@ msgstr "Kuva \"{0}\" ilmoituksesta"
 #: src/components/ListingForm.tsx:276
 msgid "Images"
 msgstr "Kuvat"
+
+#: src/app/(app)/signup.tsx:17
+#: src/app/(app)/login.tsx:18
+msgid "Invalid email address"
+msgstr ""
 
 #: src/app/(app)/(logged-in)/(tabs)/profile/settings/_layout.tsx:15
 #: src/app/(app)/(logged-in)/(tabs)/profile/settings/index.tsx:39
@@ -216,12 +221,16 @@ msgstr "Uusi ilmoitus"
 
 #: src/app/(app)/(logged-in)/(tabs)/profile/settings/password.tsx:79
 msgid "New password"
-msgstr "Uusi salasana<<<<<<< HEAD<<<<<<< HEAD"
+msgstr "Uusi salasana"
 
 #: src/components/ProfilePage.tsx:179
 #: src/app/(app)/(logged-in)/(tabs)/(home)/index.tsx:116
 msgid "No listings found."
 msgstr "Ei ilmoituksia."
+
+#: src/app/(app)/(logged-in)/(tabs)/search/index.tsx:106
+msgid "No results for \"{searchTerm}\"."
+msgstr "Ei tuloksia hakusanalla \"{searchTerm}\"."
 
 #: src/components/MyListing.tsx:125
 #: src/components/Listing.tsx:27
@@ -246,19 +255,19 @@ msgstr "OK"
 #: src/components/EditListing.tsx:28
 #: src/app/(app)/(logged-in)/(tabs)/sell/index.tsx:72
 #: src/app/(app)/(logged-in)/(tabs)/sell/index.tsx:110
-#: src/app/(app)/(logged-in)/(tabs)/search/index.tsx:71
+#: src/app/(app)/(logged-in)/(tabs)/search/index.tsx:81
 #: src/app/(app)/(logged-in)/(tabs)/profile/edit.tsx:92
 #: src/app/(app)/(logged-in)/(tabs)/profile/edit.tsx:100
 #: src/app/(app)/(logged-in)/(tabs)/profile/settings/name.tsx:21
 #: src/app/(app)/(logged-in)/(tabs)/profile/listings/index.tsx:68
 #: src/app/(app)/(logged-in)/(tabs)/(home)/index.tsx:95
 msgid "Oops! Something went wrong."
-msgstr "Pahus! Jotain meni pieleen.<<<<<<< HEAD"
+msgstr "Pahus! Jotain meni pieleen."
 
-#: src/app/(app)/signup.tsx:68
-#: src/app/(app)/signup.tsx:73
-#: src/app/(app)/login.tsx:57
-#: src/app/(app)/login.tsx:62
+#: src/app/(app)/signup.tsx:91
+#: src/app/(app)/signup.tsx:100
+#: src/app/(app)/login.tsx:75
+#: src/app/(app)/login.tsx:83
 #: src/app/(app)/(logged-in)/(tabs)/profile/settings/_layout.tsx:14
 #: src/app/(app)/(logged-in)/(tabs)/profile/settings/account.tsx:102
 msgid "Password"
@@ -314,11 +323,11 @@ msgstr "Profiili päivitetty!"
 msgid "Published"
 msgstr "Julkaistu"
 
-#: src/app/(app)/signup.tsx:88
+#: src/app/(app)/signup.tsx:126
 msgid "Register"
 msgstr "Rekisteröi"
 
-#: src/app/(app)/signup.tsx:47
+#: src/app/(app)/signup.tsx:58
 msgid "Register account"
 msgstr "Rekisteröi tili"
 
@@ -326,7 +335,7 @@ msgstr "Rekisteröi tili"
 msgid "Register now"
 msgstr "Rekisteröi nyt"
 
-#: src/app/(app)/signup.tsx:88
+#: src/app/(app)/signup.tsx:126
 msgid "Registering..."
 msgstr "Rekisteröidään..."
 
@@ -342,7 +351,7 @@ msgstr "Tallenna ja julkaise"
 msgid "Save as draft"
 msgstr "Tallenna luonnos"
 
-#: src/app/(app)/(logged-in)/(tabs)/search/index.tsx:126
+#: src/app/(app)/(logged-in)/(tabs)/search/index.tsx:144
 msgid "Search for listings..."
 msgstr "Etsi ilmoituksia..."
 
@@ -351,8 +360,8 @@ msgstr "Etsi ilmoituksia..."
 msgid "Settings"
 msgstr "Asetukset"
 
-#: src/app/(app)/login.tsx:36
-#: src/app/(app)/login.tsx:77
+#: src/app/(app)/login.tsx:42
+#: src/app/(app)/login.tsx:102
 #: src/app/(app)/index.tsx:29
 msgid "Sign in"
 msgstr "Kirjaudu sisään"
@@ -361,7 +370,7 @@ msgstr "Kirjaudu sisään"
 msgid "Sign out"
 msgstr "Kirjaudu ulos"
 
-#: src/app/(app)/login.tsx:77
+#: src/app/(app)/login.tsx:102
 msgid "Signing in..."
 msgstr "Kirjaudutaan sisään..."
 
@@ -383,9 +392,9 @@ msgstr "Otsikko"
 
 #: src/components/ListingForm.tsx:95
 msgid "Title is required"
-msgstr "Otsikko vaaditaan<<<<<<< HEAD"
+msgstr "Otsikko vaaditaan"
 
-#: src/app/(app)/(logged-in)/(tabs)/search/index.tsx:84
+#: src/app/(app)/(logged-in)/(tabs)/search/index.tsx:94
 msgid "Type something to search."
 msgstr "Kirjoita jotain hakeaksesi."
 
