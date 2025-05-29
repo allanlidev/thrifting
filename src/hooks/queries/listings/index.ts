@@ -114,16 +114,22 @@ const getListing = (id: Tables<'products'>['id']) => {
 }
 
 type SearchListingQueryProps = {
-  query: string
+  searchTerm: string
   userId: Tables<'products'>['user_id'] | undefined
   limit?: number
 }
 
+/**
+ * Fetches listings based on the provided search term and user ID.
+ * @param props - An object containing the search term, user ID, and limit.
+ * @returns An infinite query object for the listings.
+ * @throws Will throw an error if the user ID is not provided.
+ */
 function searchListings(props: SearchListingQueryProps) {
-  const { query, limit = 8, userId } = props
+  const { searchTerm, limit = 8, userId } = props
   if (!userId) throw new Error('User ID is required')
   return infiniteQueryOptions({
-    queryKey: ['listings', 'search', query, limit, userId],
+    queryKey: ['listings', 'search', searchTerm, limit, userId],
     queryFn: async ({ pageParam }) => {
       const range = getRange(pageParam, limit)
 
@@ -131,7 +137,7 @@ function searchListings(props: SearchListingQueryProps) {
         .from('products')
         .select('*')
         .neq('user_id', userId)
-        .textSearch('title', query, {
+        .textSearch('title', searchTerm, {
           type: 'websearch',
         })
         .order('created_at', { ascending: false })

@@ -133,16 +133,16 @@ function Header({ inputProps }: { inputProps: TextInputProps }) {
 }
 
 export default function SearchIndex() {
-  const [searchQuery, setSearchQuery] = useState('')
+  const [searchTerm, setSearchTerm] = useState('')
   const { session } = useAuth()
   const query = useSearchListings({
-    query: searchQuery,
+    searchTerm,
     userId: session?.user?.id,
   })
 
   return (
     <View className="pt-safe-offset-6 flex-1">
-      <Header inputProps={{ onChangeText: (text) => setSearchQuery(text), value: searchQuery }} />
+      <Header inputProps={{ onChangeText: (text) => setSearchTerm(text), value: searchTerm }} />
       <SearchResults query={query} />
     </View>
   )
