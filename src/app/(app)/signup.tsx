@@ -14,6 +14,12 @@ export default function Signup() {
   const [password, setPassword] = useState('')
   const [isLoading, setIsLoading] = useState(false)
 
+  /**
+   * Sign up with email and password.
+   * This function uses Supabase to create a new user account.
+   * It sets the loading state while the request is being processed,
+   * and displays an alert with the result of the operation.
+   */
   async function signUpWithEmail() {
     setIsLoading(true)
     const {

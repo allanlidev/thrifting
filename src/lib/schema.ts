@@ -1,5 +1,12 @@
 import { z } from 'zod'
-
+/**
+ * Zod schema for validating passwords.
+ * The password must be at least 8 characters long and contain:
+ * - At least one lowercase letter
+ * - At least one uppercase letter
+ * - At least one digit
+ * - At least one special character from the set !@#$%^&*()_+-=[]{};':"|<>?,./`~
+ */
 export const passwordSchema = z
   .string()
   .min(8) // no message here

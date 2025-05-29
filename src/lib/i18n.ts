@@ -14,7 +14,9 @@ import { messages as messagesFi } from '~/src/locales/fi/messages'
 import { AppLanguage, useLanguagePreference } from '~/src/providers/LanguagePreferenceProvider'
 
 /**
- * We do a dynamic import of just the catalog that we need
+ * Dynamically activates the i18n locale based on the provided AppLanguage.
+ * It loads the corresponding messages and locale data for plural rules and number formatting.
+ * @param locale - The AppLanguage to activate.
  */
 export async function dynamicActivate(locale: AppLanguage) {
   switch (locale) {
@@ -33,6 +35,10 @@ export async function dynamicActivate(locale: AppLanguage) {
   }
 }
 
+/**
+ * Custom hook to set the locale language based on the user's language preference.
+ * It activates the i18n locale dynamically whenever the preferred language changes.
+ */
 export function useLocaleLanguage() {
   const { preferredLanguage } = useLanguagePreference()
   useEffect(() => {
@@ -40,6 +46,7 @@ export function useLocaleLanguage() {
   }, [preferredLanguage])
 }
 
+// Custom error map for Zod validation errors
 const i18nErrorMap: ZodErrorMap = (issue, ctx) => {
   // 1) Built-in min-length check on strings
   if (issue.code === 'too_small' && issue.type === 'string') {

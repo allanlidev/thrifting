@@ -35,16 +35,24 @@ export default function Profile() {
 
   const bottomSheetRef = useRef<BottomSheet>(null)
 
+  // Open the bottom sheet when the avatar is pressed
   function handleAvatarPress() {
     bottomSheetRef.current?.expand()
   }
 
+  // Close the bottom sheet
   function closeBottomSheet() {
     bottomSheetRef.current?.close()
   }
 
   if (!session || !profile) return null
 
+  /**
+   * Opens the image picker to select an image from the camera or library.
+   * It uploads the selected image to Supabase storage and updates the avatar URL.
+   * @param mode - The mode of image selection, either 'camera' or 'library'.
+   * @throws If there is an error during image selection or upload.
+   */
   async function pickImage({ mode }: { mode: 'camera' | 'library' }) {
     const imagePickerOptions: ImagePicker.ImagePickerOptions = {
       allowsEditing: true,
@@ -86,6 +94,8 @@ export default function Profile() {
     }
   }
 
+  // Show an alert if there is an error or if the profile update is successful
+  // This is a side effect that runs after the mutation completes
   if (error) {
     Alert.alert(t`Oops! Something went wrong.`)
   } else if (isSuccess) {

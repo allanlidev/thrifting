@@ -54,6 +54,11 @@ export default function Sell() {
     }
   }, [isLoading])
 
+  /**
+   * Create a new listing.
+   * This function inserts a new empty product into the database
+   * and redirects the user to the edit page for that product.
+   */
   const createNewListing = async () => {
     setIsLoadingNewListing(true)
 

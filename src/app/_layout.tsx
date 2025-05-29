@@ -33,6 +33,7 @@ export default function RootLayout() {
   const { isDarkColorScheme } = useColorScheme()
   const [isColorSchemeLoaded, setIsColorSchemeLoaded] = useState(false)
 
+  // This effect runs only once when the component mounts to set the color scheme loaded state.
   useLayoutEffect(() => {
     if (hasMounted.current) {
       return
@@ -41,6 +42,8 @@ export default function RootLayout() {
     hasMounted.current = true
   }, [])
 
+  // If the color scheme is not loaded yet, we return null to avoid rendering the layout prematurely.
+  // This ensures that the theme is applied correctly before rendering any components, preventing flickering or incorrect styles.
   if (!isColorSchemeLoaded) {
     return null
   }

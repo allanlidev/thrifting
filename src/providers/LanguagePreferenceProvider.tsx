@@ -6,6 +6,7 @@ import { getLocales } from 'expo-localization'
 
 export const APP_LANGUAGE_STORAGE_KEY = 'APP_LANGUAGE'
 
+// The supported application languages
 export const AppLanguage = {
   en: 'en',
   fi: 'fi',
@@ -32,6 +33,11 @@ type LanguagePreferenceProviderProps = {
   children: ReactNode
 }
 
+/**
+ * Provider component for managing language preferences in the application.
+ * It retrieves the device's locale and allows users to set their preferred language.
+ * The preferred language is stored in AsyncStorage.
+ */
 export const LanguagePreferenceProvider = ({ children }: LanguagePreferenceProviderProps) => {
   const deviceLocale = getLocales()[0].languageCode
   const [language, setLanguage] = useState(

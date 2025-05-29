@@ -16,6 +16,10 @@ export default function SettingsAccount() {
 
   const [isDeleting, setIsDeleting] = useState(false)
 
+  /**
+   * Handle the account deletion process.
+   * It shows a confirmation alert and calls the deleteAccount function if confirmed.
+   */
   function handleDeleteAccount() {
     Alert.alert(
       'Delete account',
@@ -34,6 +38,10 @@ export default function SettingsAccount() {
     )
   }
 
+  /**
+   * Deletes the user account by invoking a Supabase function.
+   * It shows an alert on success or failure and logs out the user.
+   */
   async function deleteAccount() {
     try {
       setIsDeleting(true)

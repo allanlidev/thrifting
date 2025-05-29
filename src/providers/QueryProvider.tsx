@@ -9,6 +9,13 @@ const queryClient = new QueryClient({
   },
 })
 
+/**
+ * QueryProvider component that provides the TanStack Query client to its children.
+ * This is used to manage server state in a React application.
+ *
+ * @param props - The children components to be wrapped by the provider.
+ * @returns The QueryClientProvider wrapping the children.
+ */
 export function QueryProvider({ children }: PropsWithChildren) {
   return <QueryClientProvider client={queryClient}>{children}</QueryClientProvider>
 }
