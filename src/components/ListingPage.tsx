@@ -195,9 +195,7 @@ export default function Listing() {
             </Avatar>
             <View className="flex-1">
               <Text className="text-xl font-semibold">{profile.username}</Text>
-              {profile.full_name && (
-                <Text className="text-xl font-semibold">{profile.username}</Text>
-              )}
+              {profile.full_name && <Text className="text-xl">{profile.full_name}</Text>}
             </View>
           </View>
         </Link>
