@@ -17,11 +17,9 @@ import { Listing, ListingSkeleton } from '~/src/components/Listing'
 import { Frown } from '~/src/components/icons/Frown'
 import { useScrollToTop } from '@react-navigation/native'
 import { Tables } from '~/src/database.types'
-import { useRef, useState } from 'react'
+import { useCallback, useRef, useState } from 'react'
 import { Muted } from '~/src/components/ui/typography'
 import { t } from '@lingui/core/macro'
-
-const getListingMargin = (index: number) => (index % 2 === 0 ? 'ml-4 mr-2' : 'ml-2 mr-4')
 
 const Container = ({ className, children, ...props }: ScrollViewProps) => (
   <ScrollView contentContainerClassName={cn(['flex-1', className])} {...props}>
@@ -46,6 +44,12 @@ function SearchResults({ query }: { query: ReturnType<typeof useSearchListings> 
   const listings = data?.pages?.flat() ?? []
 
   useScrollToTop(listRef)
+
+  // Calculate the margin for each listing based on its index
+  const getListingMargin = useCallback(
+    (index: number) => (index % 2 === 0 ? 'ml-6 mr-3' : 'ml-3 mr-6'),
+    []
+  )
 
   if (isLoading) {
     return (
@@ -93,10 +97,7 @@ function SearchResults({ query }: { query: ReturnType<typeof useSearchListings> 
       ref={listRef}
       data={listings}
       renderItem={({ item, index }) => (
-        <View
-          key={item.id}
-          className={cn('mb-6 flex-1', index % 2 === 0 ? 'ml-4 mr-2' : 'ml-2 mr-4')}
-        >
+        <View key={item.id} className={cn('mb-6 flex-1', getListingMargin(index))}>
           <Listing
             item={item}
             href={{ pathname: '/search/listing/[id]', params: { id: item.id } }}
@@ -118,7 +119,7 @@ function SearchResults({ query }: { query: ReturnType<typeof useSearchListings> 
 
 function Header({ inputProps }: { inputProps: TextInputProps }) {
   return (
-    <View className="px-4 pb-8">
+    <View className="px-6 pb-8">
       <View className="flex-row justify-start rounded-md border border-input">
         <Search className="my-3 ml-4 color-muted-foreground" />
         <Input
