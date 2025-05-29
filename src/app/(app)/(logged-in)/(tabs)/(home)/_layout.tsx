@@ -13,6 +13,14 @@ export default function HomeLayout() {
           headerTransparent: true,
         }}
       />
+      <Stack.Screen
+        name="profile/[id]"
+        options={{
+          title: '',
+          headerBackButtonDisplayMode: 'minimal',
+          headerTransparent: true,
+        }}
+      />
     </Stack>
   )
 }

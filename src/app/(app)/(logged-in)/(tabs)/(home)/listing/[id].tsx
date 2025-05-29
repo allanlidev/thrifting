@@ -1,5 +1,5 @@
 import { Trans, useLingui } from '@lingui/react/macro'
-import { useLocalSearchParams } from 'expo-router'
+import { Link, useLocalSearchParams } from 'expo-router'
 import { useState } from 'react'
 import {
   Modal,
@@ -27,6 +27,7 @@ import { useProfile } from '~/src/hooks/queries/profiles'
 import { category } from '~/src/lib/productCategory'
 import { cn } from '~/src/lib/utils'
 import { Zoomable } from '@likashefqet/react-native-image-zoom'
+import { Avatar, AvatarFallback, AvatarImage } from '~/src/components/ui/avatar'
 
 const Container = ({ contentContainerClassName, ...rest }: ScrollViewProps) => {
   return (
@@ -169,6 +170,33 @@ export default function Listing() {
           </Button>
         </View>
         <P>{listing.description}</P>
+        <Link
+          href={{ pathname: '/profile/[id]', params: { id: profile.id } }}
+          className="mt-2 flex-1 gap-2 rounded-lg border border-border p-4"
+        >
+          <View className="flex-row items-center gap-4">
+            <Avatar
+              alt={profile.avatar_url ? 'Your profile image' : 'Add your profile image'}
+              className="size-24 rounded-full"
+            >
+              {profile.avatar_url ? (
+                <AvatarImage
+                  bucketId="avatars"
+                  path={profile.avatar_url}
+                  accessibilityLabel="Your profile image"
+                />
+              ) : (
+                <AvatarFallback />
+              )}
+            </Avatar>
+            <View className="flex-1">
+              <Text className="text-xl font-semibold">{profile.username}</Text>
+              {profile.full_name && (
+                <Text className="text-xl font-semibold">{profile.username}</Text>
+              )}
+            </View>
+          </View>
+        </Link>
       </View>
       <Modal
         visible={isModalVisible}

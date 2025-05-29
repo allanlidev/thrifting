@@ -14,7 +14,7 @@ import { useAuth } from '~/src/providers/AuthProvider'
 import { Frown } from '~/src/components/icons/Frown'
 import { cn } from '~/src/lib/utils'
 import { useSafeAreaInsets } from 'react-native-safe-area-context'
-import { useRef } from 'react'
+import { useCallback, useRef } from 'react'
 import { Tables } from '~/src/database.types'
 import { useScrollToTop } from '@react-navigation/native'
 
@@ -55,7 +55,10 @@ export default function Home() {
 
   useScrollToTop(listRef)
 
-  const getListingMargin = (index: number) => (index % 2 === 0 ? 'ml-4 mr-2' : 'ml-2 mr-4')
+  const getListingMargin = useCallback(
+    (index: number) => (index % 2 === 0 ? 'ml-6 mr-3' : 'ml-3 mr-6'),
+    []
+  )
 
   if (isLoading) {
     return (
@@ -121,10 +124,7 @@ export default function Home() {
       ref={listRef}
       data={listings}
       renderItem={({ item, index }) => (
-        <View
-          key={item.id}
-          className={cn('mb-6 flex-1', index % 2 === 0 ? 'ml-4 mr-2' : 'ml-2 mr-4')}
-        >
+        <View key={item.id} className={cn('mb-6 flex-1', getListingMargin(index))}>
           <Listing item={item} href={{ pathname: '/listing/[id]', params: { id: item.id } }} />
         </View>
       )}
