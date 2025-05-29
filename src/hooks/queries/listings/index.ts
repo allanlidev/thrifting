@@ -11,19 +11,6 @@ import { type Tables } from '~/src/database.types'
 import { supabase } from '~/src/lib/supabase'
 import { getRange } from '~/src/lib/utils'
 
-function getDraftListings() {
-  return queryOptions({
-    queryKey: ['listings', 'drafts'],
-    queryFn: async () => {
-      let { data, error } = await supabase.from('products').select('*').eq('published', false)
-
-      if (error) throw new Error(error.message)
-
-      return data
-    },
-  })
-}
-
 function getCategories() {
   return queryOptions({
     queryKey: ['categories'],
@@ -35,10 +22,6 @@ function getCategories() {
       return data
     },
   })
-}
-
-export const useDraftListings = () => {
-  return useQuery(getDraftListings())
 }
 
 type ListingQueryProps =
