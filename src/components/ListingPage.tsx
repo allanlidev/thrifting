@@ -41,7 +41,6 @@ export default function Listing() {
   const { i18n, t } = useLingui()
   const { id } = useLocalSearchParams()
   const pathname = usePathname()
-  console.log(pathname)
   const {
     data: listing,
     isLoadingError: isLoadingErrorListing,
