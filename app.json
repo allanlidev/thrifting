@@ -44,6 +44,10 @@
         "dark": "./src/assets/icons/ios-dark.png",
         "light": "./src/assets/icons/ios-light.png",
         "tinted": "./src/assets/icons/ios-tinted.png"
+      },
+      "bundleIdentifier": "dev.calonius.thrifting",
+      "infoPlist": {
+        "ITSAppUsesNonExemptEncryption": false
       }
     },
     "android": {
@@ -52,7 +56,10 @@
         "foregroundImage": "./src/assets/icons/adaptive-icon.png",
         "monochromeImage": "./src/assets/icons/adaptive-icon.png",
         "backgroundColor": "#ffffff"
-      }
+      },
+      "permissions": [
+        "android.permission.RECORD_AUDIO"
+      ]
     },
     "extra": {
       "router": {},
