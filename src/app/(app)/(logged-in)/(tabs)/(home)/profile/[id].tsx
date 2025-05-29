@@ -65,6 +65,7 @@ export default function Profile() {
   } = useListings({
     userId: id as string,
     status: 'published',
+    own: true,
   })
 
   const { top: safeAreaTop } = useSafeAreaInsets()
