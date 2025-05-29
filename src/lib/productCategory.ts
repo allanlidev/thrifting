@@ -1,6 +1,7 @@
+import { MessageDescriptor } from '@lingui/core'
 import { msg } from '@lingui/core/macro'
 
-export const category = {
+export const category: Record<string, MessageDescriptor> = {
   ['electronics']: msg`Electronics`,
   ['fashion']: msg`Fashion`,
   ['hobbies']: msg`Hobbies`,

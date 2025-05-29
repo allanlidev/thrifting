@@ -38,6 +38,10 @@ msgstr "Haluatko varmasti poistaa tämän ilmoituksen? Tätä toimintoa ei voi p
 msgid "Back"
 msgstr "Takaisin"
 
+#: src/app/(app)/(logged-in)/(tabs)/(home)/listing/[id].tsx:168
+msgid "Buy now"
+msgstr "Osta nyt"
+
 #: src/components/MyListing.tsx:36
 #: src/components/ListingForm.tsx:503
 #: src/app/(app)/(logged-in)/(tabs)/profile/edit.tsx:189
@@ -113,7 +117,7 @@ msgstr "Muokkaa profiilia"
 msgid "Edited"
 msgstr "Muokattu"
 
-#: src/lib/productCategory.ts:4
+#: src/lib/productCategory.ts:5
 msgid "Electronics"
 msgstr "Elektroniikka"
 
@@ -133,7 +137,7 @@ msgstr "sähköposti@osoite.fi"
 msgid "Error changing password"
 msgstr "Virhe salasanan vaihtamisessa"
 
-#: src/lib/productCategory.ts:5
+#: src/lib/productCategory.ts:6
 msgid "Fashion"
 msgstr "Muoti"
 
@@ -146,16 +150,18 @@ msgstr "Koko nimi"
 msgid "Full Name"
 msgstr "Koko nimi"
 
-#: src/lib/productCategory.ts:6
+#: src/lib/productCategory.ts:7
 msgid "Hobbies"
 msgstr "Harrastukset"
 
-#: src/lib/productCategory.ts:7
+#: src/lib/productCategory.ts:8
 msgid "Home"
 msgstr "Koti"
 
 #. placeholder {0}: index + 1
 #: src/components/ListingForm.tsx:277
+#: src/app/(app)/(logged-in)/(tabs)/(home)/listing/[id].tsx:137
+#: src/app/(app)/(logged-in)/(tabs)/(home)/listing/[id].tsx:225
 msgid "Image {0} for listing"
 msgstr "Kuva {0} ilmoitukselle"
 
@@ -164,7 +170,7 @@ msgid "Image is required"
 msgstr "Kuva vaaditaan"
 
 #. placeholder {0}: item.title
-#: src/components/Listing.tsx:18
+#: src/components/Listing.tsx:19
 msgid "Image of \"{0}\" listing"
 msgstr "Kuva \"{0}\" ilmoituksesta"
 
@@ -178,6 +184,7 @@ msgid "Language"
 msgstr "Kieli"
 
 #: src/app/(app)/(logged-in)/(tabs)/profile/listings/index.tsx:106
+#: src/app/(app)/(logged-in)/(tabs)/(home)/profile/[id].tsx:117
 msgid "Listings"
 msgstr "Ilmoitukset"
 
@@ -209,14 +216,15 @@ msgstr "Uusi ilmoitus"
 
 #: src/app/(app)/(logged-in)/(tabs)/profile/settings/password.tsx:74
 msgid "New password"
-msgstr "Uusi salasana"
+msgstr "Uusi salasana<<<<<<< HEAD"
 
-#: src/app/(app)/(logged-in)/(tabs)/(home)/index.tsx:112
+#: src/app/(app)/(logged-in)/(tabs)/(home)/index.tsx:115
+#: src/app/(app)/(logged-in)/(tabs)/(home)/profile/[id].tsx:178
 msgid "No listings found."
 msgstr "Ei ilmoituksia."
 
 #: src/components/MyListing.tsx:123
-#: src/components/Listing.tsx:26
+#: src/components/Listing.tsx:27
 msgid "No title"
 msgstr "Ei otsikkoa"
 
@@ -241,7 +249,9 @@ msgstr "OK"
 #: src/app/(app)/(logged-in)/(tabs)/profile/edit.tsx:90
 #: src/app/(app)/(logged-in)/(tabs)/profile/settings/name.tsx:21
 #: src/app/(app)/(logged-in)/(tabs)/profile/listings/index.tsx:68
-#: src/app/(app)/(logged-in)/(tabs)/(home)/index.tsx:91
+#: src/app/(app)/(logged-in)/(tabs)/(home)/index.tsx:94
+#: src/app/(app)/(logged-in)/(tabs)/(home)/profile/[id].tsx:156
+#: src/app/(app)/(logged-in)/(tabs)/(home)/listing/[id].tsx:107
 msgid "Oops! Something went wrong."
 msgstr "Pahus! Jotain meni pieleen."
 
@@ -355,7 +365,7 @@ msgstr "Kirjaudu ulos"
 msgid "Signing in..."
 msgstr "Kirjaudutaan sisään..."
 
-#: src/lib/productCategory.ts:8
+#: src/lib/productCategory.ts:9
 msgid "Sports"
 msgstr "Urheilu"
 

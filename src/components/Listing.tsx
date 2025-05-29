@@ -1,14 +1,15 @@
-import { Pressable, View } from 'react-native'
+import { View } from 'react-native'
 import { t } from '@lingui/core/macro'
 import { Large } from '~/src/components/ui/typography'
 import { Skeleton } from '~/src/components/ui/skeleton'
 import { RemoteImage } from '~/src/components/RemoteImage'
-import { Tables } from '~/src/database.types'
+import { type Tables } from '~/src/database.types'
 import { Text } from '~/src/components/ui/text'
+import { type Href, Link } from 'expo-router'
 
-export function Listing({ item, onPress }: { item: Tables<'products'>; onPress?: () => void }) {
+export function Listing({ item, href }: { item: Tables<'products'>; href: Href }) {
   return (
-    <Pressable className="active:opacity-75" onPress={onPress}>
+    <Link href={href} className="active:opacity-75">
       <View className="w-full gap-2">
         <View className="h-40 overflow-hidden rounded-md bg-muted">
           {item.images.length > 0 && (
@@ -25,7 +26,7 @@ export function Listing({ item, onPress }: { item: Tables<'products'>; onPress?:
         </View>
         <Large numberOfLines={2}>{item.title ?? t`No title`}</Large>
       </View>
-    </Pressable>
+    </Link>
   )
 }
 

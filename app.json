@@ -19,12 +19,53 @@
           "cameraPermission": "The app accesses your camera for taking product images and profile pictures."
         }
       ],
-      "expo-localization"
+      "expo-localization",
+      [
+        "expo-splash-screen",
+        {
+          "image": "./src/assets/icons/splash-icon-dark.png",
+          "imageWidth": 200,
+          "resizeMode": "contain",
+          "backgroundColor": "#ffffff",
+          "dark": {
+            "image": "./src/assets/icons/splash-icon-light.png",
+            "backgroundColor": "#000000"
+          }
+        }
+      ]
     ],
     "experiments": {
       "typedRoutes": true
     },
-    "scheme": "myapp",
-    "orientation": "portrait"
+    "scheme": "thrifting",
+    "orientation": "portrait",
+    "ios": {
+      "icon": {
+        "dark": "./src/assets/icons/ios-dark.png",
+        "light": "./src/assets/icons/ios-light.png",
+        "tinted": "./src/assets/icons/ios-tinted.png"
+      },
+      "bundleIdentifier": "dev.calonius.thrifting",
+      "infoPlist": {
+        "ITSAppUsesNonExemptEncryption": false
+      }
+    },
+    "android": {
+      "edgeToEdgeEnabled": true,
+      "adaptiveIcon": {
+        "foregroundImage": "./src/assets/icons/adaptive-icon.png",
+        "monochromeImage": "./src/assets/icons/adaptive-icon.png",
+        "backgroundColor": "#ffffff"
+      },
+      "permissions": [
+        "android.permission.RECORD_AUDIO"
+      ]
+    },
+    "extra": {
+      "router": {},
+      "eas": {
+        "projectId": "aa199c1b-d8f4-4068-a55a-87d8a743ea1d"
+      }
+    }
   }
 }

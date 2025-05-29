@@ -40,3 +40,7 @@ app-example
 
 # i18n
 src/locales/**/*.js
+
+# Builds
+/android
+/ios
