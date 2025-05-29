@@ -105,6 +105,47 @@ const getListing = (id: Tables<'products'>['id']) => {
   })
 }
 
+type SearchListingQueryProps = {
+  query: string
+  userId: Tables<'products'>['user_id'] | undefined
+  limit?: number
+}
+
+function searchListings(props: SearchListingQueryProps) {
+  const { query, limit = 8, userId } = props
+  if (!userId) throw new Error('User ID is required')
+  return infiniteQueryOptions({
+    queryKey: ['listings', 'search', query, limit, userId],
+    queryFn: async ({ pageParam }) => {
+      const range = getRange(pageParam, limit)
+
+      const { data, error } = await supabase
+        .from('products')
+        .select('*')
+        .neq('user_id', userId)
+        .textSearch('title', query, {
+          type: 'websearch',
+        })
+        .order('created_at', { ascending: false })
+        .range(range[0], range[1])
+
+      if (error) throw error
+      return data
+    },
+    initialPageParam: 0,
+    getNextPageParam: (lastPage, allPages) => {
+      const nextPage: number | undefined = lastPage?.length ? allPages?.length : undefined
+
+      return nextPage
+    },
+    enabled: !!userId,
+  })
+}
+
+export const useSearchListings = (props: SearchListingQueryProps) => {
+  return useInfiniteQuery(searchListings(props))
+}
+
 /**
  * Custom hooks for fetching categories and listings.
  * These hooks utilize React Query to manage data fetching and caching.

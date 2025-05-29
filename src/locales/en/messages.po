@@ -13,8 +13,8 @@ msgstr ""
 "Language-Team: \n"
 "Plural-Forms: \n"
 
-#: src/app/(app)/(logged-in)/(tabs)/profile/settings/index.tsx:28
 #: src/app/(app)/(logged-in)/(tabs)/profile/settings/_layout.tsx:12
+#: src/app/(app)/(logged-in)/(tabs)/profile/settings/index.tsx:28
 msgid "Account"
 msgstr "Account"
 
@@ -38,7 +38,7 @@ msgstr "Are you sure you want to delete this listing? This action cannot be undo
 msgid "Back"
 msgstr "Back"
 
-#: src/app/(app)/(logged-in)/(tabs)/(home)/listing/[id].tsx:168
+#: src/components/ListingPage.tsx:169
 msgid "Buy now"
 msgstr "Buy now"
 
@@ -159,9 +159,9 @@ msgid "Home"
 msgstr "Home"
 
 #. placeholder {0}: index + 1
+#: src/components/ListingPage.tsx:138
+#: src/components/ListingPage.tsx:229
 #: src/components/ListingForm.tsx:311
-#: src/app/(app)/(logged-in)/(tabs)/(home)/listing/[id].tsx:137
-#: src/app/(app)/(logged-in)/(tabs)/(home)/listing/[id].tsx:225
 msgid "Image {0} for listing"
 msgstr "Image {0} for listing"
 
@@ -178,13 +178,13 @@ msgstr "Image of \"{0}\" listing"
 msgid "Images"
 msgstr "Images"
 
-#: src/app/(app)/(logged-in)/(tabs)/profile/settings/index.tsx:39
 #: src/app/(app)/(logged-in)/(tabs)/profile/settings/_layout.tsx:15
+#: src/app/(app)/(logged-in)/(tabs)/profile/settings/index.tsx:39
 msgid "Language"
 msgstr "Language"
 
+#: src/components/ProfilePage.tsx:118
 #: src/app/(app)/(logged-in)/(tabs)/profile/listings/index.tsx:106
-#: src/app/(app)/(logged-in)/(tabs)/(home)/profile/[id].tsx:118
 msgid "Listings"
 msgstr "Listings"
 
@@ -216,10 +216,10 @@ msgstr "New listing"
 
 #: src/app/(app)/(logged-in)/(tabs)/profile/settings/password.tsx:79
 msgid "New password"
-msgstr "New password"
+msgstr "New password<<<<<<< HEAD<<<<<<< HEAD"
 
+#: src/components/ProfilePage.tsx:179
 #: src/app/(app)/(logged-in)/(tabs)/(home)/index.tsx:116
-#: src/app/(app)/(logged-in)/(tabs)/(home)/profile/[id].tsx:179
 msgid "No listings found."
 msgstr "No listings found."
 
@@ -237,29 +237,30 @@ msgstr "Not set"
 msgid "OK"
 msgstr "OK"
 
+#: src/components/ProfilePage.tsx:157
 #: src/components/MyListing.tsx:49
+#: src/components/ListingPage.tsx:108
 #: src/components/ListingForm.tsx:180
 #: src/components/ListingForm.tsx:237
 #: src/components/ListingForm.tsx:552
 #: src/components/EditListing.tsx:28
 #: src/app/(app)/(logged-in)/(tabs)/sell/index.tsx:72
 #: src/app/(app)/(logged-in)/(tabs)/sell/index.tsx:110
+#: src/app/(app)/(logged-in)/(tabs)/search/index.tsx:71
 #: src/app/(app)/(logged-in)/(tabs)/profile/edit.tsx:92
 #: src/app/(app)/(logged-in)/(tabs)/profile/edit.tsx:100
 #: src/app/(app)/(logged-in)/(tabs)/profile/settings/name.tsx:21
 #: src/app/(app)/(logged-in)/(tabs)/profile/listings/index.tsx:68
 #: src/app/(app)/(logged-in)/(tabs)/(home)/index.tsx:95
-#: src/app/(app)/(logged-in)/(tabs)/(home)/profile/[id].tsx:157
-#: src/app/(app)/(logged-in)/(tabs)/(home)/listing/[id].tsx:107
 msgid "Oops! Something went wrong."
-msgstr "Oops! Something went wrong."
+msgstr "Oops! Something went wrong.<<<<<<< HEAD"
 
 #: src/app/(app)/signup.tsx:68
 #: src/app/(app)/signup.tsx:73
 #: src/app/(app)/login.tsx:57
 #: src/app/(app)/login.tsx:62
-#: src/app/(app)/(logged-in)/(tabs)/profile/settings/account.tsx:102
 #: src/app/(app)/(logged-in)/(tabs)/profile/settings/_layout.tsx:14
+#: src/app/(app)/(logged-in)/(tabs)/profile/settings/account.tsx:102
 msgid "Password"
 msgstr "Password"
 
@@ -341,8 +342,12 @@ msgstr "Save and publish"
 msgid "Save as draft"
 msgstr "Save as draft"
 
-#: src/app/(app)/(logged-in)/(tabs)/profile/settings/index.tsx:19
+#: src/app/(app)/(logged-in)/(tabs)/search/index.tsx:126
+msgid "Search for listings..."
+msgstr "Search for listings..."
+
 #: src/app/(app)/(logged-in)/(tabs)/profile/settings/_layout.tsx:11
+#: src/app/(app)/(logged-in)/(tabs)/profile/settings/index.tsx:19
 msgid "Settings"
 msgstr "Settings"
 
@@ -378,7 +383,11 @@ msgstr "Title"
 
 #: src/components/ListingForm.tsx:95
 msgid "Title is required"
-msgstr "Title is required"
+msgstr "Title is required<<<<<<< HEAD"
+
+#: src/app/(app)/(logged-in)/(tabs)/search/index.tsx:84
+msgid "Type something to search."
+msgstr "Type something to search."
 
 #: src/app/(app)/(logged-in)/(tabs)/profile/edit.tsx:153
 #: src/app/(app)/(logged-in)/(tabs)/profile/settings/name.tsx:56
