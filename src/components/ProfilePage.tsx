@@ -84,6 +84,7 @@ export default function Profile() {
     refetchListings()
   }
 
+  // Calculate the margin for each listing based on its index
   const getListingMargin = useCallback(
     (index: number) => (index % 2 === 0 ? 'ml-6 mr-3' : 'ml-3 mr-6'),
     []

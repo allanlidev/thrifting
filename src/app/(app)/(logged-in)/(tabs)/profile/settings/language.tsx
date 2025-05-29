@@ -14,6 +14,7 @@ const LANGUAGES = [
 export default function SettingsLanguage() {
   const { preferredLanguage, setPreferredLanguage } = useLanguagePreference()
 
+  // Change the preferred language based on user selection
   async function handleValueChange(value: string) {
     await setPreferredLanguage(value as AppLanguage)
   }

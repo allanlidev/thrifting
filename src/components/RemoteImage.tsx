@@ -15,6 +15,12 @@ const StyledImage = cssInterop(Image, {
   className: 'style',
 })
 
+/**
+ * Downloads an image from Supabase storage and converts it to a base64 string.
+ * @param bucketId - The ID of the Supabase storage bucket.
+ * @param path - The path to the image in the storage bucket.
+ * @returns A promise that resolves to the base64 string of the image.
+ */
 async function downloadImage(bucketId: string, path: string) {
   try {
     const { data, error } = await supabase.storage.from(bucketId).download(path)

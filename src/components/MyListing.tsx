@@ -27,6 +27,8 @@ function RightAction(
     }
   })
 
+  // Handles the delete action by showing an alert and calling the delete mutation
+  // when the user confirms the deletion.
   const onDelete = async () => {
     Alert.alert(
       t`Delete listing`,

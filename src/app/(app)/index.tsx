@@ -6,7 +6,7 @@ import { H1, P } from '~/src/components/ui/typography'
 import { Text } from '~/src/components/ui/text'
 import Animated, { Easing, FadeInDown, FadeInLeft, FadeInRight } from 'react-native-reanimated'
 
-export default function Index() {
+export default function Welcome() {
   return (
     <View className="py-safe-offset-2 flex-1 items-center p-6">
       <View className="flex-1 items-center justify-end gap-3">

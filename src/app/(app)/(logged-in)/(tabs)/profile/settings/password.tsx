@@ -17,6 +17,11 @@ import { useRouter } from 'expo-router'
 export default function SettingsAccountPassword() {
   const router = useRouter()
 
+  /**
+   * Form schema for validating the password change form.
+   * It uses Zod to ensure that the password and confirmation match,
+   * and that they meet the defined password criteria.
+   */
   const formSchema = z
     .object({
       password: passwordSchema,

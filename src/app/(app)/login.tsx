@@ -16,6 +16,9 @@ export default function Login() {
   const [password, setPassword] = useState('')
   const [isLoading, setIsLoading] = useState(false)
 
+  /**
+   * Sign in with email and password.
+   */
   async function signInWithEmail() {
     setIsLoading(true)
     await logIn({ email, password })

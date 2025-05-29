@@ -73,6 +73,9 @@ export function ListingForm({ listing }: { listing: Tables<'products'> }) {
   const { isDarkColorScheme } = useColorScheme()
   const { t } = useLingui()
 
+  /**
+   * Handle pagination press to scroll to the corresponding index in the carousel.
+   */
   const onPressPagination = (index: number) => {
     carouselRef.current?.scrollTo({
       /**
@@ -84,6 +87,10 @@ export function ListingForm({ listing }: { listing: Tables<'products'> }) {
     })
   }
 
+  /**
+   * Schema for updating a product listing.
+   * Validates the title, description, price, category, and images.
+   */
   const updateSchema = z.object({
     title: z.string().min(1, t`Title is required`),
     description: z.string().min(1, t`Description is required`),
@@ -101,6 +108,11 @@ export function ListingForm({ listing }: { listing: Tables<'products'> }) {
     category: Option | null
   }
 
+  /**
+   * Get the default category based on the listing's category.
+   * If the listing category is not found, it defaults to 'fashion'.
+   * Returns an object with value and label for the select input.
+   */
   const getDefaultCategory = (listingCategory: string) => {
     if (!listingCategory) return null
     const defaultCategory = categories?.find((category) => listingCategory === category.title)
@@ -137,6 +149,11 @@ export function ListingForm({ listing }: { listing: Tables<'products'> }) {
     bottom: insets.bottom,
   }
 
+  /**
+   * Function to update the product listing.
+   * It updates the product in the database and invalidates the queries to refresh the data.
+   * If `publish` is false, it saves the listing as a draft.
+   */
   const updateProduct = async (value: UpdateProduct, publish = false) => {
     if (!publish) setIsSubmittingDraft(true)
 
@@ -175,6 +192,12 @@ export function ListingForm({ listing }: { listing: Tables<'products'> }) {
     router.dismiss()
   }
 
+  /**
+   * Opens the image picker to select an image from the camera or library.
+   * It uploads the selected image to Supabase storage and updates the form state.
+   * @param mode - The mode of image selection, either 'camera' or 'library'.
+   * @throws If there is an error during image selection or upload.
+   */
   async function pickImage({ mode }: { mode: 'camera' | 'library' }) {
     const imagePickerOptions: ImagePicker.ImagePickerOptions = {
       allowsEditing: true,
@@ -215,14 +238,25 @@ export function ListingForm({ listing }: { listing: Tables<'products'> }) {
     }
   }
 
+  /**
+   * Closes the bottom sheet.
+   */
   function closeBottomSheet() {
     bottomSheetRef.current?.close()
   }
 
+  /**
+   * Opens the bottom sheet to select an image from the camera or library.
+   */
   function handleImagePress() {
     bottomSheetRef.current?.expand()
   }
 
+  /**
+   * Handles the deletion of an image from the form state.
+   * It filters out the image to be deleted and updates the form state accordingly.
+   * @param path - The path of the image to be deleted.
+   */
   function handleDeleteImagePress(path: string) {
     form.setFieldValue(
       'images',

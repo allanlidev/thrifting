@@ -11,19 +11,17 @@ import { type Tables } from '~/src/database.types'
 import { supabase } from '~/src/lib/supabase'
 import { getRange } from '~/src/lib/utils'
 
-function getDraftListings() {
-  return queryOptions({
-    queryKey: ['listings', 'drafts'],
-    queryFn: async () => {
-      let { data, error } = await supabase.from('products').select('*').eq('published', false)
+/**
+ * Queries related to product listings and categories.
+ * This module provides functions to fetch categories, listings, and a specific listing,
+ * as well as a mutation for deleting a listing.
+ */
 
-      if (error) throw new Error(error.message)
-
-      return data
-    },
-  })
-}
-
+/**
+ * Fetches all categories from the 'categories' table.
+ * @returns A query object containing the categories data.
+ * @throws Will throw an error if the query fails.
+ */
 function getCategories() {
   return queryOptions({
     queryKey: ['categories'],
@@ -37,10 +35,6 @@ function getCategories() {
   })
 }
 
-export const useDraftListings = () => {
-  return useQuery(getDraftListings())
-}
-
 type ListingQueryProps =
   | { status: 'draft'; limit?: number }
   | {
@@ -50,6 +44,12 @@ type ListingQueryProps =
       own?: boolean
     }
 
+/**
+ * Fetches listings based on the provided status and user ID.
+ * @param props - An object containing the status, user ID, limit, and ownership preference.
+ * @returns An infinite query object for the listings.
+ * @throws Will throw an error if the user ID is required but not provided.
+ */
 function getListings(props: ListingQueryProps) {
   const { status, limit = 8 } = props
   return infiniteQueryOptions({
@@ -87,6 +87,12 @@ function getListings(props: ListingQueryProps) {
   })
 }
 
+/**
+ * Fetches a specific listing by its ID.
+ * @param id - The ID of the listing to fetch.
+ * @returns A query object containing the listing data.
+ * @throws Will throw an error if the query fails.
+ */
 const getListing = (id: Tables<'products'>['id']) => {
   return queryOptions({
     queryKey: ['listing', id],
@@ -140,6 +146,10 @@ export const useSearchListings = (props: SearchListingQueryProps) => {
   return useInfiniteQuery(searchListings(props))
 }
 
+/**
+ * Custom hooks for fetching categories and listings.
+ * These hooks utilize React Query to manage data fetching and caching.
+ */
 export const useCategories = () => useQuery(getCategories())
 
 export const useListings = (props: ListingQueryProps) => {
@@ -157,6 +167,12 @@ export const useListing = (id: Tables<'products'>['id']) => {
   return useQuery(getListing(id))
 }
 
+/**
+ * Custom hook for deleting a listing.
+ * This hook uses a mutation to delete a listing by its ID and optimistically updates the cache.
+ * @returns A mutation object for deleting a listing.
+ *  @throws Will throw an error if the deletion fails.
+ */
 export const useDeleteListing = () => {
   const queryClient = useQueryClient()
   const key = ['listings'] as const

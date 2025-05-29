@@ -2,6 +2,7 @@ import { SplashScreen, Stack } from 'expo-router'
 import { useEffect } from 'react'
 import { useAuth } from '~/src/providers/AuthProvider'
 
+// Prevent the splash screen from auto-hiding until the auth state is ready
 SplashScreen.preventAutoHideAsync()
 
 export default function AppLayout() {
