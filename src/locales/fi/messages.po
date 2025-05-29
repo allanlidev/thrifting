@@ -13,8 +13,8 @@ msgstr ""
 "Language-Team: \n"
 "Plural-Forms: \n"
 
-#: src/app/(app)/(logged-in)/(tabs)/profile/settings/index.tsx:28
 #: src/app/(app)/(logged-in)/(tabs)/profile/settings/_layout.tsx:12
+#: src/app/(app)/(logged-in)/(tabs)/profile/settings/index.tsx:28
 msgid "Account"
 msgstr "Tili"
 
@@ -39,12 +39,12 @@ msgid "Back"
 msgstr "Takaisin"
 
 #: src/components/MyListing.tsx:36
-#: src/components/ListingForm.tsx:502
+#: src/components/ListingForm.tsx:503
 #: src/app/(app)/(logged-in)/(tabs)/profile/edit.tsx:189
 msgid "Cancel"
 msgstr "Peruuta"
 
-#: src/components/ListingForm.tsx:312
+#: src/components/ListingForm.tsx:313
 msgid "Category"
 msgstr "Osasto"
 
@@ -64,7 +64,7 @@ msgstr "Vahvista salasana"
 #: src/app/(app)/(logged-in)/(tabs)/sell/index.tsx:89
 #: src/app/(app)/(logged-in)/(tabs)/sell/index.tsx:110
 #: src/app/(app)/(logged-in)/(tabs)/sell/index.tsx:133
-#: src/app/(app)/(logged-in)/(tabs)/sell/index.tsx:172
+#: src/app/(app)/(logged-in)/(tabs)/sell/index.tsx:173
 msgid "Create new listing"
 msgstr "Luo uusi ilmoitus"
 
@@ -84,7 +84,7 @@ msgstr "Poista ilmoitus"
 msgid "Deleting..."
 msgstr "Poistamassa..."
 
-#: src/components/ListingForm.tsx:382
+#: src/components/ListingForm.tsx:383
 msgid "Description"
 msgstr "Kuvaus"
 
@@ -155,7 +155,7 @@ msgid "Home"
 msgstr "Koti"
 
 #. placeholder {0}: index + 1
-#: src/components/ListingForm.tsx:276
+#: src/components/ListingForm.tsx:277
 msgid "Image {0} for listing"
 msgstr "Kuva {0} ilmoitukselle"
 
@@ -168,12 +168,12 @@ msgstr "Kuva vaaditaan"
 msgid "Image of \"{0}\" listing"
 msgstr "Kuva \"{0}\" ilmoituksesta"
 
-#: src/components/ListingForm.tsx:241
+#: src/components/ListingForm.tsx:242
 msgid "Images"
 msgstr "Kuvat"
 
-#: src/app/(app)/(logged-in)/(tabs)/profile/settings/index.tsx:39
 #: src/app/(app)/(logged-in)/(tabs)/profile/settings/_layout.tsx:15
+#: src/app/(app)/(logged-in)/(tabs)/profile/settings/index.tsx:39
 msgid "Language"
 msgstr "Kieli"
 
@@ -211,7 +211,7 @@ msgstr "Uusi ilmoitus"
 msgid "New password"
 msgstr "Uusi salasana"
 
-#: src/app/(app)/(logged-in)/(tabs)/(home)/index.tsx:110
+#: src/app/(app)/(logged-in)/(tabs)/(home)/index.tsx:112
 msgid "No listings found."
 msgstr "Ei ilmoituksia."
 
@@ -231,16 +231,17 @@ msgstr "OK"
 
 #: src/components/MyListing.tsx:47
 #: src/components/ListingForm.tsx:163
-#: src/components/ListingForm.tsx:213
-#: src/components/ListingForm.tsx:517
+#: src/components/ListingForm.tsx:214
+#: src/components/ListingForm.tsx:518
 #: src/components/EditListing.tsx:28
 #: src/app/(app)/(logged-in)/(tabs)/sell/index.tsx:67
 #: src/app/(app)/(logged-in)/(tabs)/sell/index.tsx:105
+#: src/app/(app)/(logged-in)/(tabs)/search/index.tsx:71
 #: src/app/(app)/(logged-in)/(tabs)/profile/edit.tsx:84
 #: src/app/(app)/(logged-in)/(tabs)/profile/edit.tsx:90
 #: src/app/(app)/(logged-in)/(tabs)/profile/settings/name.tsx:21
 #: src/app/(app)/(logged-in)/(tabs)/profile/listings/index.tsx:68
-#: src/app/(app)/(logged-in)/(tabs)/(home)/index.tsx:89
+#: src/app/(app)/(logged-in)/(tabs)/(home)/index.tsx:91
 msgid "Oops! Something went wrong."
 msgstr "Pahus! Jotain meni pieleen."
 
@@ -248,8 +249,8 @@ msgstr "Pahus! Jotain meni pieleen."
 #: src/app/(app)/signup.tsx:67
 #: src/app/(app)/login.tsx:54
 #: src/app/(app)/login.tsx:59
-#: src/app/(app)/(logged-in)/(tabs)/profile/settings/account.tsx:94
 #: src/app/(app)/(logged-in)/(tabs)/profile/settings/_layout.tsx:14
+#: src/app/(app)/(logged-in)/(tabs)/profile/settings/account.tsx:94
 msgid "Password"
 msgstr "Salasana"
 
@@ -282,11 +283,11 @@ msgstr "Salasanat eivät täsmää"
 msgid "Press \"Create new listing\" to start selling!"
 msgstr "Paina \"Luo uusi ilmoitus\" ja aloita myynti!"
 
-#: src/components/ListingForm.tsx:268
+#: src/components/ListingForm.tsx:269
 msgid "Press here to add an image"
 msgstr "Paina tästä lisätäksesi kuvan"
 
-#: src/components/ListingForm.tsx:404
+#: src/components/ListingForm.tsx:405
 msgid "Price"
 msgstr "Hinta"
 
@@ -323,16 +324,20 @@ msgstr "Rekisteröidään..."
 msgid "Remove avatar"
 msgstr "Poista profiilikuva"
 
-#: src/components/ListingForm.tsx:441
+#: src/components/ListingForm.tsx:442
 msgid "Save and publish"
 msgstr "Tallenna ja julkaise"
 
-#: src/components/ListingForm.tsx:458
+#: src/components/ListingForm.tsx:459
 msgid "Save as draft"
 msgstr "Tallenna luonnos"
 
-#: src/app/(app)/(logged-in)/(tabs)/profile/settings/index.tsx:19
+#: src/app/(app)/(logged-in)/(tabs)/search/index.tsx:123
+msgid "Search for listings..."
+msgstr "Etsi ilmoituksia..."
+
 #: src/app/(app)/(logged-in)/(tabs)/profile/settings/_layout.tsx:11
+#: src/app/(app)/(logged-in)/(tabs)/profile/settings/index.tsx:19
 msgid "Settings"
 msgstr "Asetukset"
 
@@ -362,7 +367,7 @@ msgstr "Ilmoitus julkaistu"
 msgid "Successfully saved listing"
 msgstr "Ilmoitus tallennettu"
 
-#: src/components/ListingForm.tsx:359
+#: src/components/ListingForm.tsx:360
 msgid "Title"
 msgstr "Otsikko"
 
@@ -370,17 +375,21 @@ msgstr "Otsikko"
 msgid "Title is required"
 msgstr "Otsikko vaaditaan"
 
+#: src/app/(app)/(logged-in)/(tabs)/search/index.tsx:84
+msgid "Type something to search."
+msgstr "Kirjoita jotain hakeaksesi."
+
 #: src/app/(app)/(logged-in)/(tabs)/profile/edit.tsx:143
 #: src/app/(app)/(logged-in)/(tabs)/profile/settings/name.tsx:56
 msgid "Update"
 msgstr "Päivitä"
 
-#: src/components/ListingForm.tsx:486
+#: src/components/ListingForm.tsx:487
 #: src/app/(app)/(logged-in)/(tabs)/profile/edit.tsx:165
 msgid "Upload from Camera"
 msgstr "Lataa kamerasta"
 
-#: src/components/ListingForm.tsx:496
+#: src/components/ListingForm.tsx:497
 #: src/app/(app)/(logged-in)/(tabs)/profile/edit.tsx:175
 msgid "Upload from Library"
 msgstr "Lataa kirjastosta"
