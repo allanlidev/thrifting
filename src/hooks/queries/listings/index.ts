@@ -53,7 +53,15 @@ type ListingQueryProps =
 function getListings(props: ListingQueryProps) {
   const { status, limit = 8 } = props
   return infiniteQueryOptions({
-    queryKey: ['listings', status, limit, status === 'published' && props.own && 'own'],
+    queryKey: [
+      'listings',
+      {
+        status,
+        limit,
+        own: status === 'published' && props.own === true,
+        userId: status === 'published' && props.userId,
+      },
+    ],
     queryFn: async ({ pageParam }) => {
       const range = getRange(pageParam, limit)
 
