@@ -38,13 +38,17 @@ msgstr "Are you sure you want to delete this listing? This action cannot be undo
 msgid "Back"
 msgstr "Back"
 
+#: src/app/(app)/(logged-in)/(tabs)/(home)/listing/[id].tsx:168
+msgid "Buy now"
+msgstr "Buy now"
+
 #: src/components/MyListing.tsx:36
-#: src/components/ListingForm.tsx:502
+#: src/components/ListingForm.tsx:503
 #: src/app/(app)/(logged-in)/(tabs)/profile/edit.tsx:189
 msgid "Cancel"
 msgstr "Cancel"
 
-#: src/components/ListingForm.tsx:312
+#: src/components/ListingForm.tsx:313
 msgid "Category"
 msgstr "Category"
 
@@ -64,7 +68,7 @@ msgstr "Confirm password"
 #: src/app/(app)/(logged-in)/(tabs)/sell/index.tsx:89
 #: src/app/(app)/(logged-in)/(tabs)/sell/index.tsx:110
 #: src/app/(app)/(logged-in)/(tabs)/sell/index.tsx:133
-#: src/app/(app)/(logged-in)/(tabs)/sell/index.tsx:172
+#: src/app/(app)/(logged-in)/(tabs)/sell/index.tsx:173
 msgid "Create new listing"
 msgstr "Create new listing"
 
@@ -84,7 +88,7 @@ msgstr "Delete listing"
 msgid "Deleting..."
 msgstr "Deleting..."
 
-#: src/components/ListingForm.tsx:382
+#: src/components/ListingForm.tsx:383
 msgid "Description"
 msgstr "Description"
 
@@ -113,7 +117,7 @@ msgstr "Edit profile"
 msgid "Edited"
 msgstr "Edited"
 
-#: src/lib/productCategory.ts:4
+#: src/lib/productCategory.ts:5
 msgid "Electronics"
 msgstr "Electronics"
 
@@ -133,7 +137,7 @@ msgstr "email@address.com"
 msgid "Error changing password"
 msgstr "Error changing password"
 
-#: src/lib/productCategory.ts:5
+#: src/lib/productCategory.ts:6
 msgid "Fashion"
 msgstr "Fashion"
 
@@ -146,16 +150,18 @@ msgstr "Full name"
 msgid "Full Name"
 msgstr "Full Name"
 
-#: src/lib/productCategory.ts:6
+#: src/lib/productCategory.ts:7
 msgid "Hobbies"
 msgstr "Hobbies"
 
-#: src/lib/productCategory.ts:7
+#: src/lib/productCategory.ts:8
 msgid "Home"
 msgstr "Home"
 
 #. placeholder {0}: index + 1
-#: src/components/ListingForm.tsx:276
+#: src/components/ListingForm.tsx:277
+#: src/app/(app)/(logged-in)/(tabs)/(home)/listing/[id].tsx:137
+#: src/app/(app)/(logged-in)/(tabs)/(home)/listing/[id].tsx:222
 msgid "Image {0} for listing"
 msgstr "Image {0} for listing"
 
@@ -164,11 +170,11 @@ msgid "Image is required"
 msgstr "Image is required"
 
 #. placeholder {0}: item.title
-#: src/components/Listing.tsx:18
+#: src/components/Listing.tsx:19
 msgid "Image of \"{0}\" listing"
 msgstr "Image of \"{0}\" listing"
 
-#: src/components/ListingForm.tsx:241
+#: src/components/ListingForm.tsx:242
 msgid "Images"
 msgstr "Images"
 
@@ -178,6 +184,7 @@ msgid "Language"
 msgstr "Language"
 
 #: src/app/(app)/(logged-in)/(tabs)/profile/listings/index.tsx:106
+#: src/app/(app)/(logged-in)/(tabs)/(home)/profile/[id].tsx:116
 msgid "Listings"
 msgstr "Listings"
 
@@ -211,12 +218,13 @@ msgstr "New listing"
 msgid "New password"
 msgstr "New password"
 
-#: src/app/(app)/(logged-in)/(tabs)/(home)/index.tsx:110
+#: src/app/(app)/(logged-in)/(tabs)/(home)/index.tsx:115
+#: src/app/(app)/(logged-in)/(tabs)/(home)/profile/[id].tsx:177
 msgid "No listings found."
 msgstr "No listings found."
 
 #: src/components/MyListing.tsx:123
-#: src/components/Listing.tsx:26
+#: src/components/Listing.tsx:27
 msgid "No title"
 msgstr "No title"
 
@@ -231,8 +239,8 @@ msgstr "OK"
 
 #: src/components/MyListing.tsx:47
 #: src/components/ListingForm.tsx:163
-#: src/components/ListingForm.tsx:213
-#: src/components/ListingForm.tsx:517
+#: src/components/ListingForm.tsx:214
+#: src/components/ListingForm.tsx:518
 #: src/components/EditListing.tsx:28
 #: src/app/(app)/(logged-in)/(tabs)/sell/index.tsx:67
 #: src/app/(app)/(logged-in)/(tabs)/sell/index.tsx:105
@@ -240,7 +248,9 @@ msgstr "OK"
 #: src/app/(app)/(logged-in)/(tabs)/profile/edit.tsx:90
 #: src/app/(app)/(logged-in)/(tabs)/profile/settings/name.tsx:21
 #: src/app/(app)/(logged-in)/(tabs)/profile/listings/index.tsx:68
-#: src/app/(app)/(logged-in)/(tabs)/(home)/index.tsx:89
+#: src/app/(app)/(logged-in)/(tabs)/(home)/index.tsx:94
+#: src/app/(app)/(logged-in)/(tabs)/(home)/profile/[id].tsx:155
+#: src/app/(app)/(logged-in)/(tabs)/(home)/listing/[id].tsx:107
 msgid "Oops! Something went wrong."
 msgstr "Oops! Something went wrong."
 
@@ -282,11 +292,11 @@ msgstr "Passwords don't match"
 msgid "Press \"Create new listing\" to start selling!"
 msgstr "Press \"Create new listing\" to start selling!"
 
-#: src/components/ListingForm.tsx:268
+#: src/components/ListingForm.tsx:269
 msgid "Press here to add an image"
 msgstr "Press here to add an image"
 
-#: src/components/ListingForm.tsx:404
+#: src/components/ListingForm.tsx:405
 msgid "Price"
 msgstr "Price"
 
@@ -323,11 +333,11 @@ msgstr "Registering..."
 msgid "Remove avatar"
 msgstr "Remove avatar"
 
-#: src/components/ListingForm.tsx:441
+#: src/components/ListingForm.tsx:442
 msgid "Save and publish"
 msgstr "Save and publish"
 
-#: src/components/ListingForm.tsx:458
+#: src/components/ListingForm.tsx:459
 msgid "Save as draft"
 msgstr "Save as draft"
 
@@ -350,7 +360,7 @@ msgstr "Sign out"
 msgid "Signing in..."
 msgstr "Signing in..."
 
-#: src/lib/productCategory.ts:8
+#: src/lib/productCategory.ts:9
 msgid "Sports"
 msgstr "Sports"
 
@@ -362,7 +372,7 @@ msgstr "Successfully published listing"
 msgid "Successfully saved listing"
 msgstr "Successfully saved listing"
 
-#: src/components/ListingForm.tsx:359
+#: src/components/ListingForm.tsx:360
 msgid "Title"
 msgstr "Title"
 
@@ -375,12 +385,12 @@ msgstr "Title is required"
 msgid "Update"
 msgstr "Update"
 
-#: src/components/ListingForm.tsx:486
+#: src/components/ListingForm.tsx:487
 #: src/app/(app)/(logged-in)/(tabs)/profile/edit.tsx:165
 msgid "Upload from Camera"
 msgstr "Upload from Camera"
 
-#: src/components/ListingForm.tsx:496
+#: src/components/ListingForm.tsx:497
 #: src/app/(app)/(logged-in)/(tabs)/profile/edit.tsx:175
 msgid "Upload from Library"
 msgstr "Upload from Library"
