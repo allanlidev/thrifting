@@ -120,21 +120,12 @@ export default function Listing() {
           loop={listing.images.length > 1}
           onProgressChange={progress}
           renderItem={({ index, item }) => (
-            <>
-              <RemoteImage
-                bucketId="product-images"
-                path={item}
-                className="absolute h-full w-full"
-                blurRadius={10}
-              />
-              <RemoteImage
-                bucketId="product-images"
-                path={item}
-                accessibilityLabel={t`Image ${index + 1} for listing`}
-                className="h-full w-full"
-                resizeMode="contain"
-              />
-            </>
+            <RemoteImage
+              bucketId="product-images"
+              path={item}
+              accessibilityLabel={t`Image ${index + 1} for listing`}
+              className="h-full w-full"
+            />
           )}
         />
         <PaginationBasic
