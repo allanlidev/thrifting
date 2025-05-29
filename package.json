@@ -11,7 +11,8 @@
     "format": "npx prettier --write .",
     "intl:extract": "lingui extract",
     "intl:compile": "lingui compile",
-    "intl:build": "lingui extract && lingui compile"
+    "intl:build": "lingui extract && lingui compile",
+    "eas-build-post-install": "npm run intl:compile"
   },
   "dependencies": {
     "@gorhom/bottom-sheet": "^5.1.2",

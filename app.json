@@ -25,6 +25,12 @@
       "typedRoutes": true
     },
     "scheme": "thrifting",
-    "orientation": "portrait"
+    "orientation": "portrait",
+    "extra": {
+      "router": {},
+      "eas": {
+        "projectId": "aa199c1b-d8f4-4068-a55a-87d8a743ea1d"
+      }
+    }
   }
 }
