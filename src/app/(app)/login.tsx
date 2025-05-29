@@ -1,4 +1,3 @@
-import { useState } from 'react'
 import { ActivityIndicator, KeyboardAvoidingView, ScrollView, View } from 'react-native'
 import { useAuth } from '~/src/providers/AuthProvider'
 import { Button } from '~/src/components/ui/button'
