@@ -1,16 +1,20 @@
 import { Trans, useLingui } from '@lingui/react/macro'
 import { useLocalSearchParams } from 'expo-router'
+import { useState } from 'react'
 import {
+  Modal,
   RefreshControl,
   ScrollView,
   ScrollViewProps,
   useWindowDimensions,
   View,
 } from 'react-native'
+import { Pressable } from 'react-native-gesture-handler'
 import { useSharedValue } from 'react-native-reanimated'
 import Carousel from 'react-native-reanimated-carousel'
 import { useSafeAreaInsets } from 'react-native-safe-area-context'
 import { Frown } from '~/src/components/icons/Frown'
+import { X } from '~/src/components/icons/X'
 import { PaginationBasic } from '~/src/components/Pagination'
 import { RemoteImage } from '~/src/components/RemoteImage'
 import { Badge } from '~/src/components/ui/badge'
@@ -22,6 +26,7 @@ import { useListing } from '~/src/hooks/queries/listings'
 import { useProfile } from '~/src/hooks/queries/profiles'
 import { category } from '~/src/lib/productCategory'
 import { cn } from '~/src/lib/utils'
+import { Zoomable } from '@likashefqet/react-native-image-zoom'
 
 const Container = ({ contentContainerClassName, ...rest }: ScrollViewProps) => {
   return (
@@ -56,6 +61,8 @@ export default function Listing() {
     refetchListing()
     refetchProfile()
   }
+
+  const [isModalVisible, setIsModalVisible] = useState(false)
 
   const progress = useSharedValue(0)
 
@@ -118,14 +125,18 @@ export default function Listing() {
           height={height * 0.55}
           data={listing.images}
           loop={listing.images.length > 1}
-          onProgressChange={progress}
+          onProgressChange={(_offsetProgress, absoluteProgress) => {
+            progress.value = absoluteProgress
+          }}
           renderItem={({ index, item }) => (
-            <RemoteImage
-              bucketId="product-images"
-              path={item}
-              accessibilityLabel={t`Image ${index + 1} for listing`}
-              className="h-full w-full"
-            />
+            <Pressable onPress={() => setIsModalVisible(true)}>
+              <RemoteImage
+                bucketId="product-images"
+                path={item}
+                accessibilityLabel={t`Image ${index + 1} for listing`}
+                className="h-full w-full"
+              />
+            </Pressable>
           )}
         />
         <PaginationBasic
@@ -159,6 +170,51 @@ export default function Listing() {
         </View>
         <P>{listing.description}</P>
       </View>
+      <Modal
+        visible={isModalVisible}
+        animationType="slide"
+        onRequestClose={() => setIsModalVisible(false)}
+        transparent
+      >
+        <View className="py-safe-offset-4 relative flex-1 items-center justify-center bg-background">
+          <Carousel
+            width={width}
+            height={height}
+            data={listing.images}
+            loop={listing.images.length > 1}
+            defaultIndex={progress.value}
+            onProgressChange={(_offsetProgress, absoluteProgress) => {
+              progress.value = absoluteProgress
+            }}
+            renderItem={({ index, item }) => (
+              <Zoomable>
+                <RemoteImage
+                  bucketId="product-images"
+                  path={item}
+                  accessibilityLabel={t`Image ${index + 1} for listing`}
+                  className="h-full w-full"
+                  resizeMode="contain"
+                />
+              </Zoomable>
+            )}
+          />
+
+          <PaginationBasic
+            progress={progress}
+            data={listing.images}
+            containerClassName="gap-2 absolute bottom-safe-offset-8"
+            activeDotClassName="bg-primary rounded-full overflow-hidden"
+            dotClassName="bg-muted rounded-full"
+          />
+          <Button
+            size="icon"
+            className="right-safe-offset-4 top-safe-offset-4 absolute rounded-full"
+            onPress={() => setIsModalVisible(false)}
+          >
+            <X />
+          </Button>
+        </View>
+      </Modal>
     </Container>
   )
 }
