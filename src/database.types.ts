@@ -18,38 +18,6 @@ export type Database = {
         }
         Relationships: []
       }
-      product_images: {
-        Row: {
-          alt_text: string | null
-          id: number
-          image_url: string | null
-          order: number | null
-          product_id: number
-        }
-        Insert: {
-          alt_text?: string | null
-          id?: number
-          image_url?: string | null
-          order?: number | null
-          product_id: number
-        }
-        Update: {
-          alt_text?: string | null
-          id?: number
-          image_url?: string | null
-          order?: number | null
-          product_id?: number
-        }
-        Relationships: [
-          {
-            foreignKeyName: 'products_images_product_id_fkey'
-            columns: ['product_id']
-            isOneToOne: false
-            referencedRelation: 'products'
-            referencedColumns: ['id']
-          },
-        ]
-      }
       products: {
         Row: {
           category: string
