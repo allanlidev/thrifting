@@ -59,7 +59,8 @@
       },
       "permissions": [
         "android.permission.RECORD_AUDIO"
-      ]
+      ],
+      "package": "dev.calonius.thrifting"
     },
     "extra": {
       "router": {},
